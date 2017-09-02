@@ -8,13 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>RunTime之方法简介 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="在之前的’’ UIButton扩大响应范围’’以及”ios组件的构建思路”两篇文章中已经用到了RunTime中的方法,这篇再记录几个方法的介绍以及使用;OBJC_EXPORT BOOL object_isClass(id obj) 判断一个对象是否是一个class123456789//具体应用场景runtime根据字符串动态生成一个类时,判断是否成功,如在&amp;quot;ios组件的构建思路&amp;quot">
+<meta property="og:type" content="article">
 <meta property="og:title" content="RunTime之方法简介">
-<meta property="og:url" content="http://yoursite.com/2017/09/03/RunTime之方法简介/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/12/18/RunTime之方法简介/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:updated_time" content="2017-09-02T16:38:34.522Z">
+<meta property="og:description" content="在之前的’’ UIButton扩大响应范围’’以及”ios组件的构建思路”两篇文章中已经用到了RunTime中的方法,这篇再记录几个方法的介绍以及使用;OBJC_EXPORT BOOL object_isClass(id obj) 判断一个对象是否是一个class123456789//具体应用场景runtime根据字符串动态生成一个类时,判断是否成功,如在&amp;quot;ios组件的构建思路&amp;quot">
+<meta property="og:updated_time" content="2017-09-02T16:44:10.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RunTime之方法简介">
+<meta name="twitter:description" content="在之前的’’ UIButton扩大响应范围’’以及”ios组件的构建思路”两篇文章中已经用到了RunTime中的方法,这篇再记录几个方法的介绍以及使用;OBJC_EXPORT BOOL object_isClass(id obj) 判断一个对象是否是一个class123456789//具体应用场景runtime根据字符串动态生成一个类时,判断是否成功,如在&amp;quot;ios组件的构建思路&amp;quot">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -166,15 +169,22 @@
   
 
         
-        <a href="/2017/09/03/RunTime之方法简介/" class="archive-article-date">
-  	<time datetime="2017-09-02T16:38:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-03</time>
+        <a href="/2016/12/18/RunTime之方法简介/" class="archive-article-date">
+  	<time datetime="2016-12-18T14:10:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>在之前的’’ UIButton扩大响应范围’’以及”ios组件的构建思路”两篇文章中已经用到了RunTime中的方法,这篇再记录几个方法的介绍以及使用;<br>OBJC_EXPORT BOOL object_isClass(id obj) 判断一个对象是否是一个class<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//具体应用场景runtime根据字符串动态生成一个类时,判断是否成功,如在&quot;ios组件的构建思路&quot;中的使用</div><div class="line">//    Class cls = NSClassFromString(viewStr);</div><div class="line">//    //添加安全判断,判断传过来的字符串所对应的类是否存在</div><div class="line">//    if (object_isClass(cls)) &#123;</div><div class="line">//        //经测试runtime动态生成类并调用方法只能掉类方法不能调用实例方法</div><div class="line">//        return [cls performSelector:NSSelectorFromString(@&quot;initoneViewConrllerWithcolor:&quot;) withObject:@&#123;@&quot;color&quot;:color&#125;];</div><div class="line">//    &#125;</div><div class="line">    BOOL isClass = object_isClass([obj1 class]);</div><div class="line">    NSLog(@&quot;isClass = %d&quot;,isClass);</div></pre></td></tr></table></figure></p>
+<p> OBJC_EXPORT Class object_getClass(id obj) 和 - (Class)class 是等价的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//返回一个对象的class</div><div class="line"> Class c1 = object_getClass(obj1);</div><div class="line"> NSLog(@&quot;Class = %@,----,%@&quot;,c1,[obj1 class]);</div></pre></td></tr></table></figure></p>
+<p>OBJC_EXPORT Class object_setClass(id obj, Class cls),设置一个对象的class,返回值是这个对象原来的class类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//把一个对象的class变成另外一个对象,但是发现打印出来的成员变量值还是原来class中声明的值</div><div class="line">    Class c2 = object_setClass(obj1, [timeObj class]);</div><div class="line">    NSLog(@&quot;obj1的class是 : %@,----,返回的class是 : %@&quot;,[obj1 class],c2);</div><div class="line">    NSLog(@&quot;%@&quot;,obj1.introduce);</div></pre></td></tr></table></figure></p>
+<p>OBJC_EXPORT const char *object_getClassName(id obj)和上面中object_getClass用法相同,但是返回的类型为const char<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">RuntimeObj *obj2 = [[RuntimeObj alloc]init];</div><div class="line">const char *c3 = object_getClassName(obj2);</div><div class="line">NSLog(@&quot;%s&quot;,c3);</div></pre></td></tr></table></figure></p>
+<p>OBJC_EXPORT Ivar class<em>getInstanceVariable(Class cls, const char *name)通过变量名称获取类中的实例成员变量(注意成员变量和属性的区别,在ios5之前声明一个属性,先要声明一个实例变量,然后用@property生成属性,最后用@synthesize生成setter/getter方法,但是现在直接用@property声明的属性会自动生成一个带有</em>的实例变量和setter/getter方法)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//通过变量名称获取类中的实例成员变量(包括私有变量)</div><div class="line">Ivar ivar = class_getInstanceVariable([obj2 class], &quot;_year&quot;);</div><div class="line">//获取实例对象中Ivar的值(Ivar是objc_ivar的指针，包含变量名，变量类型等成员。)</div><div class="line">id year = object_getIvar(obj2, ivar);</div><div class="line">NSLog(@&quot;%@&quot;, year);</div></pre></td></tr></table></figure></p>
+<p>OBJC_EXPORT Class objc_allocateClassPair(Class superclass, const char *name,<br>                                         size_t extraBytes) 和OBJC_EXPORT void objc_registerClassPair(Class cls) 动态创建类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">#import &lt;objc/runtime.h&gt;</div><div class="line">#import &lt;objc/message.h&gt;</div><div class="line"> //在运行时创建继承自NSObject的People类</div><div class="line"> Class People = objc_allocateClassPair([NSObject class], &quot;People&quot;, 0);</div><div class="line"> //添加_name成员变量</div><div class="line"> BOOL flag1 = class_addIvar(People, &quot;_name&quot;, sizeof(NSString*), log2(sizeof(NSString*)), @encode(NSString*));</div><div class="line"> if (flag1) &#123;</div><div class="line">     NSLog(@&quot;NSString*类型  _name变量添加成功&quot;);</div><div class="line"> &#125;</div><div class="line"> //添加_age成员变量(实例变量)</div><div class="line"> BOOL flag2 = class_addIvar(People, &quot;_age&quot;, sizeof(int), sizeof(int), @encode(int));</div><div class="line"> if (flag2) &#123;</div><div class="line">     NSLog(@&quot;int类型 _age变量添加成功&quot;);</div><div class="line"> &#125;</div><div class="line"> //添加一个实例方法</div><div class="line"> SEL s = sel_registerName(&quot;say:&quot;);</div><div class="line"> class_addMethod(People, s, (IMP)sayFunction, &quot;good&quot;);</div><div class="line"> //完成People类的创建</div><div class="line"> objc_registerClassPair(People);</div><div class="line"> unsigned int varCount;</div><div class="line"> //拷贝People类中的成员变量列表</div><div class="line"> Ivar * varList = class_copyIvarList(People, &amp;varCount);</div><div class="line"> for (int i = 0; i&lt;varCount; i++) &#123;</div><div class="line">     NSLog(@&quot;%s&quot;,ivar_getName(varList[i]));</div><div class="line"> &#125;</div><div class="line"> //释放varList</div><div class="line"> free(varList);</div><div class="line"> //创建People对象p1</div><div class="line"> id p1 = [[People alloc]init];</div><div class="line"> //从类中获取成员变量Ivar</div><div class="line"> Ivar nameIvar = class_getInstanceVariable(People, &quot;_name&quot;);</div><div class="line"> Ivar ageIvar = class_getInstanceVariable(People, &quot;_age&quot;);</div><div class="line"> //为p1的成员变量赋值</div><div class="line"> object_setIvar(p1, nameIvar, @&quot;小糖豆&quot;);</div><div class="line"> object_setIvar(p1, ageIvar, @13);</div><div class="line"> //获取p1成员变量的值</div><div class="line"> NSLog(@&quot;%@&quot;,object_getIvar(p1, nameIvar));</div><div class="line"> NSLog(@&quot;%@&quot;,object_getIvar(p1, ageIvar));</div><div class="line"> //调用方法</div><div class="line"> ((void (*)(id, SEL, id))objc_msgSend)(p1, s, @&quot;大家好&quot;);</div></pre></td></tr></table></figure></p>
+<p>IMP实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">void sayFunction(id self, SEL _cmd, id some)</div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;%@岁的%@说：%@&quot;,</div><div class="line">          object_getIvar(self, class_getInstanceVariable([self class], &quot;_age&quot;)),[self valueForKey:@&quot;name&quot;], some);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
       
 
       
@@ -253,7 +263,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/03/RunTime之方法简介/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/12/18/RunTime之方法简介/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -267,7 +277,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/09/03/RunTime之常用场景/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/01/03/RunTime之常用场景/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -277,7 +287,7 @@
     </a>
   
   
-    <a href="/2017/09/03/Runtime之扩大按钮响应范围/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/12/03/Runtime之扩大按钮响应范围/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Runtime之扩大按钮响应范围</div>
       <i class="icon-circle-right"></i>
     </a>
