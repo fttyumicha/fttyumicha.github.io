@@ -155,6 +155,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cocos2d-x学习之-加速度计" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/15/cocos2d-x学习之-加速度计/">cocos2d-x学习之--加速度计</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/15/cocos2d-x学习之-加速度计/" class="archive-article-date">
+  	<time datetime="2017-10-15T12:20:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在上一篇中记录了事件处理机制,这篇主要记录一下加速度计事件.<code>EventListenerAcceleration</code>对象表示加速度计监听器,响应函数只有一个<code>void Layer::onAcceleration(Acceleration* acc, Event* unused_event)</code>第一个参数是<code>Acceleration</code>对象,表示加速度计的操作信息,包含了加速度计的三个轴<code>(X,Y,Z)</code>的信息,以重力加速度为单位,数值范围为<code>(-1,1)</code>,第二个参数是该特定事件的Event对象.<br>在赛车类和冒险类游戏中经常会使用到加速度计,通过一个例子来了解.首先在<code>HelloWorldScene.h</code>文件中定义一个精灵球,并定义一个监测回调的函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">protected:</div><div class="line"> //定义目标精灵</div><div class="line">    cocos2d::Sprite* _ball;</div><div class="line">//定义加速度计事件的响应函数</div><div class="line">    void onAcceleration(cocos2d::Acceleration* acc,cocos2d::Event* event);</div></pre></td></tr></table></figure></p>
+<p>然后在<code>HelloWorldScene.cpp</code>文件中具体实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> //创建精灵球</div><div class="line">   _ball = Sprite::create(&quot;basketball.png&quot;);</div><div class="line">   _ball -&gt;setPosition(Vec2(visibleSize.width/2, visibleSize.height/2));</div><div class="line">   this-&gt;addChild(_ball);</div><div class="line">//启动设备的加速度计(此处一定要注意必须开启,只有开启设备的加速度计之后,当手机随着我们的动作而动时,才可以记录下各个方向的加速度,然后由分发器分发给监听器)</div><div class="line">   Device ::setAccelerometerEnabled(true);</div><div class="line">//创建加速度监听器</div><div class="line">   auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(HelloWorld::onAcceleration, this));</div><div class="line">//添加加速度计事件监听器</div><div class="line">   _eventDispatcher-&gt;addEventListenerWithSceneGraphPriority(listener, this);</div></pre></td></tr></table></figure></p>
+<p>接下来在此文件中实现回调函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">//宏定义</div><div class="line">#define FIX_POS(_pos,_min,_max)\</div><div class="line">if(_pos &lt; _min)\</div><div class="line">_pos = _min;\</div><div class="line">else if(_pos &gt; _max)\</div><div class="line">_pos = _max;\</div><div class="line"></div><div class="line">void HelloWorld::onAcceleration(cocos2d::Acceleration *acc, cocos2d::Event *event)&#123;</div><div class="line">    Size visibleSize = Director::getInstance()-&gt;getVisibleSize();</div><div class="line">    //获取导演对象</div><div class="line">    auto pDir = Director::getInstance();</div><div class="line">    //如果精灵球 == NULL则返回</div><div class="line">    if (_ball == NULL) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    //获得精灵球的大小</div><div class="line">    auto ballSize = _ball-&gt;getContentSize();</div><div class="line">    //获取精灵球的位置</div><div class="line">    auto positionNow = _ball-&gt;getPosition();</div><div class="line">    //将精灵球的位置转化为坐标系</div><div class="line">    auto positionUI = pDir-&gt;convertToUI(positionNow);</div><div class="line">    //获取加速度</div><div class="line">    positionUI.x += acc-&gt;x * 9.81f;// positionUI.x = positionUI.x + acc-&gt;x * 9.81f;</div><div class="line">    positionUI.y += acc-&gt;y * 9.81f;</div><div class="line">    //将屏幕坐标换为openGL坐标</div><div class="line">    auto positionGL = pDir-&gt;convertToGL(positionUI);</div><div class="line">    //边界检测,防止精灵球在屏幕之外</div><div class="line">    FIX_POS(positionGL.x, ballSize.width/2.0, (visibleSize.width-ballSize.width/2.0));</div><div class="line">    FIX_POS(positionGL.y, ballSize.height/2.0, (visibleSize.height-ballSize.height/2.0));</div><div class="line">    _ball -&gt; setPosition(positionGL);   </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/15/cocos2d-x学习之-加速度计/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-滚动Label的封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

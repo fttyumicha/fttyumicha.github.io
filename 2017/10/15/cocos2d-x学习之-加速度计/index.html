@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>滚动Label的封装 | Hexo</title>
+  <title>cocos2d-x学习之--加速度计 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="相信大家有时候会遇到在首页上部展示一行文字,但是文字又很长无法只使用一行来展示,于是大家就想到平时我们在生活中看到的LED屏幕那样滚动展示完整的一句话语,今天写的这个控件就是实现了这样一个效果. 1.在进入正文之前,我们先来了解一下layer的mask层. mask层其实就是一个遮罩layer,有点类似于我们平常弹出键盘时一并出来的灰色蒙层,只不过mask层是一个layer,而和键盘一并弹出来的大">
+  <meta name="description" content="在上一篇中记录了事件处理机制,这篇主要记录一下加速度计事件.EventListenerAcceleration对象表示加速度计监听器,响应函数只有一个void Layer::onAcceleration(Acceleration* acc, Event* unused_event)第一个参数是Acceleration对象,表示加速度计的操作信息,包含了加速度计的三个轴(X,Y,Z)的信息,以重力加">
 <meta property="og:type" content="article">
-<meta property="og:title" content="滚动Label的封装">
-<meta property="og:url" content="http://yoursite.com/2017/02/09/滚动Label的封装/index.html">
+<meta property="og:title" content="cocos2d-x学习之--加速度计">
+<meta property="og:url" content="http://yoursite.com/2017/10/15/cocos2d-x学习之-加速度计/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="相信大家有时候会遇到在首页上部展示一行文字,但是文字又很长无法只使用一行来展示,于是大家就想到平时我们在生活中看到的LED屏幕那样滚动展示完整的一句话语,今天写的这个控件就是实现了这样一个效果. 1.在进入正文之前,我们先来了解一下layer的mask层. mask层其实就是一个遮罩layer,有点类似于我们平常弹出键盘时一并出来的灰色蒙层,只不过mask层是一个layer,而和键盘一并弹出来的大">
-<meta property="og:updated_time" content="2017-09-02T10:33:16.185Z">
+<meta property="og:description" content="在上一篇中记录了事件处理机制,这篇主要记录一下加速度计事件.EventListenerAcceleration对象表示加速度计监听器,响应函数只有一个void Layer::onAcceleration(Acceleration* acc, Event* unused_event)第一个参数是Acceleration对象,表示加速度计的操作信息,包含了加速度计的三个轴(X,Y,Z)的信息,以重力加">
+<meta property="og:updated_time" content="2017-09-02T16:25:59.232Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="滚动Label的封装">
-<meta name="twitter:description" content="相信大家有时候会遇到在首页上部展示一行文字,但是文字又很长无法只使用一行来展示,于是大家就想到平时我们在生活中看到的LED屏幕那样滚动展示完整的一句话语,今天写的这个控件就是实现了这样一个效果. 1.在进入正文之前,我们先来了解一下layer的mask层. mask层其实就是一个遮罩layer,有点类似于我们平常弹出键盘时一并出来的灰色蒙层,只不过mask层是一个layer,而和键盘一并弹出来的大">
+<meta name="twitter:title" content="cocos2d-x学习之--加速度计">
+<meta name="twitter:description" content="在上一篇中记录了事件处理机制,这篇主要记录一下加速度计事件.EventListenerAcceleration对象表示加速度计监听器,响应函数只有一个void Layer::onAcceleration(Acceleration* acc, Event* unused_event)第一个参数是Acceleration对象,表示加速度计的操作信息,包含了加速度计的三个轴(X,Y,Z)的信息,以重力加">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -157,33 +157,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-滚动Label的封装" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-cocos2d-x学习之-加速度计" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      滚动Label的封装
+      cocos2d-x学习之--加速度计
     </h1>
   
 
         
-        <a href="/2017/02/09/滚动Label的封装/" class="archive-article-date">
-  	<time datetime="2017-02-09T09:47:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-09</time>
+        <a href="/2017/10/15/cocos2d-x学习之-加速度计/" class="archive-article-date">
+  	<time datetime="2017-10-15T12:20:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>相信大家有时候会遇到在首页上部展示一行文字,但是文字又很长无法只使用一行来展示,于是大家就想到平时我们在生活中看到的LED屏幕那样滚动展示完整的一句话语,今天写的这个控件就是实现了这样一个效果.</p>
-<p>1.在进入正文之前,我们先来了解一下layer的mask层.</p>
-<p>mask层其实就是一个遮罩layer,有点类似于我们平常弹出键盘时一并出来的灰色蒙层,只不过mask层是一个layer,而和键盘一并弹出来的大多设置的是一个改变透明度后的view.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">CAShapeLayer* maskLayer = [CAShapeLayer layer];</div><div class="line"></div><div class="line">maskLayer.path = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;</div><div class="line"></div><div class="line">self.view.layer.mask = maskLayer;</div><div class="line"></div><div class="line">这三句代码就是设置一个view的mask蒙层让处于view外部的内部不被显示出来,这次封装的lable主要就是用到这个原理.</div></pre></td></tr></table></figure>
-<p>2.接下来我们就开始进行封装</p>
-<p>一般滚动的话我们肯定会想要通过对外的接口来改变滚动的速度,因此首先我们自定义一个view,声明一个对外的接口,如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">-(id)initWithFrame:(CGRect)frame Text:(NSString *)textStr TextColor:(UIColor *)textColor BackGroundColor:(UIColor *)backColor Speed:(CGFloat)speed ;</div><div class="line"></div><div class="line">下面我们来实现这个方法</div><div class="line"></div><div class="line">-(id)initWithFrame:(CGRect)frame Text:(NSString *)textStr TextColor:(UIColor *)textColor BackGroundColor:(UIColor *)backColor Speed:(CGFloat)speed&#123;</div><div class="line"></div><div class="line">self = [super initWithFrame:frame];</div><div class="line"></div><div class="line">if (self) &#123;</div><div class="line"></div><div class="line">//取出对外接口中的颜色等值并赋值给自定义view声明的私有变量,方便UI的更新</div><div class="line"></div><div class="line">self.textColor = textColor;</div><div class="line"></div><div class="line">self.backGroundColor = backColor;</div><div class="line"></div><div class="line">self.speed = speed;</div><div class="line"></div><div class="line">self.textStr = textStr;</div><div class="line"></div><div class="line">[self creatUI];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">return self;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)creatUI&#123;</div><div class="line"></div><div class="line">self.backgroundColor = _backGroundColor;</div><div class="line"></div><div class="line">self.annimationLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];</div><div class="line"></div><div class="line">_annimationLabel.textColor = _textColor;</div><div class="line"></div><div class="line">_annimationLabel.backgroundColor = [UIColor clearColor];</div><div class="line"></div><div class="line">_annimationLabel.text = _textStr;</div><div class="line"></div><div class="line">[_annimationLabel sizeToFit];</div><div class="line"></div><div class="line">[self addSubview:_annimationLabel];</div><div class="line"></div><div class="line">//添加mask</div><div class="line"></div><div class="line">//给bgview添加一个layer蒙层,使bgview上label暴露在bgview外部的字不再显现出来(因为label设置的是sizeToFit,所以label的宽度会根据字符串的长度来调整,若不设此蒙层还是会显现出来,达不到移动的效果);</div><div class="line"></div><div class="line">CAShapeLayer* maskLayer = [CAShapeLayer layer];</div><div class="line"></div><div class="line">maskLayer.path = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;</div><div class="line"></div><div class="line">self.layer.mask = maskLayer;</div><div class="line"></div><div class="line">[self addAnimationToLabel];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)addAnimationToLabel&#123;</div><div class="line"></div><div class="line">[_annimationLabel.layer removeAllAnimations];</div><div class="line"></div><div class="line">CGFloat space = _annimationLabel.frame.size.width - self.frame.size.width;</div><div class="line"></div><div class="line">CAKeyframeAnimation* keyFrame = [CAKeyframeAnimation animation];</div><div class="line"></div><div class="line">keyFrame.keyPath = @&quot;transform.translation.x&quot;;</div><div class="line"></div><div class="line">keyFrame.values = @[@(0), @(-space), @(0)];</div><div class="line"></div><div class="line">keyFrame.repeatCount = INT16_MAX;</div><div class="line"></div><div class="line">keyFrame.duration = _speed * _annimationLabel.text.length;</div><div class="line"></div><div class="line">keyFrame.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut], [CAMediaTimingFunction functionWithControlPoints:0 :0 :0.5 :0.5]];</div><div class="line"></div><div class="line">[_annimationLabel.layer addAnimation:keyFrame forKey:nil];</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">这样就完成了封装,我封装的文件名为AnimationLabel,因此在控制器中使用时:</div><div class="line"></div><div class="line">UIColor *color = [UIColor magentaColor];</div><div class="line"></div><div class="line">UIColor *bgColor = [UIColor lightGrayColor];</div><div class="line"></div><div class="line">AnimationLabel *label = [[AnimationLabel alloc]initWithFrame:CGRectMake(50, 100, 150, 50) Text:@&quot;大猴子小猴子,大小猴子,小大猴子,子猴大小,猴子小大&quot; TextColor:color BackGroundColor:bgColor Speed:0.6];</div><div class="line"></div><div class="line">[self.view addSubview:label];</div></pre></td></tr></table></figure>
+        <p>在上一篇中记录了事件处理机制,这篇主要记录一下加速度计事件.<code>EventListenerAcceleration</code>对象表示加速度计监听器,响应函数只有一个<code>void Layer::onAcceleration(Acceleration* acc, Event* unused_event)</code>第一个参数是<code>Acceleration</code>对象,表示加速度计的操作信息,包含了加速度计的三个轴<code>(X,Y,Z)</code>的信息,以重力加速度为单位,数值范围为<code>(-1,1)</code>,第二个参数是该特定事件的Event对象.<br>在赛车类和冒险类游戏中经常会使用到加速度计,通过一个例子来了解.首先在<code>HelloWorldScene.h</code>文件中定义一个精灵球,并定义一个监测回调的函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">protected:</div><div class="line"> //定义目标精灵</div><div class="line">    cocos2d::Sprite* _ball;</div><div class="line">//定义加速度计事件的响应函数</div><div class="line">    void onAcceleration(cocos2d::Acceleration* acc,cocos2d::Event* event);</div></pre></td></tr></table></figure></p>
+<p>然后在<code>HelloWorldScene.cpp</code>文件中具体实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> //创建精灵球</div><div class="line">   _ball = Sprite::create(&quot;basketball.png&quot;);</div><div class="line">   _ball -&gt;setPosition(Vec2(visibleSize.width/2, visibleSize.height/2));</div><div class="line">   this-&gt;addChild(_ball);</div><div class="line">//启动设备的加速度计(此处一定要注意必须开启,只有开启设备的加速度计之后,当手机随着我们的动作而动时,才可以记录下各个方向的加速度,然后由分发器分发给监听器)</div><div class="line">   Device ::setAccelerometerEnabled(true);</div><div class="line">//创建加速度监听器</div><div class="line">   auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(HelloWorld::onAcceleration, this));</div><div class="line">//添加加速度计事件监听器</div><div class="line">   _eventDispatcher-&gt;addEventListenerWithSceneGraphPriority(listener, this);</div></pre></td></tr></table></figure></p>
+<p>接下来在此文件中实现回调函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">//宏定义</div><div class="line">#define FIX_POS(_pos,_min,_max)\</div><div class="line">if(_pos &lt; _min)\</div><div class="line">_pos = _min;\</div><div class="line">else if(_pos &gt; _max)\</div><div class="line">_pos = _max;\</div><div class="line"></div><div class="line">void HelloWorld::onAcceleration(cocos2d::Acceleration *acc, cocos2d::Event *event)&#123;</div><div class="line">    Size visibleSize = Director::getInstance()-&gt;getVisibleSize();</div><div class="line">    //获取导演对象</div><div class="line">    auto pDir = Director::getInstance();</div><div class="line">    //如果精灵球 == NULL则返回</div><div class="line">    if (_ball == NULL) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    //获得精灵球的大小</div><div class="line">    auto ballSize = _ball-&gt;getContentSize();</div><div class="line">    //获取精灵球的位置</div><div class="line">    auto positionNow = _ball-&gt;getPosition();</div><div class="line">    //将精灵球的位置转化为坐标系</div><div class="line">    auto positionUI = pDir-&gt;convertToUI(positionNow);</div><div class="line">    //获取加速度</div><div class="line">    positionUI.x += acc-&gt;x * 9.81f;// positionUI.x = positionUI.x + acc-&gt;x * 9.81f;</div><div class="line">    positionUI.y += acc-&gt;y * 9.81f;</div><div class="line">    //将屏幕坐标换为openGL坐标</div><div class="line">    auto positionGL = pDir-&gt;convertToGL(positionUI);</div><div class="line">    //边界检测,防止精灵球在屏幕之外</div><div class="line">    FIX_POS(positionGL.x, ballSize.width/2.0, (visibleSize.width-ballSize.width/2.0));</div><div class="line">    FIX_POS(positionGL.y, ballSize.height/2.0, (visibleSize.height-ballSize.height/2.0));</div><div class="line">    _ball -&gt; setPosition(positionGL);   </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
       
 
       
@@ -262,7 +259,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/09/滚动Label的封装/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/15/cocos2d-x学习之-加速度计/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -276,18 +273,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/10/15/cocos2d-x学习之-加速度计/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          cocos2d-x学习之--加速度计
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/09/29/cocos2d-x学习之-事件处理机制/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">cocos2d-x学习之--事件处理机制</div>
+    <a href="/2017/02/09/滚动Label的封装/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">滚动Label的封装</div>
       <i class="icon-circle-right"></i>
     </a>
   
