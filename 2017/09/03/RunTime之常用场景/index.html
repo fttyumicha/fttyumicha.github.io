@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>UITextView之textStorage属性介绍 | Hexo</title>
+  <title>RunTime之常用场景 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在聊天过程中很多时候都想要发送本界面的一张图片或者是一个表情,或者是一张相册中照片直接显示在文本框中发送出去,接下来就简单介绍一下通过UITextView的textStorage属性来实现这个问题;textStorage其实是一个装载内容的容器,其里面保存的东西决定了textview的富文本显示方式. 点入UITextView的KPI中找到textStorage,大家可以看到@property(n">
-<meta property="og:type" content="article">
-<meta property="og:title" content="UITextView之textStorage属性介绍">
-<meta property="og:url" content="http://yoursite.com/2016/11/12/UITextView之textStorage属性介绍/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="RunTime之常用场景">
+<meta property="og:url" content="http://yoursite.com/2017/09/03/RunTime之常用场景/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="在聊天过程中很多时候都想要发送本界面的一张图片或者是一个表情,或者是一张相册中照片直接显示在文本框中发送出去,接下来就简单介绍一下通过UITextView的textStorage属性来实现这个问题;textStorage其实是一个装载内容的容器,其里面保存的东西决定了textview的富文本显示方式. 点入UITextView的KPI中找到textStorage,大家可以看到@property(n">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3723830-7c95f8e36a792837.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-02T16:36:40.741Z">
+<meta property="og:updated_time" content="2017-09-02T16:38:59.563Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UITextView之textStorage属性介绍">
-<meta name="twitter:description" content="在聊天过程中很多时候都想要发送本界面的一张图片或者是一个表情,或者是一张相册中照片直接显示在文本框中发送出去,接下来就简单介绍一下通过UITextView的textStorage属性来实现这个问题;textStorage其实是一个装载内容的容器,其里面保存的东西决定了textview的富文本显示方式. 点入UITextView的KPI中找到textStorage,大家可以看到@property(n">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3723830-7c95f8e36a792837.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="RunTime之常用场景">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -159,32 +154,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-UITextView之textStorage属性介绍" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-RunTime之常用场景" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      UITextView之textStorage属性介绍
+      RunTime之常用场景
     </h1>
   
 
         
-        <a href="/2016/11/12/UITextView之textStorage属性介绍/" class="archive-article-date">
-  	<time datetime="2016-11-11T16:34:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-12</time>
+        <a href="/2017/09/03/RunTime之常用场景/" class="archive-article-date">
+  	<time datetime="2017-09-02T16:38:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在聊天过程中很多时候都想要发送本界面的一张图片或者是一个表情,或者是一张相册中照片直接显示在文本框中发送出去,接下来就简单介绍一下通过<code>UITextView</code>的<code>textStorage</code>属性来实现这个问题;<code>textStorage</code>其实是一个装载内容的容器,其里面保存的东西决定了textview的富文本显示方式.</p>
-<p>点入<code>UITextView</code>的KPI中找到<code>textStorage</code>,大家可以看到<code>@property(nonatomic,readonly,strong) NSTextStorage *textStorage NS_AVAILABLE_IOS(7_0);</code>再点进入<code>NSTextStorage</code>可以看到<code>NS_CLASS_AVAILABLE(10_0, 7_0) @interface NSTextStorage : NSMutableAttributedString</code>看到这里我们知道其实这个属性是继承自<code>NSMutableAttributedString</code>我们也就不奇怪为什么其里面的内容可以决定textview的富文本排列方式;接下来看一下实现方式:<br>在<code>viewDidLoad</code>中简单的创建一个textview和一张图片,我们实现点击图片,让其显示在textview中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    UIImageView *imgeview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@&quot;123.jpg&quot;]];</div><div class="line">    imgeview.frame = CGRectMake(100, 10, 50, 50);</div><div class="line">    [self.view addSubview:imgeview];</div><div class="line">    imgeview.userInteractionEnabled = YES;</div><div class="line">    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selectImageTosend:)];</div><div class="line">    [imgeview addGestureRecognizer:tap];</div><div class="line">    </div><div class="line">    self.textview = [[UITextView alloc]initWithFrame:CGRectMake(10, 80, 200, 80)];</div><div class="line">    _textview.backgroundColor = [UIColor lightGrayColor];</div><div class="line">    [self.view addSubview:_textview];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在imageview的tap手势方法中实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">-(void)selectImageTosend:(UITapGestureRecognizer *)tap&#123;</div><div class="line">    UIImageView *imageview = (UIImageView *)tap.view;</div><div class="line">    NSTextAttachment *atacchment = [[NSTextAttachment alloc]init];</div><div class="line">    atacchment.image = imageview.image;</div><div class="line">    //图片在textview中显示的大小</div><div class="line">    atacchment.bounds = CGRectMake(0, 0, 20, 20);</div><div class="line">    NSAttributedString *attributedStr = [[NSAttributedString alloc]initWithString:@&quot;&quot;];</div><div class="line">    attributedStr = [NSAttributedString attributedStringWithAttachment:atacchment];</div><div class="line">    //textStorage装载内容的容器,继承自NSMutableAttributedString,其里面保存的东西决定了textview的富文本显示方式</div><div class="line">    [self.textview.textStorage appendAttributedString:attributedStr];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>当然经过优化就可以实现像iphone发送短信时发送照片显示在输入框中一样<br>效果如下:</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/3723830-7c95f8e36a792837.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IMG_0127.PNG"></p>
-
+        
       
 
       
@@ -263,7 +253,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/11/12/UITextView之textStorage属性介绍/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/03/RunTime之常用场景/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -277,18 +267,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/11/26/Runtime之组件的构建思路/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Runtime之组件的构建思路
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/10/19/滚动显示Label优化版本/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">滚动显示Label优化版本</div>
+    <a href="/2017/09/03/RunTime之方法简介/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">RunTime之方法简介</div>
       <i class="icon-circle-right"></i>
     </a>
   
