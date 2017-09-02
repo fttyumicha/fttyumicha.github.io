@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>滚动Label的封装 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="相信大家有时候会遇到在首页上部展示一行文字,但是文字又很长无法只使用一行来展示,于是大家就想到平时我们在生活中看到的LED屏幕那样滚动展示完整的一句话语,今天写的这个控件就是实现了这样一个效果. 1.在进入正文之前,我们先来了解一下layer的mask层. mask层其实就是一个遮罩layer,有点类似于我们平常弹出键盘时一并出来的灰色蒙层,只不过mask层是一个layer,而和键盘一并弹出来的大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="滚动Label的封装">
+<meta property="og:url" content="http://yoursite.com/2017/02/09/滚动Label的封装/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="相信大家有时候会遇到在首页上部展示一行文字,但是文字又很长无法只使用一行来展示,于是大家就想到平时我们在生活中看到的LED屏幕那样滚动展示完整的一句话语,今天写的这个控件就是实现了这样一个效果. 1.在进入正文之前,我们先来了解一下layer的mask层. mask层其实就是一个遮罩layer,有点类似于我们平常弹出键盘时一并出来的灰色蒙层,只不过mask层是一个layer,而和键盘一并弹出来的大">
+<meta property="og:updated_time" content="2017-09-02T10:33:16.185Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="滚动Label的封装">
+<meta name="twitter:description" content="相信大家有时候会遇到在首页上部展示一行文字,但是文字又很长无法只使用一行来展示,于是大家就想到平时我们在生活中看到的LED屏幕那样滚动展示完整的一句话语,今天写的这个控件就是实现了这样一个效果. 1.在进入正文之前,我们先来了解一下layer的mask层. mask层其实就是一个遮罩layer,有点类似于我们平常弹出键盘时一并出来的灰色蒙层,只不过mask层是一个layer,而和键盘一并弹出来的大">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,9 +63,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-滚动Label的封装" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-滚动Label的封装" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/02/09/滚动Label的封装/" class="article-date">
   <time datetime="2017-02-09T09:47:22.000Z" itemprop="datePublished">2017-02-09</time>
@@ -74,8 +76,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/09/滚动Label的封装/">滚动Label的封装</a>
+    <h1 class="article-title" itemprop="name">
+      滚动Label的封装
     </h1>
   
 
@@ -99,10 +101,9 @@
     </footer>
   </div>
   
-</article>
-
-
+    
   
+</article>
 
 </section>
         
