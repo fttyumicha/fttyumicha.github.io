@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -93,7 +93,82 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/09/滚动Label的封装/" data-id="cj73ctkhi0000nomd1bi6wy50" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/02/09/滚动Label的封装/" data-id="cj73h2rpb00009smdofs2weyg" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-限制文本编辑字数的方法整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/09/限制文本编辑字数的方法整理/" class="article-date">
+  <time datetime="2016-08-09T15:31:50.000Z" itemprop="datePublished">2016-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/09/限制文本编辑字数的方法整理/">限制文本编辑字数的方法整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在项目中发现原来的一些代码的textFiled在限制字数上总是出现这样或那样的问题,今天就来整理一下几种常用的方法.</p>
+<p>第一种比较简单粗暴,索然也能达到想要的结果,但是用户体验不太好:</p>
+<p>-(void)textFieldDidEndEditing:(UITextField *)textField{</p>
+<p>if (textField.text.length &gt; 5) {</p>
+<p>textField.text = [textField.text substringToIndex:5];</p>
+<p>}</p>
+<p>}</p>
+<p>//点击return结束编辑</p>
+<p>-(BOOL)textFieldShouldReturn:(UITextField *)textField{</p>
+<p>[textField resignFirstResponder];</p>
+<p>return YES;</p>
+<p>}</p>
+<p>就是在textFiled的代理方法中结束编辑时判断一下字数长度进行截断,比较生硬.</p>
+<p>第二种方法是动态的判断文本框中字数,以达到判断的目的,也是使用textFiled的代理方法</p>
+<p>-(BOOL)textField:(UITextField <em>)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString </em>)string{</p>
+<p>NSString *tostring = [textField.text stringByReplacingCharactersInRange:range withString:string];</p>
+<p>//必须加上markedTextRange的判断,否则在系统自带的输入法中会把未选中之前的拼音也算成字符串长度,若在搜狗输入法上不加此判断也没有问题</p>
+<p>if (textField.markedTextRange == nil) {</p>
+<p>if (tostring.length &gt; 5) {</p>
+<p>textField.text = [tostring substringToIndex:5];</p>
+<p>return NO;</p>
+<p>}</p>
+<p>}</p>
+<p>return YES;</p>
+<p>}</p>
+<p>第三种方法使用textFiled中提供的监听方式UITextFieldTextDidChangeNotification:</p>
+<p>首先在viewwillappear中设置监听</p>
+<p>[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(TextFiledDidChangeAction:) name:UITextFieldTextDidChangeNotification object:nil];</p>
+<p>然后实现监听到事件时要执行的方法</p>
+<p>-(void)TextFiledDidChangeAction:(NSNotification *)noti{</p>
+<p>//必须加上markedTextRange的判断,否则在系统自带的输入法中会把未选中之前的拼音也算成字符串长度,若在搜狗输入法上不加此判断也没有问题</p>
+<p>if (_textFiled.markedTextRange == nil) {</p>
+<p>if (_textFiled.text.length&gt;5) {</p>
+<p>_textFiled.text = [_textFiled.text substringToIndex:5];</p>
+<p>}</p>
+<p>NSLog(@”change”);</p>
+<p>}</p>
+<p>}</p>
+<p>比较推荐第二种和第三种方式;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/09/限制文本编辑字数的方法整理/" data-id="cj73h2rpm00019smdeq0w7yb9" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -118,9 +193,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
     </div>
   </div>
 
@@ -128,12 +203,16 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
           <li>
             <a href="/2017/02/09/滚动Label的封装/">滚动Label的封装</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/09/限制文本编辑字数的方法整理/">限制文本编辑字数的方法整理</a>
           </li>
         
       </ul>
@@ -149,7 +228,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
