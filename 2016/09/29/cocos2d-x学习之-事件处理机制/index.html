@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>cocos2d-x学习之--事件处理机制 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="cocos2d-x的内部运行机制:由事件驱动的处理机制,所谓事件驱动,就是指只有当事件发生了,才会执行的对应的操作;例如,屏幕上有一个按钮,只有当玩家点击按钮时,才会调用对应的函数,否则,该处理机制的响应函数只处于等待调用的状态.在cocos2d-x当中,用户操作经过接收数据,分发事件和处理响应3个步骤.1.数据接收(Touch)cocos2d-x所接收的数据都要作为统一的数据格式备操作和传递,c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cocos2d-x学习之--事件处理机制">
+<meta property="og:url" content="http://yoursite.com/2016/09/29/cocos2d-x学习之-事件处理机制/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="cocos2d-x的内部运行机制:由事件驱动的处理机制,所谓事件驱动,就是指只有当事件发生了,才会执行的对应的操作;例如,屏幕上有一个按钮,只有当玩家点击按钮时,才会调用对应的函数,否则,该处理机制的响应函数只处于等待调用的状态.在cocos2d-x当中,用户操作经过接收数据,分发事件和处理响应3个步骤.1.数据接收(Touch)cocos2d-x所接收的数据都要作为统一的数据格式备操作和传递,c">
+<meta property="og:updated_time" content="2017-09-02T16:22:41.975Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="cocos2d-x学习之--事件处理机制">
+<meta name="twitter:description" content="cocos2d-x的内部运行机制:由事件驱动的处理机制,所谓事件驱动,就是指只有当事件发生了,才会执行的对应的操作;例如,屏幕上有一个按钮,只有当玩家点击按钮时,才会调用对应的函数,否则,该处理机制的响应函数只处于等待调用的状态.在cocos2d-x当中,用户操作经过接收数据,分发事件和处理响应3个步骤.1.数据接收(Touch)cocos2d-x所接收的数据都要作为统一的数据格式备操作和传递,c">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -153,84 +157,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-滚动Label的封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-cocos2d-x学习之-事件处理机制" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/09/滚动Label的封装/">滚动Label的封装</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/09/滚动Label的封装/" class="archive-article-date">
-  	<time datetime="2017-02-09T09:47:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>相信大家有时候会遇到在首页上部展示一行文字,但是文字又很长无法只使用一行来展示,于是大家就想到平时我们在生活中看到的LED屏幕那样滚动展示完整的一句话语,今天写的这个控件就是实现了这样一个效果.</p>
-<p>1.在进入正文之前,我们先来了解一下layer的mask层.</p>
-<p>mask层其实就是一个遮罩layer,有点类似于我们平常弹出键盘时一并出来的灰色蒙层,只不过mask层是一个layer,而和键盘一并弹出来的大多设置的是一个改变透明度后的view.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">CAShapeLayer* maskLayer = [CAShapeLayer layer];</div><div class="line"></div><div class="line">maskLayer.path = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;</div><div class="line"></div><div class="line">self.view.layer.mask = maskLayer;</div><div class="line"></div><div class="line">这三句代码就是设置一个view的mask蒙层让处于view外部的内部不被显示出来,这次封装的lable主要就是用到这个原理.</div></pre></td></tr></table></figure>
-<p>2.接下来我们就开始进行封装</p>
-<p>一般滚动的话我们肯定会想要通过对外的接口来改变滚动的速度,因此首先我们自定义一个view,声明一个对外的接口,如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">-(id)initWithFrame:(CGRect)frame Text:(NSString *)textStr TextColor:(UIColor *)textColor BackGroundColor:(UIColor *)backColor Speed:(CGFloat)speed ;</div><div class="line"></div><div class="line">下面我们来实现这个方法</div><div class="line"></div><div class="line">-(id)initWithFrame:(CGRect)frame Text:(NSString *)textStr TextColor:(UIColor *)textColor BackGroundColor:(UIColor *)backColor Speed:(CGFloat)speed&#123;</div><div class="line"></div><div class="line">self = [super initWithFrame:frame];</div><div class="line"></div><div class="line">if (self) &#123;</div><div class="line"></div><div class="line">//取出对外接口中的颜色等值并赋值给自定义view声明的私有变量,方便UI的更新</div><div class="line"></div><div class="line">self.textColor = textColor;</div><div class="line"></div><div class="line">self.backGroundColor = backColor;</div><div class="line"></div><div class="line">self.speed = speed;</div><div class="line"></div><div class="line">self.textStr = textStr;</div><div class="line"></div><div class="line">[self creatUI];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">return self;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)creatUI&#123;</div><div class="line"></div><div class="line">self.backgroundColor = _backGroundColor;</div><div class="line"></div><div class="line">self.annimationLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];</div><div class="line"></div><div class="line">_annimationLabel.textColor = _textColor;</div><div class="line"></div><div class="line">_annimationLabel.backgroundColor = [UIColor clearColor];</div><div class="line"></div><div class="line">_annimationLabel.text = _textStr;</div><div class="line"></div><div class="line">[_annimationLabel sizeToFit];</div><div class="line"></div><div class="line">[self addSubview:_annimationLabel];</div><div class="line"></div><div class="line">//添加mask</div><div class="line"></div><div class="line">//给bgview添加一个layer蒙层,使bgview上label暴露在bgview外部的字不再显现出来(因为label设置的是sizeToFit,所以label的宽度会根据字符串的长度来调整,若不设此蒙层还是会显现出来,达不到移动的效果);</div><div class="line"></div><div class="line">CAShapeLayer* maskLayer = [CAShapeLayer layer];</div><div class="line"></div><div class="line">maskLayer.path = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;</div><div class="line"></div><div class="line">self.layer.mask = maskLayer;</div><div class="line"></div><div class="line">[self addAnimationToLabel];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)addAnimationToLabel&#123;</div><div class="line"></div><div class="line">[_annimationLabel.layer removeAllAnimations];</div><div class="line"></div><div class="line">CGFloat space = _annimationLabel.frame.size.width - self.frame.size.width;</div><div class="line"></div><div class="line">CAKeyframeAnimation* keyFrame = [CAKeyframeAnimation animation];</div><div class="line"></div><div class="line">keyFrame.keyPath = @&quot;transform.translation.x&quot;;</div><div class="line"></div><div class="line">keyFrame.values = @[@(0), @(-space), @(0)];</div><div class="line"></div><div class="line">keyFrame.repeatCount = INT16_MAX;</div><div class="line"></div><div class="line">keyFrame.duration = _speed * _annimationLabel.text.length;</div><div class="line"></div><div class="line">keyFrame.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut], [CAMediaTimingFunction functionWithControlPoints:0 :0 :0.5 :0.5]];</div><div class="line"></div><div class="line">[_annimationLabel.layer addAnimation:keyFrame forKey:nil];</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">这样就完成了封装,我封装的文件名为AnimationLabel,因此在控制器中使用时:</div><div class="line"></div><div class="line">UIColor *color = [UIColor magentaColor];</div><div class="line"></div><div class="line">UIColor *bgColor = [UIColor lightGrayColor];</div><div class="line"></div><div class="line">AnimationLabel *label = [[AnimationLabel alloc]initWithFrame:CGRectMake(50, 100, 150, 50) Text:@&quot;大猴子小猴子,大小猴子,小大猴子,子猴大小,猴子小大&quot; TextColor:color BackGroundColor:bgColor Speed:0.6];</div><div class="line"></div><div class="line">[self.view addSubview:label];</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/09/滚动Label的封装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-cocos2d-x学习之-事件处理机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/29/cocos2d-x学习之-事件处理机制/">cocos2d-x学习之--事件处理机制</a>
+    <h1 class="article-title" itemprop="name">
+      cocos2d-x学习之--事件处理机制
     </h1>
   
 
@@ -251,6 +185,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -258,16 +213,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/29/cocos2d-x学习之-事件处理机制/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/09/29/cocos2d-x学习之-事件处理机制/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/02/09/滚动Label的封装/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          滚动Label的封装
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/28/cocos2d-x学习之-搭建环境/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">cocos2d-x学习之--搭建环境</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -287,278 +310,12 @@
 
 
 
-
   
-    <article id="post-cocos2d-x学习之-搭建环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/28/cocos2d-x学习之-搭建环境/">cocos2d-x学习之--搭建环境</a>
-    </h1>
   
 
-        
-        <a href="/2016/09/28/cocos2d-x学习之-搭建环境/" class="archive-article-date">
-  	<time datetime="2016-09-28T04:30:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.去cocos2d-x的官网上下载最新的cocos2d-x的包,我下载的是coco2d-x-3.13.1版本的;</p>
-<p>2.然后打开终端(mac环境下)输入cd+空格+刚才你自己下载的文件的路径,如果感觉看路径麻烦的话,直接cd+空格,然后把你下载的文件夹拖进终端会自动变成路径,按return就进入到cocos2d-x的文件夹中了;</p>
-<p>3.然后执行安装的命令,python setup.py 按return键会提示你有没有配置成功;</p>
-<p>4.如果配置成功后咱们就可以新建一个工程 cocos new HeolloWorld -p org.cocos2dx -l cpp -d codes,这就话的意思在在codes文件夹下创建一个名为HeolloWorld的工程,按return就可以了,这是打开你的cocos2d-x文件夹,可以看到一个codes文件夹下有个HeolloWorld工程,进入此工程,mac环境下打开proj.ios_mac文件夹,再使用xcode打开工程文件就可以了.</p>
-<p>5.但是如果你的xcode是xcode8的话,可能会编译错误,原因是因为从xcode8,ios10开始,xcode不再可以使用各种插件,这是打开终端,输入sudo /usr/libexec/xpccachectl回车,把xcode关闭再重新打开,再编译你之前的项目工程就可以了;</p>
-<p>之后再继续记录之后的学习.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/28/cocos2d-x学习之-搭建环境/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-工作中遇到的问题整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/10/工作中遇到的问题整理/">工作中遇到的问题整理</a>
-    </h1>
   
 
-        
-        <a href="/2016/09/10/工作中遇到的问题整理/" class="archive-article-date">
-  	<time datetime="2016-09-10T10:41:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.cell上控件(比如label)比预设的长度要小的问题</p>
-<p>不知道大家有没有遇到过tableview列表cell的宽度比自己预设的宽度要小一点,并且当消失在视线后再出来时恢复正常的宽度,由于那时候入行 还不久么,怎么找也找不到原因,后来才发现如果自定义cell的时候如果用固定的某个值,比如说200,就没问题,如果是使用 self.contenview.frame.size.width,就会出现上面所说的情况.原因是什么呢?主要是因为时机的问题,当 tableview最初加载自定义的cell时,其实这时候的cell的contentview大小是不确定的,因此会按照最小的屏幕系列宽度来计算,所 以在cell中以contenview的大小来做标尺的控件就会出现问题,当发生重用的时候contentview的大小已经确定,因此再次出现在视野里 时就显示正常了;解决方法很简单,自定义cell中控件的大小以屏幕的宽度为依据就可以了;</p>
-<p>2.获取cell上控件相对于屏幕的位置</p>
-<p>NSIndexPath *indexpath = [NSIndexPath indexPathForRow:3 inSection:1];</p>
-<p>CGRect rectInTableView = [_tableview rectForRowAtIndexPath:indexpath];</p>
-<p>CGRect rect = [_tableview convertRect:rectInTableView toView:[_tableview superview]];</p>
-<p>3.键盘闪一下的问题:</p>
-<p>问题描述:</p>
-<p>当在一个界面中存在输入框时,当成为第一响应者之后回触发键盘的出现,若这时点击返回上一  界面让其出现一个弹框提示,点击取消依然停留在当前页面,点击确定返回上一页面时回出现键盘在上一页面闪一下的问题;</p>
-<p>问题原因:</p>
-<p>当弹框出现时,其他的所用控件将失去第一响应,但会记录弹框出现以前的状态,当弹框消失后会让一切恢复原样,则如果键盘本身是编辑状态,弹框消失后键盘会再次出来,但键盘的出现和消失有动画时间大概0.25秒,因此如果点击弹框的确定按钮,返回上一页面,由于键盘的动画还没有完成,因此会在上一界面继续完成,所以会出现键盘闪的问题;</p>
-<p>解决方法:</p>
-<p>让键盘的出现或消失在本界面完成,也就是当点击确定按钮的触发方法中延迟大概0.25秒再pop回上一页面,就可以解决;</p>
-<p>4.解决textFiled或textview刚开始编辑时光标不在起始位置的问题,手动设置选中位置即可</p>
-<p>self.contentTextView.selectedRange = NSMakeRange(0,0);</p>
-<p>若不管用,则设置(ios7后导航栏偏移的问题)</p>
-<p>self.automaticallyAdjustsScrollViewInsets = NO;</p>
-<p>5.项目中若当隐藏navigation bar 时,若出现view下移导致电池栏为空白,原因是因为ios7时edgesForExtendedLayout默认为UIRectEdgeAll,设置成</p>
-<p>if(IOS7DEVICE){</p>
-<p>if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {</p>
-<p>self.edgesForExtendedLayout = UIRectEdgeNone;</p>
-<p>}</p>
-<p>}</p>
-<p>即可.</p>
-<p>6.在ARC项目中,当pop出某个控制器时,不走dealloc方法,也就是内存泄漏,之所以会这样,是因为在某个地方强引用了此控制器,当pop出此控制器时其引用计数不为0因此没有走dealloc;通常情况下强引用最容易出现在bloc中,或者是delegate声明时用了strong,再或者是定时器没有销毁;因此开始在此控制器中寻找bloc中是否强引用了self,发现没有,再看看定时器在viewWillDisapear时已经销毁,所以最后一种可能就是某个地方的delegate用的strong,而又把此控制器设成了代理,果不奇然,真的是一个神一样存在的人声明代理是用的strong,改成assign或者weak后就正常了.</p>
-<p>7.设置navigationItem的rightBarButtonItem或者是leftBarButtonItem之后发现按钮点击的响应范围比实际的(亦或者说比button的rect大好多)</p>
-<p>原因:给导航栏设置buttonitem后会自动增大它的响应范围</p>
-<p>解决方法:创建一个和button的等大的view,再根据创建buttonitem后就可以了,代码如下:</p>
-<p>self.rightBt = [UIButton buttonWithType:UIButtonTypeCustom];</p>
-<p>_rightBt.frame = CGRectMake(0, 0, 60, 30);</p>
-<p>[_rightBt setTitle:@”换一批” forState:UIControlStateNormal];</p>
-<p>_rightBt.titleLabel.font = [UIFont systemFontOfSize:14];</p>
-<p>[_rightBt addTarget:self action:@selector(changeOther:) forControlEvents:UIControlEventTouchUpInside];</p>
-<p>UIView *view = [[UIView alloc]initWithFrame:_rightBt.bounds];</p>
-<p>[view addSubview:_rightBt];</p>
-<p>UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:view];</p>
-<p>self.navigationItem.rightBarButtonItem = rightItem;</p>
-<p>8.线上崩溃提示deleteRowsAtIndexPaths:数组越界,但是纵观整个页面没有进行任何的删除操作.由于是线上bug,不容易复原,因此着重查看了tableview的数据源处理和代理方法,最后发现此页面的刷新都采用的是局部刷新,由于业务逻辑,页面将要消失时把数据源都移除了,然而在页面将要出现时没有进行任何的数据请求或刷新UI,因此当从另外一个页面返回此页面进行点击事件后调用局部刷新就会出问题;</p>
-<p>因为- (void)reloadRowsAtIndexPaths:(NSArray*)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;此方法的刷新机制是先删除对应的cell,然后再重新创建达到目的.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/10/工作中遇到的问题整理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-限制文本编辑字数的方法整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/09/限制文本编辑字数的方法整理/">限制文本编辑字数的方法整理</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/09/限制文本编辑字数的方法整理/" class="archive-article-date">
-  	<time datetime="2016-08-09T15:31:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近在项目中发现原来的一些代码的textFiled在限制字数上总是出现这样或那样的问题,今天就来整理一下几种常用的方法.</p>
-<p>第一种比较简单粗暴,索然也能达到想要的结果,但是用户体验不太好:</p>
-<p>-(void)textFieldDidEndEditing:(UITextField *)textField{</p>
-<p>if (textField.text.length &gt; 5) {</p>
-<p>textField.text = [textField.text substringToIndex:5];</p>
-<p>}</p>
-<p>}</p>
-<p>//点击return结束编辑</p>
-<p>-(BOOL)textFieldShouldReturn:(UITextField *)textField{</p>
-<p>[textField resignFirstResponder];</p>
-<p>return YES;</p>
-<p>}</p>
-<p>就是在textFiled的代理方法中结束编辑时判断一下字数长度进行截断,比较生硬.</p>
-<p>第二种方法是动态的判断文本框中字数,以达到判断的目的,也是使用textFiled的代理方法</p>
-<p>-(BOOL)textField:(UITextField <em>)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString </em>)string{</p>
-<p>NSString *tostring = [textField.text stringByReplacingCharactersInRange:range withString:string];</p>
-<p>//必须加上markedTextRange的判断,否则在系统自带的输入法中会把未选中之前的拼音也算成字符串长度,若在搜狗输入法上不加此判断也没有问题</p>
-<p>if (textField.markedTextRange == nil) {</p>
-<p>if (tostring.length &gt; 5) {</p>
-<p>textField.text = [tostring substringToIndex:5];</p>
-<p>return NO;</p>
-<p>}</p>
-<p>}</p>
-<p>return YES;</p>
-<p>}</p>
-<p>第三种方法使用textFiled中提供的监听方式UITextFieldTextDidChangeNotification:</p>
-<p>首先在viewwillappear中设置监听</p>
-<p>[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(TextFiledDidChangeAction:) name:UITextFieldTextDidChangeNotification object:nil];</p>
-<p>然后实现监听到事件时要执行的方法</p>
-<p>-(void)TextFiledDidChangeAction:(NSNotification *)noti{</p>
-<p>//必须加上markedTextRange的判断,否则在系统自带的输入法中会把未选中之前的拼音也算成字符串长度,若在搜狗输入法上不加此判断也没有问题</p>
-<p>if (_textFiled.markedTextRange == nil) {</p>
-<p>if (_textFiled.text.length&gt;5) {</p>
-<p>_textFiled.text = [_textFiled.text substringToIndex:5];</p>
-<p>}</p>
-<p>NSLog(@”change”);</p>
-<p>}</p>
-<p>}</p>
-<p>比较推荐第二种和第三种方式;</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/09/限制文本编辑字数的方法整理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -581,8 +338,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
