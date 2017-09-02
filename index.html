@@ -155,33 +155,32 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-滚动Label的封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-UITextView之textStorage属性介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/09/滚动Label的封装/">滚动Label的封装</a>
+      <a class="article-title" href="/2016/11/12/UITextView之textStorage属性介绍/">UITextView之textStorage属性介绍</a>
     </h1>
   
 
         
-        <a href="/2017/02/09/滚动Label的封装/" class="archive-article-date">
-  	<time datetime="2017-02-09T09:47:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-09</time>
+        <a href="/2016/11/12/UITextView之textStorage属性介绍/" class="archive-article-date">
+  	<time datetime="2016-11-11T16:34:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>相信大家有时候会遇到在首页上部展示一行文字,但是文字又很长无法只使用一行来展示,于是大家就想到平时我们在生活中看到的LED屏幕那样滚动展示完整的一句话语,今天写的这个控件就是实现了这样一个效果.</p>
-<p>1.在进入正文之前,我们先来了解一下layer的mask层.</p>
-<p>mask层其实就是一个遮罩layer,有点类似于我们平常弹出键盘时一并出来的灰色蒙层,只不过mask层是一个layer,而和键盘一并弹出来的大多设置的是一个改变透明度后的view.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">CAShapeLayer* maskLayer = [CAShapeLayer layer];</div><div class="line"></div><div class="line">maskLayer.path = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;</div><div class="line"></div><div class="line">self.view.layer.mask = maskLayer;</div><div class="line"></div><div class="line">这三句代码就是设置一个view的mask蒙层让处于view外部的内部不被显示出来,这次封装的lable主要就是用到这个原理.</div></pre></td></tr></table></figure>
-<p>2.接下来我们就开始进行封装</p>
-<p>一般滚动的话我们肯定会想要通过对外的接口来改变滚动的速度,因此首先我们自定义一个view,声明一个对外的接口,如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">-(id)initWithFrame:(CGRect)frame Text:(NSString *)textStr TextColor:(UIColor *)textColor BackGroundColor:(UIColor *)backColor Speed:(CGFloat)speed ;</div><div class="line"></div><div class="line">下面我们来实现这个方法</div><div class="line"></div><div class="line">-(id)initWithFrame:(CGRect)frame Text:(NSString *)textStr TextColor:(UIColor *)textColor BackGroundColor:(UIColor *)backColor Speed:(CGFloat)speed&#123;</div><div class="line"></div><div class="line">self = [super initWithFrame:frame];</div><div class="line"></div><div class="line">if (self) &#123;</div><div class="line"></div><div class="line">//取出对外接口中的颜色等值并赋值给自定义view声明的私有变量,方便UI的更新</div><div class="line"></div><div class="line">self.textColor = textColor;</div><div class="line"></div><div class="line">self.backGroundColor = backColor;</div><div class="line"></div><div class="line">self.speed = speed;</div><div class="line"></div><div class="line">self.textStr = textStr;</div><div class="line"></div><div class="line">[self creatUI];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">return self;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)creatUI&#123;</div><div class="line"></div><div class="line">self.backgroundColor = _backGroundColor;</div><div class="line"></div><div class="line">self.annimationLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];</div><div class="line"></div><div class="line">_annimationLabel.textColor = _textColor;</div><div class="line"></div><div class="line">_annimationLabel.backgroundColor = [UIColor clearColor];</div><div class="line"></div><div class="line">_annimationLabel.text = _textStr;</div><div class="line"></div><div class="line">[_annimationLabel sizeToFit];</div><div class="line"></div><div class="line">[self addSubview:_annimationLabel];</div><div class="line"></div><div class="line">//添加mask</div><div class="line"></div><div class="line">//给bgview添加一个layer蒙层,使bgview上label暴露在bgview外部的字不再显现出来(因为label设置的是sizeToFit,所以label的宽度会根据字符串的长度来调整,若不设此蒙层还是会显现出来,达不到移动的效果);</div><div class="line"></div><div class="line">CAShapeLayer* maskLayer = [CAShapeLayer layer];</div><div class="line"></div><div class="line">maskLayer.path = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;</div><div class="line"></div><div class="line">self.layer.mask = maskLayer;</div><div class="line"></div><div class="line">[self addAnimationToLabel];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)addAnimationToLabel&#123;</div><div class="line"></div><div class="line">[_annimationLabel.layer removeAllAnimations];</div><div class="line"></div><div class="line">CGFloat space = _annimationLabel.frame.size.width - self.frame.size.width;</div><div class="line"></div><div class="line">CAKeyframeAnimation* keyFrame = [CAKeyframeAnimation animation];</div><div class="line"></div><div class="line">keyFrame.keyPath = @&quot;transform.translation.x&quot;;</div><div class="line"></div><div class="line">keyFrame.values = @[@(0), @(-space), @(0)];</div><div class="line"></div><div class="line">keyFrame.repeatCount = INT16_MAX;</div><div class="line"></div><div class="line">keyFrame.duration = _speed * _annimationLabel.text.length;</div><div class="line"></div><div class="line">keyFrame.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut], [CAMediaTimingFunction functionWithControlPoints:0 :0 :0.5 :0.5]];</div><div class="line"></div><div class="line">[_annimationLabel.layer addAnimation:keyFrame forKey:nil];</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">这样就完成了封装,我封装的文件名为AnimationLabel,因此在控制器中使用时:</div><div class="line"></div><div class="line">UIColor *color = [UIColor magentaColor];</div><div class="line"></div><div class="line">UIColor *bgColor = [UIColor lightGrayColor];</div><div class="line"></div><div class="line">AnimationLabel *label = [[AnimationLabel alloc]initWithFrame:CGRectMake(50, 100, 150, 50) Text:@&quot;大猴子小猴子,大小猴子,小大猴子,子猴大小,猴子小大&quot; TextColor:color BackGroundColor:bgColor Speed:0.6];</div><div class="line"></div><div class="line">[self.view addSubview:label];</div></pre></td></tr></table></figure>
+        <p>在聊天过程中很多时候都想要发送本界面的一张图片或者是一个表情,或者是一张相册中照片直接显示在文本框中发送出去,接下来就简单介绍一下通过<code>UITextView</code>的<code>textStorage</code>属性来实现这个问题;<code>textStorage</code>其实是一个装载内容的容器,其里面保存的东西决定了textview的富文本显示方式.</p>
+<p>点入<code>UITextView</code>的KPI中找到<code>textStorage</code>,大家可以看到<code>@property(nonatomic,readonly,strong) NSTextStorage *textStorage NS_AVAILABLE_IOS(7_0);</code>再点进入<code>NSTextStorage</code>可以看到<code>NS_CLASS_AVAILABLE(10_0, 7_0) @interface NSTextStorage : NSMutableAttributedString</code>看到这里我们知道其实这个属性是继承自<code>NSMutableAttributedString</code>我们也就不奇怪为什么其里面的内容可以决定textview的富文本排列方式;接下来看一下实现方式:<br>在<code>viewDidLoad</code>中简单的创建一个textview和一张图片,我们实现点击图片,让其显示在textview中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    UIImageView *imgeview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@&quot;123.jpg&quot;]];</div><div class="line">    imgeview.frame = CGRectMake(100, 10, 50, 50);</div><div class="line">    [self.view addSubview:imgeview];</div><div class="line">    imgeview.userInteractionEnabled = YES;</div><div class="line">    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selectImageTosend:)];</div><div class="line">    [imgeview addGestureRecognizer:tap];</div><div class="line">    </div><div class="line">    self.textview = [[UITextView alloc]initWithFrame:CGRectMake(10, 80, 200, 80)];</div><div class="line">    _textview.backgroundColor = [UIColor lightGrayColor];</div><div class="line">    [self.view addSubview:_textview];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在imageview的tap手势方法中实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">-(void)selectImageTosend:(UITapGestureRecognizer *)tap&#123;</div><div class="line">    UIImageView *imageview = (UIImageView *)tap.view;</div><div class="line">    NSTextAttachment *atacchment = [[NSTextAttachment alloc]init];</div><div class="line">    atacchment.image = imageview.image;</div><div class="line">    //图片在textview中显示的大小</div><div class="line">    atacchment.bounds = CGRectMake(0, 0, 20, 20);</div><div class="line">    NSAttributedString *attributedStr = [[NSAttributedString alloc]initWithString:@&quot;&quot;];</div><div class="line">    attributedStr = [NSAttributedString attributedStringWithAttachment:atacchment];</div><div class="line">    //textStorage装载内容的容器,继承自NSMutableAttributedString,其里面保存的东西决定了textview的富文本显示方式</div><div class="line">    [self.textview.textStorage appendAttributedString:attributedStr];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当然经过优化就可以实现像iphone发送短信时发送照片显示在输入框中一样<br>效果如下:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3723830-7c95f8e36a792837.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IMG_0127.PNG"></p>
+
       
 
       
@@ -193,7 +192,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/09/滚动Label的封装/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/11/12/UITextView之textStorage属性介绍/">展开全文 >></a>
         </p>
       
 
@@ -560,6 +559,74 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/09/10/工作中遇到的问题整理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-滚动Label的封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/09/滚动Label的封装/">滚动Label的封装</a>
+    </h1>
+  
+
+        
+        <a href="/2016/09/09/滚动Label的封装/" class="archive-article-date">
+  	<time datetime="2016-09-09T11:47:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>相信大家有时候会遇到在首页上部展示一行文字,但是文字又很长无法只使用一行来展示,于是大家就想到平时我们在生活中看到的LED屏幕那样滚动展示完整的一句话语,今天写的这个控件就是实现了这样一个效果.</p>
+<p>1.在进入正文之前,我们先来了解一下layer的mask层.</p>
+<p>mask层其实就是一个遮罩layer,有点类似于我们平常弹出键盘时一并出来的灰色蒙层,只不过mask层是一个layer,而和键盘一并弹出来的大多设置的是一个改变透明度后的view.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">CAShapeLayer* maskLayer = [CAShapeLayer layer];</div><div class="line"></div><div class="line">maskLayer.path = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;</div><div class="line"></div><div class="line">self.view.layer.mask = maskLayer;</div><div class="line"></div><div class="line">这三句代码就是设置一个view的mask蒙层让处于view外部的内部不被显示出来,这次封装的lable主要就是用到这个原理.</div></pre></td></tr></table></figure>
+<p>2.接下来我们就开始进行封装</p>
+<p>一般滚动的话我们肯定会想要通过对外的接口来改变滚动的速度,因此首先我们自定义一个view,声明一个对外的接口,如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">-(id)initWithFrame:(CGRect)frame Text:(NSString *)textStr TextColor:(UIColor *)textColor BackGroundColor:(UIColor *)backColor Speed:(CGFloat)speed ;</div><div class="line"></div><div class="line">下面我们来实现这个方法</div><div class="line"></div><div class="line">-(id)initWithFrame:(CGRect)frame Text:(NSString *)textStr TextColor:(UIColor *)textColor BackGroundColor:(UIColor *)backColor Speed:(CGFloat)speed&#123;</div><div class="line"></div><div class="line">self = [super initWithFrame:frame];</div><div class="line"></div><div class="line">if (self) &#123;</div><div class="line"></div><div class="line">//取出对外接口中的颜色等值并赋值给自定义view声明的私有变量,方便UI的更新</div><div class="line"></div><div class="line">self.textColor = textColor;</div><div class="line"></div><div class="line">self.backGroundColor = backColor;</div><div class="line"></div><div class="line">self.speed = speed;</div><div class="line"></div><div class="line">self.textStr = textStr;</div><div class="line"></div><div class="line">[self creatUI];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">return self;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)creatUI&#123;</div><div class="line"></div><div class="line">self.backgroundColor = _backGroundColor;</div><div class="line"></div><div class="line">self.annimationLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];</div><div class="line"></div><div class="line">_annimationLabel.textColor = _textColor;</div><div class="line"></div><div class="line">_annimationLabel.backgroundColor = [UIColor clearColor];</div><div class="line"></div><div class="line">_annimationLabel.text = _textStr;</div><div class="line"></div><div class="line">[_annimationLabel sizeToFit];</div><div class="line"></div><div class="line">[self addSubview:_annimationLabel];</div><div class="line"></div><div class="line">//添加mask</div><div class="line"></div><div class="line">//给bgview添加一个layer蒙层,使bgview上label暴露在bgview外部的字不再显现出来(因为label设置的是sizeToFit,所以label的宽度会根据字符串的长度来调整,若不设此蒙层还是会显现出来,达不到移动的效果);</div><div class="line"></div><div class="line">CAShapeLayer* maskLayer = [CAShapeLayer layer];</div><div class="line"></div><div class="line">maskLayer.path = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;</div><div class="line"></div><div class="line">self.layer.mask = maskLayer;</div><div class="line"></div><div class="line">[self addAnimationToLabel];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)addAnimationToLabel&#123;</div><div class="line"></div><div class="line">[_annimationLabel.layer removeAllAnimations];</div><div class="line"></div><div class="line">CGFloat space = _annimationLabel.frame.size.width - self.frame.size.width;</div><div class="line"></div><div class="line">CAKeyframeAnimation* keyFrame = [CAKeyframeAnimation animation];</div><div class="line"></div><div class="line">keyFrame.keyPath = @&quot;transform.translation.x&quot;;</div><div class="line"></div><div class="line">keyFrame.values = @[@(0), @(-space), @(0)];</div><div class="line"></div><div class="line">keyFrame.repeatCount = INT16_MAX;</div><div class="line"></div><div class="line">keyFrame.duration = _speed * _annimationLabel.text.length;</div><div class="line"></div><div class="line">keyFrame.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut], [CAMediaTimingFunction functionWithControlPoints:0 :0 :0.5 :0.5]];</div><div class="line"></div><div class="line">[_annimationLabel.layer addAnimation:keyFrame forKey:nil];</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">这样就完成了封装,我封装的文件名为AnimationLabel,因此在控制器中使用时:</div><div class="line"></div><div class="line">UIColor *color = [UIColor magentaColor];</div><div class="line"></div><div class="line">UIColor *bgColor = [UIColor lightGrayColor];</div><div class="line"></div><div class="line">AnimationLabel *label = [[AnimationLabel alloc]initWithFrame:CGRectMake(50, 100, 150, 50) Text:@&quot;大猴子小猴子,大小猴子,小大猴子,子猴大小,猴子小大&quot; TextColor:color BackGroundColor:bgColor Speed:0.6];</div><div class="line"></div><div class="line">[self.view addSubview:label];</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/09/09/滚动Label的封装/">展开全文 >></a>
         </p>
       
 
