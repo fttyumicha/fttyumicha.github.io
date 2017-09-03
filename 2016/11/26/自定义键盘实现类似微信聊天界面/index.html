@@ -6,18 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Archives: 2017/4 | Little TT&#39;s Blog</title>
+  <title>自定义键盘实现类似微信聊天界面 | Little TT&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Good��">
+  <meta name="description" content="自从上次重构完项目后,一直在思考客户端的架构问题,总觉得不管是MVC,还是MVVM,VIPER都会有些许问题,最主要是把握一个度做到各个层雨露均沾,说这些好像和今天要记录的东西没什么关系,结构是根据这几天看的架构优化的,接下来就进入正题.只介绍表情键盘和系统键盘的切换部分.首先自定义一个表情键盘view12345678//重写初始化方法-(instancetype)initWithFrame:(C">
 <meta name="keywords" content="����">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Little TT&#39;s Blog">
-<meta property="og:url" content="//litten.me/archives/2017/04/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义键盘实现类似微信聊天界面">
+<meta property="og:url" content="//litten.me/2016/11/26/自定义键盘实现类似微信聊天界面/index.html">
 <meta property="og:site_name" content="Little TT&#39;s Blog">
-<meta property="og:description" content="Good��">
+<meta property="og:description" content="自从上次重构完项目后,一直在思考客户端的架构问题,总觉得不管是MVC,还是MVVM,VIPER都会有些许问题,最主要是把握一个度做到各个层雨露均沾,说这些好像和今天要记录的东西没什么关系,结构是根据这几天看的架构优化的,接下来就进入正题.只介绍表情键盘和系统键盘的切换部分.首先自定义一个表情键盘view12345678//重写初始化方法-(instancetype)initWithFrame:(C">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3723830-6755dd73f899fdff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3723830-2dd0c65301e6673d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3723830-6f1c06aa5052017b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3723830-de84574e952de8cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-03T11:12:21.817Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Little TT&#39;s Blog">
-<meta name="twitter:description" content="Good��">
+<meta name="twitter:title" content="自定义键盘实现类似微信聊天界面">
+<meta name="twitter:description" content="自从上次重构完项目后,一直在思考客户端的架构问题,总觉得不管是MVC,还是MVVM,VIPER都会有些许问题,最主要是把握一个度做到各个层雨露均沾,说这些好像和今天要记录的东西没什么关系,结构是根据这几天看的架构优化的,接下来就进入正题.只介绍表情键盘和系统键盘的切换部分.首先自定义一个表情键盘view12345678//重写初始化方法-(instancetype)initWithFrame:(C">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3723830-6755dd73f899fdff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
   
     <link rel="icon" href="/assets/img/favicon.ico">
@@ -141,76 +147,155 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-自定义键盘实现类似微信聊天界面" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/27/Controller瘦身/" class="archive-article-date">
-  	<time datetime="2017-04-27T12:53:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/27/Controller瘦身/">Controller瘦身</a>
+    <h1 class="article-title" itemprop="name">
+      自定义键盘实现类似微信聊天界面
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/20/使用CGContext自定义手势解锁控件/" class="archive-article-date">
-  	<time datetime="2017-04-20T14:48:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-20</time>
+        
+        <a href="/2016/11/26/自定义键盘实现类似微信聊天界面/" class="archive-article-date">
+  	<time datetime="2016-11-26T01:46:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-26</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/20/使用CGContext自定义手势解锁控件/">使用CGContext自定义手势解锁控件</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>自从上次重构完项目后,一直在思考客户端的架构问题,总觉得不管是MVC,还是MVVM,VIPER都会有些许问题,最主要是把握一个度做到各个层雨露均沾,说这些好像和今天要记录的东西没什么关系,结构是根据这几天看的架构优化的,接下来就进入正题.只介绍表情键盘和系统键盘的切换部分.<br>首先自定义一个表情键盘view<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//重写初始化方法</span></div><div class="line">-(<span class="keyword">instancetype</span>)initWithFrame:(<span class="built_in">CGRect</span>)frame&#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> initWithFrame:frame];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</div><div class="line">        [<span class="keyword">self</span> makeUI];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//表情键盘页面布局</span></div><div class="line">-(<span class="keyword">void</span>)makeUI&#123;</div><div class="line">    <span class="keyword">self</span>.userInteractionEnabled = <span class="literal">YES</span>;</div><div class="line">    <span class="built_in">UICollectionViewFlowLayout</span> *layout = [[<span class="built_in">UICollectionViewFlowLayout</span> alloc]init];</div><div class="line">    layout.scrollDirection = <span class="built_in">UICollectionViewScrollDirectionHorizontal</span>;</div><div class="line">    layout.minimumLineSpacing = <span class="number">2</span>;<span class="comment">//行间距</span></div><div class="line">    layout.minimumInteritemSpacing = <span class="number">2</span>;<span class="comment">//item间距</span></div><div class="line">    layout.itemSize = <span class="built_in">CGSizeMake</span>(<span class="number">35</span>, <span class="number">35</span>);</div><div class="line">    layout.sectionInset = <span class="built_in">UIEdgeInsetsMake</span>(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</div><div class="line">    <span class="keyword">self</span>.collectionView = [[<span class="built_in">UICollectionView</span> alloc]initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">self</span>.frame.size.width, <span class="keyword">self</span>.frame.size.height) collectionViewLayout:layout];</div><div class="line">    _collectionView.delegate = <span class="keyword">self</span>;</div><div class="line">    _collectionView.dataSource = <span class="keyword">self</span>;</div><div class="line">    _collectionView.backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</div><div class="line">    [_collectionView registerClass:[ExpressionCollectionViewCell <span class="keyword">class</span>] forCellWithReuseIdentifier:<span class="string">@"ExpressionCell"</span>];</div><div class="line">    [<span class="keyword">self</span> addSubview:_collectionView];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//代理方法</span></div><div class="line">-(UICollectionViewCell *)<span class="string">collectionView:</span>(UICollectionView *)collectionView <span class="string">cellForItemAtIndexPath:</span>(NSIndexPath *)indexPath&#123;</div><div class="line">    ExpressionCollectionViewCell *cell = [collectionView <span class="string">dequeueReusableCellWithReuseIdentifier:</span>@<span class="string">"ExpressionCell"</span> <span class="string">forIndexPath:</span>indexPath];</div><div class="line">    <span class="keyword">if</span> (!cell) &#123;</div><div class="line">        cell = [[ExpressionCollectionViewCell alloc]<span class="string">initWithFrame:</span>CGRectMake(<span class="number">0</span>, <span class="number">0</span>, <span class="number">35</span>, <span class="number">35</span>)];</div><div class="line">    &#125;</div><div class="line"><span class="comment">//主要是因为我的图片源命名规则前18张和之后的格式不一样,所以进行区分赋值</span></div><div class="line">    <span class="keyword">if</span> (indexPath.row&lt;<span class="number">18</span>) &#123;</div><div class="line">        cell.imageView.image = [UIImage <span class="string">imageNamed:</span>[NSString <span class="string">stringWithFormat:</span>@<span class="string">"%ld.png"</span>,indexPath.row+<span class="number">1</span>]];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        cell.imageView.image = [UIImage <span class="string">imageNamed:</span>[NSString <span class="string">stringWithFormat:</span>@<span class="string">"0%ld.png"</span>,indexPath.row+<span class="number">1</span>]];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>.h中声明代理方法或block,点击表情进行回传显示<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@protocol</span> ExpressionKeyBordViewDelegate &lt;NSObject&gt;</div><div class="line">-(void)<span class="attribute">didSelectExpression</span>:(UIImage *)image;</div><div class="line"><span class="variable">@end</span></div><div class="line"></div><div class="line">typedef void(^didSelectExpression)(UIImage *image);</div><div class="line"></div><div class="line"><span class="variable">@interface</span> <span class="attribute">ExpressionKeyBordView </span>: UIView</div><div class="line"><span class="comment">//声明代理</span></div><div class="line"><span class="variable">@property</span>(nonatomic,weak)id&lt;ExpressionKeyBordViewDelegate&gt;delegate;</div><div class="line"><span class="comment">//使用block来回传值</span></div><div class="line"><span class="variable">@property</span>(nonatomic,copy)didSelectExpression selecBlock;</div><div class="line"><span class="variable">@end</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//点击表情进行传值</span></div><div class="line">-(<span class="keyword">void</span>)<span class="string">collectionView:</span>(UICollectionView *)collectionView <span class="string">didSelectItemAtIndexPath:</span>(NSIndexPath *)indexPath&#123;</div><div class="line">    ExpressionCollectionViewCell *cell = (ExpressionCollectionViewCell *)[collectionView <span class="string">cellForItemAtIndexPath:</span>indexPath];</div><div class="line">    <span class="comment">//使用block回传值</span></div><div class="line">    _selecBlock(cell.imageView.image);</div><div class="line">    <span class="comment">//使用代理进行回传</span></div><div class="line">    [_delegate <span class="string">didSelectExpression:</span>cell.imageView.image];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用自定义键盘时的操作<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.expressionView = [[ExpressionKeyBordView alloc]initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">self</span>.view.frame.size.width, <span class="number">200</span>)];</div><div class="line">_expressionView.delegate = <span class="keyword">self</span>;</div><div class="line">_expressionView.backgroundColor = [<span class="built_in">UIColor</span> blackColor];</div><div class="line"><span class="comment">//注意只是初始化了表情键盘view,并没有把他添加到当前控制器的view上,因为切换键盘时会通过inputView来进行添加</span></div></pre></td></tr></table></figure></p>
+<p>点击按钮进行键盘切换<br><figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//实现效果点击按钮弹出自定义表情键盘,再点一次变成系统键盘</span></div><div class="line">-(void)expressionBtTouched:(UIButton *)bt&#123;</div><div class="line">      <span class="keyword">if</span> ([<span class="variable">_chatBottomView</span>.textView.inputView isEqual:self.expressionView])&#123;</div><div class="line">            <span class="variable">_chatBottomView</span>.textView.inputView = <span class="literal">nil</span>;</div><div class="line">            [<span class="variable">_chatBottomView</span>.textView reloadInputViews];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            <span class="variable">_chatBottomView</span>.textView.inputView = self.expressionView;</div><div class="line">            [<span class="variable">_chatBottomView</span>.textView reloadInputViews];</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (![<span class="variable">_chatBottomView</span>.textView isFirstResponder])&#123;</div><div class="line">            [<span class="variable">_chatBottomView</span>.textView becomeFirstResponder];</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在textView上显示选择的表情<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//block</span></div><div class="line">        _expressionView.selecBlock = ^(<span class="built_in">UIImage</span> *image)&#123;</div><div class="line">        <span class="built_in">NSTextAttachment</span> *atacchment = [[<span class="built_in">NSTextAttachment</span> alloc]init];</div><div class="line">        atacchment.image = image;</div><div class="line">        <span class="comment">//图片在textview中显示的大小</span></div><div class="line">        atacchment.bounds = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">20</span>, <span class="number">20</span>);</div><div class="line">        <span class="built_in">NSAttributedString</span> *attributedStr = [[<span class="built_in">NSAttributedString</span> alloc]initWithString:<span class="string">@""</span>];</div><div class="line">        attributedStr = [<span class="built_in">NSAttributedString</span> attributedStringWithAttachment:atacchment];</div><div class="line">        <span class="comment">//textStorage装载内容的容器,继承自NSMutableAttributedString,其里面保存的东西决定了textview的富文本显示方式</span></div><div class="line">        [weakSelf.chatBottomView.textView.textStorage appendAttributedString:attributedStr];</div><div class="line">    &#125;;</div><div class="line"><span class="comment">//代理</span></div><div class="line">-(<span class="keyword">void</span>)didSelectExpression:(<span class="built_in">UIImage</span> *)image&#123;</div><div class="line">    <span class="built_in">NSTextAttachment</span> *atacchment = [[<span class="built_in">NSTextAttachment</span> alloc]init];</div><div class="line">    atacchment.image = image;</div><div class="line">    <span class="comment">//图片在textview中显示的大小</span></div><div class="line">    atacchment.bounds = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">20</span>, <span class="number">20</span>);</div><div class="line">    <span class="built_in">NSAttributedString</span> *attributedStr = [[<span class="built_in">NSAttributedString</span> alloc]initWithString:<span class="string">@""</span>];</div><div class="line">    attributedStr = [<span class="built_in">NSAttributedString</span> attributedStringWithAttachment:atacchment];</div><div class="line">    <span class="comment">//textStorage装载内容的容器,继承自NSMutableAttributedString,其里面保存的东西决定了textview的富文本显示方式</span></div><div class="line">    [<span class="keyword">self</span>.chatBottomView.textView.textStorage appendAttributedString:attributedStr];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在lable中展示<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cell.label.attributedText = textView.attributedText<span class="comment">;</span></div></pre></td></tr></table></figure></p>
+<p>效果图如下:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3723830-6755dd73f899fdff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3723830-2dd0c65301e6673d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3723830-6f1c06aa5052017b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3723830-de84574e952de8cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2016/11/26/自定义键盘实现类似微信聊天界面/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/12/03/使用CGContext自定义手势解锁控件/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          使用CGContext自定义手势解锁控件
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2016/11/12/UITextView之textStorage属性介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">UITextView之textStorage属性介绍</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -233,8 +318,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

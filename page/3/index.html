@@ -143,107 +143,6 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-工作中遇到的问题整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/10/工作中遇到的问题整理/">工作中遇到的问题整理</a>
-    </h1>
-  
-
-        
-        <a href="/2016/09/10/工作中遇到的问题整理/" class="archive-article-date">
-  	<time datetime="2016-09-10T10:41:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.cell上控件(比如label)比预设的长度要小的问题</p>
-<p>不知道大家有没有遇到过tableview列表cell的宽度比自己预设的宽度要小一点,并且当消失在视线后再出来时恢复正常的宽度,由于那时候入行 还不久么,怎么找也找不到原因,后来才发现如果自定义cell的时候如果用固定的某个值,比如说200,就没问题,如果是使用 self.contenview.frame.size.width,就会出现上面所说的情况.原因是什么呢?主要是因为时机的问题,当 tableview最初加载自定义的cell时,其实这时候的cell的contentview大小是不确定的,因此会按照最小的屏幕系列宽度来计算,所 以在cell中以contenview的大小来做标尺的控件就会出现问题,当发生重用的时候contentview的大小已经确定,因此再次出现在视野里 时就显示正常了;解决方法很简单,自定义cell中控件的大小以屏幕的宽度为依据就可以了;</p>
-<p>2.获取cell上控件相对于屏幕的位置</p>
-<p>NSIndexPath *indexpath = [NSIndexPath indexPathForRow:3 inSection:1];</p>
-<p>CGRect rectInTableView = [_tableview rectForRowAtIndexPath:indexpath];</p>
-<p>CGRect rect = [_tableview convertRect:rectInTableView toView:[_tableview superview]];</p>
-<p>3.键盘闪一下的问题:</p>
-<p>问题描述:</p>
-<p>当在一个界面中存在输入框时,当成为第一响应者之后回触发键盘的出现,若这时点击返回上一  界面让其出现一个弹框提示,点击取消依然停留在当前页面,点击确定返回上一页面时回出现键盘在上一页面闪一下的问题;</p>
-<p>问题原因:</p>
-<p>当弹框出现时,其他的所用控件将失去第一响应,但会记录弹框出现以前的状态,当弹框消失后会让一切恢复原样,则如果键盘本身是编辑状态,弹框消失后键盘会再次出来,但键盘的出现和消失有动画时间大概0.25秒,因此如果点击弹框的确定按钮,返回上一页面,由于键盘的动画还没有完成,因此会在上一界面继续完成,所以会出现键盘闪的问题;</p>
-<p>解决方法:</p>
-<p>让键盘的出现或消失在本界面完成,也就是当点击确定按钮的触发方法中延迟大概0.25秒再pop回上一页面,就可以解决;</p>
-<p>4.解决textFiled或textview刚开始编辑时光标不在起始位置的问题,手动设置选中位置即可</p>
-<p>self.contentTextView.selectedRange = NSMakeRange(0,0);</p>
-<p>若不管用,则设置(ios7后导航栏偏移的问题)</p>
-<p>self.automaticallyAdjustsScrollViewInsets = NO;</p>
-<p>5.项目中若当隐藏navigation bar 时,若出现view下移导致电池栏为空白,原因是因为ios7时edgesForExtendedLayout默认为UIRectEdgeAll,设置成</p>
-<p>if(IOS7DEVICE){</p>
-<p>if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {</p>
-<p>self.edgesForExtendedLayout = UIRectEdgeNone;</p>
-<p>}</p>
-<p>}</p>
-<p>即可.</p>
-<p>6.在ARC项目中,当pop出某个控制器时,不走dealloc方法,也就是内存泄漏,之所以会这样,是因为在某个地方强引用了此控制器,当pop出此控制器时其引用计数不为0因此没有走dealloc;通常情况下强引用最容易出现在bloc中,或者是delegate声明时用了strong,再或者是定时器没有销毁;因此开始在此控制器中寻找bloc中是否强引用了self,发现没有,再看看定时器在viewWillDisapear时已经销毁,所以最后一种可能就是某个地方的delegate用的strong,而又把此控制器设成了代理,果不奇然,真的是一个神一样存在的人声明代理是用的strong,改成assign或者weak后就正常了.</p>
-<p>7.设置navigationItem的rightBarButtonItem或者是leftBarButtonItem之后发现按钮点击的响应范围比实际的(亦或者说比button的rect大好多)</p>
-<p>原因:给导航栏设置buttonitem后会自动增大它的响应范围</p>
-<p>解决方法:创建一个和button的等大的view,再根据创建buttonitem后就可以了,代码如下:</p>
-<p>self.rightBt = [UIButton buttonWithType:UIButtonTypeCustom];</p>
-<p>_rightBt.frame = CGRectMake(0, 0, 60, 30);</p>
-<p>[_rightBt setTitle:@”换一批” forState:UIControlStateNormal];</p>
-<p>_rightBt.titleLabel.font = [UIFont systemFontOfSize:14];</p>
-<p>[_rightBt addTarget:self action:@selector(changeOther:) forControlEvents:UIControlEventTouchUpInside];</p>
-<p>UIView *view = [[UIView alloc]initWithFrame:_rightBt.bounds];</p>
-<p>[view addSubview:_rightBt];</p>
-<p>UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:view];</p>
-<p>self.navigationItem.rightBarButtonItem = rightItem;</p>
-<p>8.线上崩溃提示deleteRowsAtIndexPaths:数组越界,但是纵观整个页面没有进行任何的删除操作.由于是线上bug,不容易复原,因此着重查看了tableview的数据源处理和代理方法,最后发现此页面的刷新都采用的是局部刷新,由于业务逻辑,页面将要消失时把数据源都移除了,然而在页面将要出现时没有进行任何的数据请求或刷新UI,因此当从另外一个页面返回此页面进行点击事件后调用局部刷新就会出问题;</p>
-<p>因为- (void)reloadRowsAtIndexPaths:(NSArray*)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;此方法的刷新机制是先删除对应的cell,然后再重新创建达到目的.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/10/工作中遇到的问题整理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-滚动Label的封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -384,6 +283,75 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/08/09/限制文本编辑字数的方法整理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-RunTime之方法简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/09/RunTime之方法简介/">RunTime之方法简介</a>
+    </h1>
+  
+
+        
+        <a href="/2016/04/09/RunTime之方法简介/" class="archive-article-date">
+  	<time datetime="2016-04-09T14:10:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在之前的’’ UIButton扩大响应范围’’以及”ios组件的构建思路”两篇文章中已经用到了RunTime中的方法,这篇再记录几个方法的介绍以及使用;<br>OBJC_EXPORT BOOL object_isClass(id obj) 判断一个对象是否是一个class<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">//</span>具体应用场景runtime根据字符串动态生成一个类时,判断是否成功,如在<span class="string">"ios组件的构建思路"</span>中的使用</div><div class="line"><span class="regexp">//</span>    Class cls = NSClassFromString(viewStr);</div><div class="line"><span class="regexp">//</span>    <span class="regexp">//</span>添加安全判断,判断传过来的字符串所对应的类是否存在</div><div class="line"><span class="regexp">//</span>    <span class="keyword">if</span> (object_isClass(cls)) &#123;</div><div class="line"><span class="regexp">//</span>        <span class="regexp">//</span>经测试runtime动态生成类并调用方法只能掉类方法不能调用实例方法</div><div class="line"><span class="regexp">//</span>        return [cls performSelector:NSSelectorFromString(@<span class="string">"initoneViewConrllerWithcolor:"</span>) withObject:@&#123;@<span class="string">"color"</span>:color&#125;];</div><div class="line"><span class="regexp">//</span>    &#125;</div><div class="line">    BOOL isClass = object_isClass([obj1 class]);</div><div class="line">    NSLog(@<span class="string">"isClass = %d"</span>,isClass);</div></pre></td></tr></table></figure></p>
+<p> OBJC_EXPORT Class object_getClass(id obj) 和 - (Class)class 是等价的<br><figure class="highlight monkey"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//返回一个对象的<span class="class"><span class="keyword">class</span></span></div><div class="line"> <span class="class"><span class="keyword">Class</span> <span class="title">c1</span> = <span class="title">object_getClass</span>(<span class="title">obj1</span>);</span></div><div class="line"> NSLog(@<span class="string">"Class = %@,----,%@"</span>,c1,[obj1 <span class="class"><span class="keyword">class</span>]);</span></div></pre></td></tr></table></figure></p>
+<p>OBJC_EXPORT Class object_setClass(id obj, Class cls),设置一个对象的class,返回值是这个对象原来的class类型<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//把一个对象的class变成另外一个对象,但是发现打印出来的成员变量值还是原来class中声明的值</span></div><div class="line">    Class c2 = object_setClass(obj1, [timeObj <span class="class"><span class="keyword">class</span>]);</span></div><div class="line">    NSLog(@<span class="string">"obj1的class是 : %@,----,返回的class是 : %@"</span>,[obj1 <span class="class"><span class="keyword">class</span>],<span class="type">c2);</span></span></div><div class="line">    NSLog(@<span class="string">"%@"</span>,obj1.introduce);</div></pre></td></tr></table></figure></p>
+<p>OBJC_EXPORT const char *object_getClassName(id obj)和上面中object_getClass用法相同,但是返回的类型为const char<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">RuntimeObj *obj2 = [[RuntimeObj alloc]init]<span class="comment">;</span></div><div class="line">const char *c3 = object_getClassName(obj2)<span class="comment">;</span></div><div class="line">NSLog(@<span class="string">"%s"</span>,c3)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
+<p>OBJC_EXPORT Ivar class<em>getInstanceVariable(Class cls, const char *name)通过变量名称获取类中的实例成员变量(注意成员变量和属性的区别,在ios5之前声明一个属性,先要声明一个实例变量,然后用@property生成属性,最后用@synthesize生成setter/getter方法,但是现在直接用@property声明的属性会自动生成一个带有</em>的实例变量和setter/getter方法)<br><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//通过变量名称获取类中的实例成员变量(包括私有变量)</span></div><div class="line">Ivar ivar = <span class="keyword">class</span><span class="number">_</span>getInstanceVariable([obj<span class="number">2</span> <span class="keyword">class</span>], <span class="string">"_year"</span>);</div><div class="line"><span class="comment">//获取实例对象中Ivar的值(Ivar是objc_ivar的指针，包含变量名，变量类型等成员。)</span></div><div class="line">id year = <span class="keyword">object</span><span class="number">_</span>getIvar(obj<span class="number">2</span>, ivar);</div><div class="line">NSLog(@<span class="string">"%@"</span>, year);</div></pre></td></tr></table></figure></p>
+<p>OBJC_EXPORT Class objc_allocateClassPair(Class superclass, const char *name,<br>                                         size_t extraBytes) 和OBJC_EXPORT void objc_registerClassPair(Class cls) 动态创建类<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;objc/runtime.h&gt;</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">&lt;objc/message.h&gt;</span></span></div><div class="line"> <span class="comment">//在运行时创建继承自NSObject的People类</span></div><div class="line"> Class People = objc_allocateClassPair([<span class="built_in">NSObject</span> <span class="keyword">class</span>], <span class="string">"People"</span>, <span class="number">0</span>);</div><div class="line"> <span class="comment">//添加_name成员变量</span></div><div class="line"> <span class="built_in">BOOL</span> flag1 = class_addIvar(People, <span class="string">"_name"</span>, <span class="keyword">sizeof</span>(<span class="built_in">NSString</span>*), log2(<span class="keyword">sizeof</span>(<span class="built_in">NSString</span>*)), <span class="keyword">@encode</span>(<span class="built_in">NSString</span>*));</div><div class="line"> <span class="keyword">if</span> (flag1) &#123;</div><div class="line">     <span class="built_in">NSLog</span>(<span class="string">@"NSString*类型  _name变量添加成功"</span>);</div><div class="line"> &#125;</div><div class="line"> <span class="comment">//添加_age成员变量(实例变量)</span></div><div class="line"> <span class="built_in">BOOL</span> flag2 = class_addIvar(People, <span class="string">"_age"</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), <span class="keyword">sizeof</span>(<span class="keyword">int</span>), <span class="keyword">@encode</span>(<span class="keyword">int</span>));</div><div class="line"> <span class="keyword">if</span> (flag2) &#123;</div><div class="line">     <span class="built_in">NSLog</span>(<span class="string">@"int类型 _age变量添加成功"</span>);</div><div class="line"> &#125;</div><div class="line"> <span class="comment">//添加一个实例方法</span></div><div class="line"> SEL s = sel_registerName(<span class="string">"say:"</span>);</div><div class="line"> class_addMethod(People, s, (IMP)sayFunction, <span class="string">"good"</span>);</div><div class="line"> <span class="comment">//完成People类的创建</span></div><div class="line"> objc_registerClassPair(People);</div><div class="line"> <span class="keyword">unsigned</span> <span class="keyword">int</span> varCount;</div><div class="line"> <span class="comment">//拷贝People类中的成员变量列表</span></div><div class="line"> Ivar * varList = class_copyIvarList(People, &amp;varCount);</div><div class="line"> <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;varCount; i++) &#123;</div><div class="line">     <span class="built_in">NSLog</span>(<span class="string">@"%s"</span>,ivar_getName(varList[i]));</div><div class="line"> &#125;</div><div class="line"> <span class="comment">//释放varList</span></div><div class="line"> free(varList);</div><div class="line"> <span class="comment">//创建People对象p1</span></div><div class="line"> <span class="keyword">id</span> p1 = [[People alloc]init];</div><div class="line"> <span class="comment">//从类中获取成员变量Ivar</span></div><div class="line"> Ivar nameIvar = class_getInstanceVariable(People, <span class="string">"_name"</span>);</div><div class="line"> Ivar ageIvar = class_getInstanceVariable(People, <span class="string">"_age"</span>);</div><div class="line"> <span class="comment">//为p1的成员变量赋值</span></div><div class="line"> object_setIvar(p1, nameIvar, <span class="string">@"小糖豆"</span>);</div><div class="line"> object_setIvar(p1, ageIvar, @<span class="number">13</span>);</div><div class="line"> <span class="comment">//获取p1成员变量的值</span></div><div class="line"> <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,object_getIvar(p1, nameIvar));</div><div class="line"> <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,object_getIvar(p1, ageIvar));</div><div class="line"> <span class="comment">//调用方法</span></div><div class="line"> ((<span class="keyword">void</span> (*)(<span class="keyword">id</span>, SEL, <span class="keyword">id</span>))objc_msgSend)(p1, s, <span class="string">@"大家好"</span>);</div></pre></td></tr></table></figure></p>
+<p>IMP实现<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> sayFunction(<span class="keyword">id</span> <span class="keyword">self</span>, SEL _cmd, <span class="keyword">id</span> some)</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@岁的%@说：%@"</span>,</div><div class="line">          object_getIvar(<span class="keyword">self</span>, class_getInstanceVariable([<span class="keyword">self</span> <span class="keyword">class</span>], <span class="string">"_age"</span>)),[<span class="keyword">self</span> valueForKey:<span class="string">@"name"</span>], some);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/04/09/RunTime之方法简介/">展开全文 >></a>
         </p>
       
 
