@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>基于CAShapLayer和UIBezierPath的下拉刷新动画 | Hexo</title>
+  <title>SQL-Server之--排序和分页 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在demo的记录之前,先来记录一下几个需要的知识点.1.  CAShapLayer他是CALayer的一个子类,有的小伙伴就说了都是layer,那CAShapLayer和CALayer有什么不同呢?最主要的是,单独和创建一个CALayer,设置大小颜色等属性添加到父layer上就可以显现出来,但是对于CAShapLayer来说必须制定一个path路径才可以显现出来,也就是单独声明出来的CAShap">
+  <meta name="description" content="在开始记录排序和分页之前先来记录几个与之相关的关键字TOP，COUNT,ORDER BY  1.TOP  TOP关键字表示返回按照某种排序之后的数据取最上面几条，如TOP 1 则返回第一条数据，如果是通过参数来定的话 则TOP ${pomotionCount}，不能用#来修饰TOP后面的参数。ORDER BY 排序DESC  降序ASC 升序下面来看个例子  123456789101112131">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于CAShapLayer和UIBezierPath的下拉刷新动画">
-<meta property="og:url" content="http://yoursite.com/2017/05/06/基于CAShapLayer和UIBezierPath的下拉刷新动画/index.html">
+<meta property="og:title" content="SQL-Server之--排序和分页">
+<meta property="og:url" content="http://yoursite.com/2017/06/23/SQL-Server之-排序和分页/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="在demo的记录之前,先来记录一下几个需要的知识点.1.  CAShapLayer他是CALayer的一个子类,有的小伙伴就说了都是layer,那CAShapLayer和CALayer有什么不同呢?最主要的是,单独和创建一个CALayer,设置大小颜色等属性添加到父layer上就可以显现出来,但是对于CAShapLayer来说必须制定一个path路径才可以显现出来,也就是单独声明出来的CAShap">
-<meta property="og:updated_time" content="2017-09-03T01:56:20.277Z">
+<meta property="og:description" content="在开始记录排序和分页之前先来记录几个与之相关的关键字TOP，COUNT,ORDER BY  1.TOP  TOP关键字表示返回按照某种排序之后的数据取最上面几条，如TOP 1 则返回第一条数据，如果是通过参数来定的话 则TOP ${pomotionCount}，不能用#来修饰TOP后面的参数。ORDER BY 排序DESC  降序ASC 升序下面来看个例子  123456789101112131">
+<meta property="og:updated_time" content="2017-09-03T02:00:49.785Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于CAShapLayer和UIBezierPath的下拉刷新动画">
-<meta name="twitter:description" content="在demo的记录之前,先来记录一下几个需要的知识点.1.  CAShapLayer他是CALayer的一个子类,有的小伙伴就说了都是layer,那CAShapLayer和CALayer有什么不同呢?最主要的是,单独和创建一个CALayer,设置大小颜色等属性添加到父layer上就可以显现出来,但是对于CAShapLayer来说必须制定一个path路径才可以显现出来,也就是单独声明出来的CAShap">
+<meta name="twitter:title" content="SQL-Server之--排序和分页">
+<meta name="twitter:description" content="在开始记录排序和分页之前先来记录几个与之相关的关键字TOP，COUNT,ORDER BY  1.TOP  TOP关键字表示返回按照某种排序之后的数据取最上面几条，如TOP 1 则返回第一条数据，如果是通过参数来定的话 则TOP ${pomotionCount}，不能用#来修饰TOP后面的参数。ORDER BY 排序DESC  降序ASC 升序下面来看个例子  123456789101112131">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -157,60 +157,58 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-基于CAShapLayer和UIBezierPath的下拉刷新动画" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SQL-Server之-排序和分页" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      基于CAShapLayer和UIBezierPath的下拉刷新动画
+      SQL-Server之--排序和分页
     </h1>
   
 
         
-        <a href="/2017/05/06/基于CAShapLayer和UIBezierPath的下拉刷新动画/" class="archive-article-date">
-  	<time datetime="2017-05-06T01:55:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+        <a href="/2017/06/23/SQL-Server之-排序和分页/" class="archive-article-date">
+  	<time datetime="2017-06-23T01:58:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在demo的记录之前,先来记录一下几个需要的知识点.<br>1.</p>
-<blockquote>
-<p>CAShapLayer<br>他是CALayer的一个子类,有的小伙伴就说了都是layer,那CAShapLayer和CALayer有什么不同呢?最主要的是,单独和创建一个CALayer,设置大小颜色等属性添加到父layer上就可以显现出来,但是对于CAShapLayer来说必须制定一个path路径才可以显现出来,也就是单独声明出来的CAShapLayer是没有形状的,必须把他的path属性和一个贝塞尔曲线相关联(贝塞尔曲线的形状决定了CAShapLayer的形状)才可以看到.<br>fillColor填充色<br>strokeColor轮廓的颜色</p>
+        <blockquote>
+<p>在开始记录排序和分页之前先来记录几个与之相关的关键字TOP，COUNT,ORDER BY</p>
 </blockquote>
-<p>2.</p>
+<p>1.TOP</p>
 <blockquote>
-<p>UIBezierPath</p>
-<ul>
-<li>该方法将会从 currentPoint 到 指定的 endPoint 追加一条二次贝塞尔曲线.</li>
-<li>currentPoint、endPoint、controlPoint 三者的关系最终定义了二次贝塞尔曲线的形状.</li>
-<li>二次贝塞尔曲线的弯曲由一个控制点来控制. 如下图所示</li>
-<li>Note: 调用该方法前, 你必须先设置 currentPoint, 如果路径为空, </li>
-<li>并且尚未设置 currentPoint, 调用该方法则不会产生任何效果. </li>
-<li>当添加完贝塞尔曲线后, 该方法将会自动更新 currentPoint 为</li>
-<li>指定的结束点</li>
-<li>@param endPoint: 终点</li>
-<li>@param controlPoint: 控制点<ul>
-<li>(void)addQuadCurveToPoint:(CGPoint)endPoint controlPoint:(CGPoint)controlPoint;</li>
-</ul>
-</li>
-</ul>
+<p>TOP关键字表示返回按照某种排序之后的数据取最上面几条，如TOP 1 则返回第一条数据，如果是通过参数来定的话 则TOP ${pomotionCount}，不能用#来修饰TOP后面的参数。<br>ORDER BY 排序<br>DESC  降序<br>ASC 升序<br>下面来看个例子</p>
 </blockquote>
-<p>3.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">按照创建时间升序排序</div><div class="line">SELECT  *FROM Designer_UserInfo ORDER BY Designer_UserInfo.CreatTime ASC</div><div class="line">结果为：</div><div class="line">3	大猴子	2017-06-19 </div><div class="line">1	小糖豆	2017-06-20 </div><div class="line">2	小土豆	2017-06-21 </div><div class="line">4	小萝卜	2017-06-23 </div><div class="line">按照创建时间降序排序</div><div class="line">SELECT  *FROM Designer_UserInfo ORDER BY Designer_UserInfo.CreatTime DESC</div><div class="line">结果为：</div><div class="line">4	小萝卜	2017-06-23 </div><div class="line">2	小土豆	2017-06-21 </div><div class="line">1	小糖豆	2017-06-20 </div><div class="line">3	大猴子	2017-06-19 </div><div class="line">选排序后的第一条</div><div class="line">SELECT TOP 1 *FROM Designer_UserInfo ORDER BY Designer_UserInfo.CreatTime DESC</div><div class="line">结果为：</div><div class="line">4	小萝卜	2017-06-23</div></pre></td></tr></table></figure>
+<p>2.COUNT</p>
 <blockquote>
-<p>CADisPlayLink<br>CADisplayLink是一个能让我们以和屏幕刷新率相同的频率将内容画到屏幕上的定时器。我们在应用中创建一个新的 CADisplayLink 对象，把它添加到一个runloop中，并给它提供一个 target 和selector 在屏幕刷新的时候调用。<br>CADisplayLink使用场合相对专一，适合做UI的不停重绘，比如自定义动画引擎或者视频播放的渲染。NSTimer的使用范围要广泛的多，各种需要单次或者循环定时处理的任务都可以使用。在UI相关的动画或者显示内容使用 CADisplayLink比起用NSTimer的好处就是我们不需要在格外关心屏幕的刷新频率了，因为它本身就是跟屏幕刷新同步的。</p>
+<p>COUNT 主要是用来计算条数的一个关键字，语法为COUNT(*)</p>
 </blockquote>
-<p>4.进入正题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">.m</div><div class="line">首先自定义一个下拉刷新的view</div><div class="line">define WIDTH ([[UIScreen mainScreen] bounds].size.width)</div><div class="line">define HEIGHT ([[UIScreen mainScreen] bounds].size.height)</div><div class="line">define MIN_HEIGHT  100  // 图形最小高度</div><div class="line">@interface RefreshView()</div><div class="line">@property(nonatomic,assign)CGFloat mHeight;</div><div class="line">@property(nonatomic,assign)CGFloat X;// 红点x坐标</div><div class="line">@property(nonatomic,assign)CGFloat Y;// 红点y坐标</div><div class="line">@property(nonatomic,strong)CAShapeLayer *shapLayer;</div><div class="line">@property(nonatomic,strong)CADisplayLink *displayLink;</div><div class="line">@property(nonatomic,strong)UIView *redPointView;//红点</div><div class="line">@property(nonatomic,assign)BOOL isAnimating;</div><div class="line">@end</div><div class="line">@implementation RefreshView</div><div class="line">static NSString *kX = @&quot;X&quot;;</div><div class="line">static NSString *kY = @&quot;Y&quot;;</div><div class="line">-(instancetype)initWithFrame:(CGRect)frame&#123;</div><div class="line">    self = [super initWithFrame:frame];</div><div class="line">    if (self) &#123;</div><div class="line">        [self addObserver:self forKeyPath:kX options:NSKeyValueObservingOptionNew context:nil];</div><div class="line">        [self addObserver:self forKeyPath:kY options:NSKeyValueObservingOptionNew context:nil];</div><div class="line">        [self makeLayer];</div><div class="line">        [self addGesture];</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(void)dealloc&#123;</div><div class="line">    [self removeObserver:self forKeyPath:kX];</div><div class="line">    [self removeObserver:self forKeyPath:kY];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">-(void)makeLayer&#123;</div><div class="line">    //添加layer层</div><div class="line">    self.shapLayer = [CAShapeLayer layer];</div><div class="line">    _shapLayer.fillColor = [UIColor colorWithRed:57/255.0 green:67/255.0 blue:89/255.0 alpha:1.0].CGColor;</div><div class="line">    [self.layer addSublayer:_shapLayer];</div><div class="line">    </div><div class="line">    //初始化红点</div><div class="line">    self.X = WIDTH/2.0;</div><div class="line">    self.Y = MIN_HEIGHT;</div><div class="line">    self.redPointView = [[UIView alloc]initWithFrame:CGRectMake(_X, _Y, 3, 3)];</div><div class="line">    _redPointView.backgroundColor = [UIColor redColor];</div><div class="line">    [self addSubview:_redPointView];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">-(void)addGesture&#123;</div><div class="line">    //手势移动时相对高度</div><div class="line">    _mHeight = 100;</div><div class="line">    //是否处于动效状态</div><div class="line">    _isAnimating = NO;</div><div class="line">    </div><div class="line">    //手势</div><div class="line">    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanAction:)];</div><div class="line">    self.userInteractionEnabled = YES;</div><div class="line">    [self addGestureRecognizer:pan];</div><div class="line">    </div><div class="line">    // CADisplayLink默认每秒运行60次calculatePath是算出在运行期间_curveView的坐标，从而确定_shapeLayer的形状</div><div class="line">    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(calculatePath)];</div><div class="line">    [_displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];</div><div class="line">    _displayLink.paused = YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">#pragma mark - Action</div><div class="line">-(void)handlePanAction:(UIPanGestureRecognizer *)pan&#123;</div><div class="line">    if (!_isAnimating) &#123;</div><div class="line">        if (pan.state == UIGestureRecognizerStateChanged) &#123;</div><div class="line">            //设置红点跟随手势而移动</div><div class="line">            CGPoint point = [pan translationInView:self];</div><div class="line">            _mHeight = point.y*0.7 +MIN_HEIGHT;</div><div class="line">            /***注意因为使用的是kvo因此只有调用setter方法或使用kvc才可以触发监听事件***/</div><div class="line">            self.X = WIDTH/2.0 + point.x;</div><div class="line">            //防止手势向上拖拽时红点向上跑</div><div class="line">            self.Y = _mHeight &gt; MIN_HEIGHT ? _mHeight : MIN_HEIGHT;</div><div class="line">            _redPointView.frame = CGRectMake(_X, _Y, _redPointView.frame.size.width, _redPointView.frame.size.height);</div><div class="line">        &#125;</div><div class="line">        else if (pan.state == UIGestureRecognizerStateCancelled || pan.state == UIGestureRecognizerStateEnded || pan.state == UIGestureRecognizerStateFailed)&#123;</div><div class="line">            //拖拽手势结束,设置回弹效果</div><div class="line">            _isAnimating = YES;</div><div class="line">            //开启displaylink,会执行方法calculatePath.</div><div class="line">            _displayLink.paused = NO;</div><div class="line">            //弹簧回弹</div><div class="line">            [UIView animateWithDuration:1.0 delay:0.0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^&#123;</div><div class="line">                //红点是一个view.所以在block中有弹簧效果.然后根据他的动效路径,在calculatePath中计算弹性图形的形状</div><div class="line">                _redPointView.frame = CGRectMake(WIDTH/2, MIN_HEIGHT, 3, 3);</div><div class="line">            &#125; completion:^(BOOL finished) &#123;</div><div class="line">                if(finished)&#123;</div><div class="line">                    //停止计算</div><div class="line">                    _displayLink.paused = YES;</div><div class="line">                    _isAnimating = NO;</div><div class="line">                &#125;</div><div class="line">            &#125;];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">-(void)calculatePath&#123;</div><div class="line">    // 由于手势结束时,r5执行了一个UIView的弹簧动画,把这个过程的坐标记录下来,并相应的画出_shapeLayer形状</div><div class="line">    CALayer *layer = _redPointView.layer.presentationLayer;</div><div class="line">    self.X = layer.position.x;</div><div class="line">    self.Y = layer.position.y;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#pragma mark - 监听_X和_Y变化情况</div><div class="line">-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSKeyValueChangeKey,id&gt; *)change context:(void *)context&#123;</div><div class="line">    if ([keyPath isEqualToString:kX] || [keyPath isEqualToString:kY]) &#123;</div><div class="line">        [self updateShapeLayerPath];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#pragma mark - 更新shaplayer</div><div class="line">- (void)updateShapeLayerPath&#123;</div><div class="line">    // 更新_shapeLayer形状</div><div class="line">    UIBezierPath *tPath = [UIBezierPath bezierPath];</div><div class="line">    [tPath moveToPoint:CGPointMake(0, 0)];                   // r1点</div><div class="line">    [tPath addLineToPoint:CGPointMake(WIDTH, 0)];            // r2点</div><div class="line">    [tPath addLineToPoint:CGPointMake(WIDTH,  MIN_HEIGHT)];  // r4点</div><div class="line">    [tPath addQuadCurveToPoint:CGPointMake(0, MIN_HEIGHT) controlPoint:CGPointMake(_X, _Y)];</div><div class="line">    // r3,r4,r5确定的一个弧线</div><div class="line">    [tPath closePath];</div><div class="line">    _shapLayer.path = tPath.CGPath;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">使用时</div><div class="line">RefreshView *cuteView = [[RefreshView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];</div><div class="line">cuteView.backgroundColor = [UIColor whiteColor];</div><div class="line">[self.view addSubview:cuteView];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SELECT COUNT(*) FROM Designer_UserInfo </div><div class="line">结果为：</div><div class="line">4</div><div class="line">SELECT COUNT(*) FROM Designer_UserInfo WHERE Designer_UserInfo.CreatTime &lt; &apos;2017-06-21&apos;</div><div class="line">结果为：</div><div class="line">2</div></pre></td></tr></table></figure>
+<p>3.子句查询</p>
+<blockquote>
+<p>一般在项目中查询语句是肯定离不开嵌套查询的，也就是在主查询中嵌套子查询，一般用（）阔起来，下面就举例来说明</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">SELECT</div><div class="line">	*</div><div class="line">FROM</div><div class="line">	(</div><div class="line">		SELECT</div><div class="line">			Student_UserInfo.ID</div><div class="line">		FROM</div><div class="line">			Student_UserInfo</div><div class="line">		WHERE</div><div class="line">			Student_UserInfo.Age = 10</div><div class="line">	) AS a</div><div class="line">LEFT JOIN Designer_UserInfo ON Designer_UserInfo.ID = a.ID</div><div class="line">如上面括号中的就是子句，实现的功能就是：先在Student_UserInfo表中查到Student_UserInfo.Age = 10的数据并只返回Student_UserInfo.ID，</div><div class="line">然后再在这个查询结果的基础上左联Designer_UserInfo表，连接条件是两个ID值相等，也就是先在子句中查出个ID，然后再用这个ID作为其他的条件来查询。</div><div class="line">结果为：</div><div class="line">ID   ID1(Designer_UserInfo表中的)</div><div class="line">1	1	小糖豆	2017-06-20 00:00:00.0000000</div><div class="line">一般子句中查询语句单独运行是会得到相应的结果的，对于新手来说发现查询语句报错时可以一步步检查</div></pre></td></tr></table></figure>
+<p>4.COUNT与子句相结合<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">SELECT</div><div class="line">	COUNT(*)</div><div class="line">FROM</div><div class="line">	(</div><div class="line">		SELECT</div><div class="line">			Student_UserInfo.ID</div><div class="line">		FROM</div><div class="line">			Student_UserInfo</div><div class="line">		WHERE</div><div class="line">			Student_UserInfo.Age = 10</div><div class="line">	) AS a</div><div class="line">LEFT JOIN Designer_UserInfo ON Designer_UserInfo.ID = a.ID</div><div class="line">运行结果为：</div><div class="line">1</div></pre></td></tr></table></figure></p>
+<p>5.TOP与子句以及ORDER BY结合使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">排序与子句结合</div><div class="line">SELECT</div><div class="line">	*</div><div class="line">FROM</div><div class="line">	(</div><div class="line">		SELECT</div><div class="line">			*</div><div class="line">		FROM</div><div class="line">			Student_UserInfo</div><div class="line">		WHERE</div><div class="line">			Student_UserInfo.Age &gt;5</div><div class="line">	) AS a</div><div class="line">LEFT JOIN Designer_UserInfo ON Designer_UserInfo.ID = a.ID</div><div class="line">ORDER BY a.Age DESC</div><div class="line">结果为：</div><div class="line">ID   Age  ID(1) TrueName</div><div class="line">3	15	3	大猴子	2017-06-19 00:00:00.0000000</div><div class="line">2	11	2	小土豆	2017-06-21 00:00:00.0000000</div><div class="line">1	10	1	小糖豆	2017-06-20 00:00:00.0000000</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">排序与TOP结合</div><div class="line">SELECT</div><div class="line">	TOP 2 *</div><div class="line">FROM</div><div class="line">	(</div><div class="line">		SELECT</div><div class="line">			*</div><div class="line">		FROM</div><div class="line">			Student_UserInfo</div><div class="line">		WHERE</div><div class="line">			Student_UserInfo.Age &gt;5</div><div class="line">	) AS a</div><div class="line">LEFT JOIN Designer_UserInfo ON Designer_UserInfo.ID = a.ID</div><div class="line">ORDER BY a.Age DESC</div><div class="line">结果为：</div><div class="line">ID   Age  ID(1) TrueName</div><div class="line">3	15	3	大猴子	2017-06-19 00:00:00.0000000</div><div class="line">2	11	2	小土豆	2017-06-21 00:00:00.0000000</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意在子句中如果没有 TOP、OFFSET 或 FOR XML的情况下调用 ORDER BY是会报错的，但在外面就无所谓</p>
+</blockquote>
+<p>6.分页</p>
+<blockquote>
+<p>sqlserver中分页响度来说比sql中的分页要麻烦一点，平时我主要用的是BETWEEN关键字来分，当然还有很多小伙伴使用TOP来分，这边主要记录一下BETWEEN下分页。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">SELECT</div><div class="line">	*</div><div class="line">FROM</div><div class="line">	(</div><div class="line">		SELECT</div><div class="line">			ROW_NUMBER () OVER (</div><div class="line"></div><div class="line">				ORDER BY</div><div class="line">					Designer_UserInfo.CreatTime DESC</div><div class="line">			) AS ROWID,</div><div class="line">			Designer_UserInfo.ID,</div><div class="line">			Designer_UserInfo.CreatTime,</div><div class="line">			Designer_UserInfo.TrueName,</div><div class="line">			Student_UserInfo.Age</div><div class="line">		FROM</div><div class="line">			Designer_UserInfo</div><div class="line">		LEFT JOIN Student_UserInfo ON Designer_UserInfo.ID = Student_UserInfo.ID</div><div class="line">	) AS a</div><div class="line">WHERE</div><div class="line">	ROWID BETWEEN 1 AND 3</div><div class="line">结果为：第一列为列标识，后面均和上面返回的字段对应</div><div class="line">ROWID (列标识)</div><div class="line">1	4	2017-06-23 00:00:00.0000000	小萝卜	</div><div class="line">2	2	2017-06-21 00:00:00.0000000	小土豆	11</div><div class="line">3	1	2017-06-20 00:00:00.0000000	小糖豆	10</div><div class="line"></div><div class="line">若只运行（）内的子语句也就是不加分页的结果为</div><div class="line">1	4	2017-06-23 00:00:00.0000000	小萝卜	</div><div class="line">2	2	2017-06-21 00:00:00.0000000	小土豆	11</div><div class="line">3	1	2017-06-20 00:00:00.0000000	小糖豆	10</div><div class="line">4	3	2017-06-19 00:00:00.0000000	大猴子	15</div><div class="line"></div><div class="line">若把ROWID BETWEEN 1 AND 3改为 ROWID BETWEEN 3 AND 4则会返回最后两条，实际开发中变为 ROWID BETWEEN (pageindex-1)*pagesize+ 1 AND pageindex*pagesize即可</div></pre></td></tr></table></figure>
+<blockquote>
+<p>接下来就解释一下上面的分页语句<br>先来看子句中的ROW_NUMBER () OVER (ORDER BY  Designer_UserInfo.CreatTime DESC) AS ROWID, 这句话其实就是为将要返回的数据增加一个列标识叫做ROWID，上面咱们已经说过 SELECT后面跟的字段都是作为返回字段的，这个也是，因此大家可以在返回的结果中看到第一列就是ROWID。<br>ROW_NUMBER ()这个函数是为了根据OVER后的排序子句生成一个递增的连续序号，也就是ROWID的值。<br>OVER后面跟的是排序语句。<br>这样的话就出现了上面中的第二个结果，单纯的经过排序的数据，只不过增加了一列，子句外的才起到了真正分页的功能只不过一句子句中生成的ROWID来分页。</p>
+</blockquote>
 
       
 
@@ -290,7 +288,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/06/基于CAShapLayer和UIBezierPath的下拉刷新动画/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/23/SQL-Server之-排序和分页/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -304,18 +302,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/20/SQL-Server之-基本关键字/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          SQL-Server之--基本关键字
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/04/27/Controller瘦身/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Controller瘦身</div>
+    <a href="/2017/06/20/SQL-Server之-基本关键字/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SQL-Server之--基本关键字</div>
       <i class="icon-circle-right"></i>
     </a>
   
