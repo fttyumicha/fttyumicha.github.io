@@ -155,6 +155,137 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cocos2d-x学习之-加速度计" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/15/cocos2d-x学习之-加速度计/">cocos2d-x学习之--加速度计</a>
+    </h1>
+  
+
+        
+        <a href="/2016/10/15/cocos2d-x学习之-加速度计/" class="archive-article-date">
+  	<time datetime="2016-10-15T12:20:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在上一篇中记录了事件处理机制,这篇主要记录一下加速度计事件.<code>EventListenerAcceleration</code>对象表示加速度计监听器,响应函数只有一个<code>void Layer::onAcceleration(Acceleration* acc, Event* unused_event)</code>第一个参数是<code>Acceleration</code>对象,表示加速度计的操作信息,包含了加速度计的三个轴<code>(X,Y,Z)</code>的信息,以重力加速度为单位,数值范围为<code>(-1,1)</code>,第二个参数是该特定事件的Event对象.<br>在赛车类和冒险类游戏中经常会使用到加速度计,通过一个例子来了解.首先在<code>HelloWorldScene.h</code>文件中定义一个精灵球,并定义一个监测回调的函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">protected:</div><div class="line"> //定义目标精灵</div><div class="line">    cocos2d::Sprite* _ball;</div><div class="line">//定义加速度计事件的响应函数</div><div class="line">    void onAcceleration(cocos2d::Acceleration* acc,cocos2d::Event* event);</div></pre></td></tr></table></figure></p>
+<p>然后在<code>HelloWorldScene.cpp</code>文件中具体实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> //创建精灵球</div><div class="line">   _ball = Sprite::create(&quot;basketball.png&quot;);</div><div class="line">   _ball -&gt;setPosition(Vec2(visibleSize.width/2, visibleSize.height/2));</div><div class="line">   this-&gt;addChild(_ball);</div><div class="line">//启动设备的加速度计(此处一定要注意必须开启,只有开启设备的加速度计之后,当手机随着我们的动作而动时,才可以记录下各个方向的加速度,然后由分发器分发给监听器)</div><div class="line">   Device ::setAccelerometerEnabled(true);</div><div class="line">//创建加速度监听器</div><div class="line">   auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(HelloWorld::onAcceleration, this));</div><div class="line">//添加加速度计事件监听器</div><div class="line">   _eventDispatcher-&gt;addEventListenerWithSceneGraphPriority(listener, this);</div></pre></td></tr></table></figure></p>
+<p>接下来在此文件中实现回调函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">//宏定义</div><div class="line">#define FIX_POS(_pos,_min,_max)\</div><div class="line">if(_pos &lt; _min)\</div><div class="line">_pos = _min;\</div><div class="line">else if(_pos &gt; _max)\</div><div class="line">_pos = _max;\</div><div class="line"></div><div class="line">void HelloWorld::onAcceleration(cocos2d::Acceleration *acc, cocos2d::Event *event)&#123;</div><div class="line">    Size visibleSize = Director::getInstance()-&gt;getVisibleSize();</div><div class="line">    //获取导演对象</div><div class="line">    auto pDir = Director::getInstance();</div><div class="line">    //如果精灵球 == NULL则返回</div><div class="line">    if (_ball == NULL) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    //获得精灵球的大小</div><div class="line">    auto ballSize = _ball-&gt;getContentSize();</div><div class="line">    //获取精灵球的位置</div><div class="line">    auto positionNow = _ball-&gt;getPosition();</div><div class="line">    //将精灵球的位置转化为坐标系</div><div class="line">    auto positionUI = pDir-&gt;convertToUI(positionNow);</div><div class="line">    //获取加速度</div><div class="line">    positionUI.x += acc-&gt;x * 9.81f;// positionUI.x = positionUI.x + acc-&gt;x * 9.81f;</div><div class="line">    positionUI.y += acc-&gt;y * 9.81f;</div><div class="line">    //将屏幕坐标换为openGL坐标</div><div class="line">    auto positionGL = pDir-&gt;convertToGL(positionUI);</div><div class="line">    //边界检测,防止精灵球在屏幕之外</div><div class="line">    FIX_POS(positionGL.x, ballSize.width/2.0, (visibleSize.width-ballSize.width/2.0));</div><div class="line">    FIX_POS(positionGL.y, ballSize.height/2.0, (visibleSize.height-ballSize.height/2.0));</div><div class="line">    _ball -&gt; setPosition(positionGL);   </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/15/cocos2d-x学习之-加速度计/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-cocos2d-x学习之-事件处理机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/29/cocos2d-x学习之-事件处理机制/">cocos2d-x学习之--事件处理机制</a>
+    </h1>
+  
+
+        
+        <a href="/2016/09/29/cocos2d-x学习之-事件处理机制/" class="archive-article-date">
+  	<time datetime="2016-09-28T16:21:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>cocos2d-x的内部运行机制:由事件驱动的处理机制,所谓事件驱动,就是指只有当事件发生了,才会执行的对应的操作;例如,屏幕上有一个按钮,只有当玩家点击按钮时,才会调用对应的函数,否则,该处理机制的响应函数只处于等待调用的状态.在cocos2d-x当中,用户操作经过<code>接收数据</code>,<code>分发事件</code>和<code>处理响应</code>3个步骤.<br>1.数据接收(<code>Touch</code>)<br>cocos2d-x所接收的数据都要作为统一的数据格式备操作和传递,cocos2d-x中的触摸类<code>Touch</code>就用来专门存储用户操作.每个<code>Touch</code>类的对象都包含了一个用户操作数据信息,保存了<code>id</code>标示,<code>x</code>坐标和<code>y</code>坐标.<br>重点代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">//返回当前在openGL触摸位置坐标</div><div class="line">Vec2 getLocation() const;</div><div class="line">//返回之前在openGL触摸位置坐标</div><div class="line">Vec2 getPreviousLocation() const;</div><div class="line">//返回在openGL开始触摸位置坐标</div><div class="line">Vec2 getStartLocation() const;</div><div class="line">//返回当前触摸在屏幕坐标位置</div><div class="line">Vec2 getLocationInView() const;</div><div class="line">//返回之前触摸在屏幕坐标位置</div><div class="line">Vec2 getPreviousLocationInView() const;</div><div class="line">//返回开始触摸在屏幕坐标位置</div><div class="line">Vec2 getStartLocationInView() const;</div><div class="line">//设置用户操作数据(id标示,x坐标,y坐标)</div><div class="line">void setTouchInfo(int id, float x, float y)</div><div class="line">    &#123;</div><div class="line">        _id = id;</div><div class="line">        _prevPoint = _point;</div><div class="line">        _point.x   = x;</div><div class="line">        _point.y   = y;</div><div class="line">        _curForce = 0.0f;</div><div class="line">        _maxForce = 0.0f;</div><div class="line">        if (!_startPointCaptured)</div><div class="line">        &#123;</div><div class="line">            _startPoint = _point;</div><div class="line">            _startPointCaptured = true;</div><div class="line">            _prevPoint = _point;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>2.分发事件(<code>EventDispatcher</code>)<br>来自设备平台的的信息数据经过转化成为了<code>Touch</code>对象,cocos2d获得有效的用户操作数据之后,进入到分发事件步骤.<code>EventDispatcher</code>类表示一个事件分发器,作用是管理事件监听器以及事件分发,当一个事件触发时,它会向所有需要响应的对象发送用户操作信息.<br>常用函数如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//添加场景优先事件监听器,第一个参数是事件监听器对象,第二个参数是监听的节点对象</div><div class="line">void addEventListenerWithSceneGraphPriority(EventListener* listener, Node* node);</div><div class="line">//添加固定优先值的事件监听器</div><div class="line">void addEventListenerWithFixedPriority(EventListener* listener, int fixedPriority);</div><div class="line">//删除一个指定的事件监听器</div><div class="line">void removeEventListener(EventListener* listener);</div><div class="line">//删除某一类事件监听器</div><div class="line">void removeEventListenersForType(EventListener::Type listenerType);</div><div class="line">//删除所有监听器</div><div class="line">void removeAllEventListeners();</div><div class="line">//设置指定的事件监听器的优先级值</div><div class="line">void setPriority(EventListener* listener, int fixedPriority);</div><div class="line">//设置事件分发器是否可用</div><div class="line">void setEnabled(bool isEnabled);</div><div class="line">//检查是否启用了事件分发器</div><div class="line">bool isEnabled() const;</div></pre></td></tr></table></figure></p>
+<p>3.处理响应(<code>EventListener</code>)<br>在明白分发信息机制后,我们肯定会想这些用户信息要分发到哪里去呢,分发器是怎么知道谁是需要响应的对象呢?接下来就来了解一下监听器类<code>EventListener</code>,从这个类的名字就可以看出,它就是一个需要接收用户操作信息的事件监听对象.那么事件分发器是如何将用户的操作信息分发到具体的监听器类的呢?咱们现在载回过头来看一下事件分发器的函数<code>void addEventListenerWithSceneGraphPriority(EventListener* listener, Node* node)</code>第一个参数就是<code>EventListener</code>的一个实例对象,开发者通过调用事件分发器<code>EventDispatcher</code>的这个函数将监听的器添加到事件分发器的集合列表中,而第二个参数<code>Node</code>就是具体的监听对象了.<br><em>需要注意的是</em>:所有需要用户操作的监听对象必须在被添加到分发器结合列表之后,才可以接收到响应事件,简单点说就是必须通过函数<code>addEventListenerWithSceneGraphPriority</code>把监听事件添加到事件分发器的队列中才可以.<br><code>EventListener</code>类是事件监听器的基类,主要使用的是他的6个子类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//单点触摸事件监听器</div><div class="line">EventListenerTouchOneByOne</div><div class="line">//多点触摸监听器</div><div class="line">EventListenerTouchAllAtOnce</div><div class="line">//加速度级事件监听器</div><div class="line">EventListenerAcceleration</div><div class="line">//按键事件监听器</div><div class="line">EventListenerKeyboard</div><div class="line">//鼠标事件监听器</div><div class="line">EventListenerMouse</div><div class="line">//自定义事件监听器</div><div class="line">EventListenerCustom</div></pre></td></tr></table></figure></p>
+<p>接下来的文章将会着重介绍一下加速度计监听事件和触摸监听事件.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/09/29/cocos2d-x学习之-事件处理机制/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cocos2d-x学习之-搭建环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
