@@ -155,6 +155,175 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cocos2d-x学习之-搭建环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/28/cocos2d-x学习之-搭建环境/">cocos2d-x学习之--搭建环境</a>
+    </h1>
+  
+
+        
+        <a href="/2016/09/28/cocos2d-x学习之-搭建环境/" class="archive-article-date">
+  	<time datetime="2016-09-28T04:30:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.去cocos2d-x的官网上下载最新的cocos2d-x的包,我下载的是coco2d-x-3.13.1版本的;</p>
+<p>2.然后打开终端(mac环境下)输入cd+空格+刚才你自己下载的文件的路径,如果感觉看路径麻烦的话,直接cd+空格,然后把你下载的文件夹拖进终端会自动变成路径,按return就进入到cocos2d-x的文件夹中了;</p>
+<p>3.然后执行安装的命令,python setup.py 按return键会提示你有没有配置成功;</p>
+<p>4.如果配置成功后咱们就可以新建一个工程 cocos new HeolloWorld -p org.cocos2dx -l cpp -d codes,这就话的意思在在codes文件夹下创建一个名为HeolloWorld的工程,按return就可以了,这是打开你的cocos2d-x文件夹,可以看到一个codes文件夹下有个HeolloWorld工程,进入此工程,mac环境下打开proj.ios_mac文件夹,再使用xcode打开工程文件就可以了.</p>
+<p>5.但是如果你的xcode是xcode8的话,可能会编译错误,原因是因为从xcode8,ios10开始,xcode不再可以使用各种插件,这是打开终端,输入sudo /usr/libexec/xpccachectl回车,把xcode关闭再重新打开,再编译你之前的项目工程就可以了;</p>
+<p>之后再继续记录之后的学习.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/09/28/cocos2d-x学习之-搭建环境/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-工作中遇到的问题整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/10/工作中遇到的问题整理/">工作中遇到的问题整理</a>
+    </h1>
+  
+
+        
+        <a href="/2016/09/10/工作中遇到的问题整理/" class="archive-article-date">
+  	<time datetime="2016-09-10T10:41:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.cell上控件(比如label)比预设的长度要小的问题</p>
+<p>不知道大家有没有遇到过tableview列表cell的宽度比自己预设的宽度要小一点,并且当消失在视线后再出来时恢复正常的宽度,由于那时候入行 还不久么,怎么找也找不到原因,后来才发现如果自定义cell的时候如果用固定的某个值,比如说200,就没问题,如果是使用 self.contenview.frame.size.width,就会出现上面所说的情况.原因是什么呢?主要是因为时机的问题,当 tableview最初加载自定义的cell时,其实这时候的cell的contentview大小是不确定的,因此会按照最小的屏幕系列宽度来计算,所 以在cell中以contenview的大小来做标尺的控件就会出现问题,当发生重用的时候contentview的大小已经确定,因此再次出现在视野里 时就显示正常了;解决方法很简单,自定义cell中控件的大小以屏幕的宽度为依据就可以了;</p>
+<p>2.获取cell上控件相对于屏幕的位置</p>
+<p>NSIndexPath *indexpath = [NSIndexPath indexPathForRow:3 inSection:1];</p>
+<p>CGRect rectInTableView = [_tableview rectForRowAtIndexPath:indexpath];</p>
+<p>CGRect rect = [_tableview convertRect:rectInTableView toView:[_tableview superview]];</p>
+<p>3.键盘闪一下的问题:</p>
+<p>问题描述:</p>
+<p>当在一个界面中存在输入框时,当成为第一响应者之后回触发键盘的出现,若这时点击返回上一  界面让其出现一个弹框提示,点击取消依然停留在当前页面,点击确定返回上一页面时回出现键盘在上一页面闪一下的问题;</p>
+<p>问题原因:</p>
+<p>当弹框出现时,其他的所用控件将失去第一响应,但会记录弹框出现以前的状态,当弹框消失后会让一切恢复原样,则如果键盘本身是编辑状态,弹框消失后键盘会再次出来,但键盘的出现和消失有动画时间大概0.25秒,因此如果点击弹框的确定按钮,返回上一页面,由于键盘的动画还没有完成,因此会在上一界面继续完成,所以会出现键盘闪的问题;</p>
+<p>解决方法:</p>
+<p>让键盘的出现或消失在本界面完成,也就是当点击确定按钮的触发方法中延迟大概0.25秒再pop回上一页面,就可以解决;</p>
+<p>4.解决textFiled或textview刚开始编辑时光标不在起始位置的问题,手动设置选中位置即可</p>
+<p>self.contentTextView.selectedRange = NSMakeRange(0,0);</p>
+<p>若不管用,则设置(ios7后导航栏偏移的问题)</p>
+<p>self.automaticallyAdjustsScrollViewInsets = NO;</p>
+<p>5.项目中若当隐藏navigation bar 时,若出现view下移导致电池栏为空白,原因是因为ios7时edgesForExtendedLayout默认为UIRectEdgeAll,设置成</p>
+<p>if(IOS7DEVICE){</p>
+<p>if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {</p>
+<p>self.edgesForExtendedLayout = UIRectEdgeNone;</p>
+<p>}</p>
+<p>}</p>
+<p>即可.</p>
+<p>6.在ARC项目中,当pop出某个控制器时,不走dealloc方法,也就是内存泄漏,之所以会这样,是因为在某个地方强引用了此控制器,当pop出此控制器时其引用计数不为0因此没有走dealloc;通常情况下强引用最容易出现在bloc中,或者是delegate声明时用了strong,再或者是定时器没有销毁;因此开始在此控制器中寻找bloc中是否强引用了self,发现没有,再看看定时器在viewWillDisapear时已经销毁,所以最后一种可能就是某个地方的delegate用的strong,而又把此控制器设成了代理,果不奇然,真的是一个神一样存在的人声明代理是用的strong,改成assign或者weak后就正常了.</p>
+<p>7.设置navigationItem的rightBarButtonItem或者是leftBarButtonItem之后发现按钮点击的响应范围比实际的(亦或者说比button的rect大好多)</p>
+<p>原因:给导航栏设置buttonitem后会自动增大它的响应范围</p>
+<p>解决方法:创建一个和button的等大的view,再根据创建buttonitem后就可以了,代码如下:</p>
+<p>self.rightBt = [UIButton buttonWithType:UIButtonTypeCustom];</p>
+<p>_rightBt.frame = CGRectMake(0, 0, 60, 30);</p>
+<p>[_rightBt setTitle:@”换一批” forState:UIControlStateNormal];</p>
+<p>_rightBt.titleLabel.font = [UIFont systemFontOfSize:14];</p>
+<p>[_rightBt addTarget:self action:@selector(changeOther:) forControlEvents:UIControlEventTouchUpInside];</p>
+<p>UIView *view = [[UIView alloc]initWithFrame:_rightBt.bounds];</p>
+<p>[view addSubview:_rightBt];</p>
+<p>UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:view];</p>
+<p>self.navigationItem.rightBarButtonItem = rightItem;</p>
+<p>8.线上崩溃提示deleteRowsAtIndexPaths:数组越界,但是纵观整个页面没有进行任何的删除操作.由于是线上bug,不容易复原,因此着重查看了tableview的数据源处理和代理方法,最后发现此页面的刷新都采用的是局部刷新,由于业务逻辑,页面将要消失时把数据源都移除了,然而在页面将要出现时没有进行任何的数据请求或刷新UI,因此当从另外一个页面返回此页面进行点击事件后调用局部刷新就会出问题;</p>
+<p>因为- (void)reloadRowsAtIndexPaths:(NSArray*)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;此方法的刷新机制是先删除对应的cell,然后再重新创建达到目的.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/09/10/工作中遇到的问题整理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-滚动Label的封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
