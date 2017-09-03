@@ -5,24 +5,23 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>SQL-Server之--排序和分页 | Hexo</title>
+  <link rel="dns-prefetch" href="//litten.me">
+  <title>SQL-Server之--排序和分页 | Little TT&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在开始记录排序和分页之前先来记录几个与之相关的关键字TOP，COUNT,ORDER BY  1.TOP  TOP关键字表示返回按照某种排序之后的数据取最上面几条，如TOP 1 则返回第一条数据，如果是通过参数来定的话 则TOP ${pomotionCount}，不能用#来修饰TOP后面的参数。ORDER BY 排序DESC  降序ASC 升序下面来看个例子  123456789101112131">
+<meta name="keywords" content="����">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL-Server之--排序和分页">
-<meta property="og:url" content="http://yoursite.com/2017/06/23/SQL-Server之-排序和分页/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="//litten.me/2017/06/23/SQL-Server之-排序和分页/index.html">
+<meta property="og:site_name" content="Little TT&#39;s Blog">
 <meta property="og:description" content="在开始记录排序和分页之前先来记录几个与之相关的关键字TOP，COUNT,ORDER BY  1.TOP  TOP关键字表示返回按照某种排序之后的数据取最上面几条，如TOP 1 则返回第一条数据，如果是通过参数来定的话 则TOP ${pomotionCount}，不能用#来修饰TOP后面的参数。ORDER BY 排序DESC  降序ASC 升序下面来看个例子  123456789101112131">
 <meta property="og:updated_time" content="2017-09-03T02:00:49.785Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL-Server之--排序和分页">
 <meta name="twitter:description" content="在开始记录排序和分页之前先来记录几个与之相关的关键字TOP，COUNT,ORDER BY  1.TOP  TOP关键字表示返回按照某种排序之后的数据取最上面几条，如TOP 1 则返回第一条数据，如果是通过参数来定的话 则TOP ${pomotionCount}，不能用#来修饰TOP后面的参数。ORDER BY 排序DESC  降序ASC 升序下面来看个例子  123456789101112131">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/assets/img/favicon.ico">
   
   <link rel="stylesheet" type="text/css" href="/./main.266c1c.css">
   <style type="text/css">
@@ -34,6 +33,16 @@
   
 
   
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?a30844fa2bcbce0a9e001fe06cefeddf";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 
 </head>
 
@@ -46,21 +55,19 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/richtt.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">My Little TT</a></h1>
+		  <h1 class="header-author"><a href="/">Little TT</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">武功盖世 寸草不生</p>
+		<p class="header-subtitle">Be Better</p>
 		
 
 		<nav class="header-menu">
 			<ul>
 			
 				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags/随笔/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -71,8 +78,6 @@
     			
             
     			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
-    			
             
     			
     			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
@@ -82,14 +87,6 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 			</div>
 		</nav>
 	</header>		
@@ -106,17 +103,15 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/richtt.png" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">My Little TT</h1>
+			  <h1 class="header-author js-header-author">Little TT</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>武功盖世 寸草不生<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Be Better<i class="icon icon-quo-right"></i></p>
 			
 			
-			
-				
 			
 				
 			
@@ -125,14 +120,6 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-			        
 				</div>
 			</nav>
 
@@ -140,9 +127,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -184,20 +169,20 @@
 <blockquote>
 <p>TOP关键字表示返回按照某种排序之后的数据取最上面几条，如TOP 1 则返回第一条数据，如果是通过参数来定的话 则TOP ${pomotionCount}，不能用#来修饰TOP后面的参数。<br>ORDER BY 排序<br>DESC  降序<br>ASC 升序<br>下面来看个例子</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">按照创建时间升序排序</div><div class="line">SELECT  *FROM Designer_UserInfo ORDER BY Designer_UserInfo.CreatTime ASC</div><div class="line">结果为：</div><div class="line">3	大猴子	2017-06-19 </div><div class="line">1	小糖豆	2017-06-20 </div><div class="line">2	小土豆	2017-06-21 </div><div class="line">4	小萝卜	2017-06-23 </div><div class="line">按照创建时间降序排序</div><div class="line">SELECT  *FROM Designer_UserInfo ORDER BY Designer_UserInfo.CreatTime DESC</div><div class="line">结果为：</div><div class="line">4	小萝卜	2017-06-23 </div><div class="line">2	小土豆	2017-06-21 </div><div class="line">1	小糖豆	2017-06-20 </div><div class="line">3	大猴子	2017-06-19 </div><div class="line">选排序后的第一条</div><div class="line">SELECT TOP 1 *FROM Designer_UserInfo ORDER BY Designer_UserInfo.CreatTime DESC</div><div class="line">结果为：</div><div class="line">4	小萝卜	2017-06-23</div></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">按照创建时间升序排序</div><div class="line">SELECT  *FROM Designer_UserInfo ORDER BY Designer_UserInfo.CreatTime ASC</div><div class="line">结果为：</div><div class="line"><span class="number">3</span>	大猴子	<span class="number">2017</span><span class="number">-06</span><span class="number">-19</span> </div><div class="line"><span class="number">1</span>	小糖豆	<span class="number">2017</span><span class="number">-06</span><span class="number">-20</span> </div><div class="line"><span class="number">2</span>	小土豆	<span class="number">2017</span><span class="number">-06</span><span class="number">-21</span> </div><div class="line"><span class="number">4</span>	小萝卜	<span class="number">2017</span><span class="number">-06</span><span class="number">-23</span> </div><div class="line">按照创建时间降序排序</div><div class="line">SELECT  *FROM Designer_UserInfo ORDER BY Designer_UserInfo.CreatTime DESC</div><div class="line">结果为：</div><div class="line"><span class="number">4</span>	小萝卜	<span class="number">2017</span><span class="number">-06</span><span class="number">-23</span> </div><div class="line"><span class="number">2</span>	小土豆	<span class="number">2017</span><span class="number">-06</span><span class="number">-21</span> </div><div class="line"><span class="number">1</span>	小糖豆	<span class="number">2017</span><span class="number">-06</span><span class="number">-20</span> </div><div class="line"><span class="number">3</span>	大猴子	<span class="number">2017</span><span class="number">-06</span><span class="number">-19</span> </div><div class="line">选排序后的第一条</div><div class="line">SELECT TOP <span class="number">1</span> *FROM Designer_UserInfo ORDER BY Designer_UserInfo.CreatTime DESC</div><div class="line">结果为：</div><div class="line"><span class="number">4</span>	小萝卜	<span class="number">2017</span><span class="number">-06</span><span class="number">-23</span></div></pre></td></tr></table></figure>
 <p>2.COUNT</p>
 <blockquote>
 <p>COUNT 主要是用来计算条数的一个关键字，语法为COUNT(*)</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SELECT COUNT(*) FROM Designer_UserInfo </div><div class="line">结果为：</div><div class="line">4</div><div class="line">SELECT COUNT(*) FROM Designer_UserInfo WHERE Designer_UserInfo.CreatTime &lt; &apos;2017-06-21&apos;</div><div class="line">结果为：</div><div class="line">2</div></pre></td></tr></table></figure>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> COUNT<span class="comment">(*) FROM Designer_UserInfo </span></div><div class="line"><span class="comment">结果为：</span></div><div class="line"><span class="comment">4</span></div><div class="line"><span class="comment">SELECT COUNT(*)</span> <span class="keyword">FROM</span> Designer_UserInfo <span class="keyword">WHERE</span> Designer_UserInfo.CreatTime &lt; <span class="string">'2017-06-21'</span></div><div class="line">结果为：</div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure>
 <p>3.子句查询</p>
 <blockquote>
 <p>一般在项目中查询语句是肯定离不开嵌套查询的，也就是在主查询中嵌套子查询，一般用（）阔起来，下面就举例来说明</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">SELECT</div><div class="line">	*</div><div class="line">FROM</div><div class="line">	(</div><div class="line">		SELECT</div><div class="line">			Student_UserInfo.ID</div><div class="line">		FROM</div><div class="line">			Student_UserInfo</div><div class="line">		WHERE</div><div class="line">			Student_UserInfo.Age = 10</div><div class="line">	) AS a</div><div class="line">LEFT JOIN Designer_UserInfo ON Designer_UserInfo.ID = a.ID</div><div class="line">如上面括号中的就是子句，实现的功能就是：先在Student_UserInfo表中查到Student_UserInfo.Age = 10的数据并只返回Student_UserInfo.ID，</div><div class="line">然后再在这个查询结果的基础上左联Designer_UserInfo表，连接条件是两个ID值相等，也就是先在子句中查出个ID，然后再用这个ID作为其他的条件来查询。</div><div class="line">结果为：</div><div class="line">ID   ID1(Designer_UserInfo表中的)</div><div class="line">1	1	小糖豆	2017-06-20 00:00:00.0000000</div><div class="line">一般子句中查询语句单独运行是会得到相应的结果的，对于新手来说发现查询语句报错时可以一步步检查</div></pre></td></tr></table></figure>
-<p>4.COUNT与子句相结合<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">SELECT</div><div class="line">	COUNT(*)</div><div class="line">FROM</div><div class="line">	(</div><div class="line">		SELECT</div><div class="line">			Student_UserInfo.ID</div><div class="line">		FROM</div><div class="line">			Student_UserInfo</div><div class="line">		WHERE</div><div class="line">			Student_UserInfo.Age = 10</div><div class="line">	) AS a</div><div class="line">LEFT JOIN Designer_UserInfo ON Designer_UserInfo.ID = a.ID</div><div class="line">运行结果为：</div><div class="line">1</div></pre></td></tr></table></figure></p>
-<p>5.TOP与子句以及ORDER BY结合使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">排序与子句结合</div><div class="line">SELECT</div><div class="line">	*</div><div class="line">FROM</div><div class="line">	(</div><div class="line">		SELECT</div><div class="line">			*</div><div class="line">		FROM</div><div class="line">			Student_UserInfo</div><div class="line">		WHERE</div><div class="line">			Student_UserInfo.Age &gt;5</div><div class="line">	) AS a</div><div class="line">LEFT JOIN Designer_UserInfo ON Designer_UserInfo.ID = a.ID</div><div class="line">ORDER BY a.Age DESC</div><div class="line">结果为：</div><div class="line">ID   Age  ID(1) TrueName</div><div class="line">3	15	3	大猴子	2017-06-19 00:00:00.0000000</div><div class="line">2	11	2	小土豆	2017-06-21 00:00:00.0000000</div><div class="line">1	10	1	小糖豆	2017-06-20 00:00:00.0000000</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">排序与TOP结合</div><div class="line">SELECT</div><div class="line">	TOP 2 *</div><div class="line">FROM</div><div class="line">	(</div><div class="line">		SELECT</div><div class="line">			*</div><div class="line">		FROM</div><div class="line">			Student_UserInfo</div><div class="line">		WHERE</div><div class="line">			Student_UserInfo.Age &gt;5</div><div class="line">	) AS a</div><div class="line">LEFT JOIN Designer_UserInfo ON Designer_UserInfo.ID = a.ID</div><div class="line">ORDER BY a.Age DESC</div><div class="line">结果为：</div><div class="line">ID   Age  ID(1) TrueName</div><div class="line">3	15	3	大猴子	2017-06-19 00:00:00.0000000</div><div class="line">2	11	2	小土豆	2017-06-21 00:00:00.0000000</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span></div><div class="line">	*</div><div class="line"><span class="keyword">FROM</span></div><div class="line">	(</div><div class="line">		<span class="keyword">SELECT</span></div><div class="line">			Student_UserInfo.ID</div><div class="line">		<span class="keyword">FROM</span></div><div class="line">			Student_UserInfo</div><div class="line">		<span class="keyword">WHERE</span></div><div class="line">			Student_UserInfo.Age = <span class="number">10</span></div><div class="line">	) <span class="keyword">AS</span> a</div><div class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Designer_UserInfo <span class="keyword">ON</span> Designer_UserInfo.ID = a.ID</div><div class="line">如上面括号中的就是子句，实现的功能就是：先在Student_UserInfo表中查到Student_UserInfo.Age = <span class="number">10</span>的数据并只返回Student_UserInfo.ID，</div><div class="line">然后再在这个查询结果的基础上左联Designer_UserInfo表，连接条件是两个<span class="keyword">ID</span>值相等，也就是先在子句中查出个<span class="keyword">ID</span>，然后再用这个<span class="keyword">ID</span>作为其他的条件来查询。</div><div class="line">结果为：</div><div class="line"><span class="keyword">ID</span>   ID1(Designer_UserInfo表中的)</div><div class="line"><span class="number">1</span>	<span class="number">1</span>	小糖豆	<span class="number">2017</span><span class="number">-06</span><span class="number">-20</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00.0000000</span></div><div class="line">一般子句中查询语句单独运行是会得到相应的结果的，对于新手来说发现查询语句报错时可以一步步检查</div></pre></td></tr></table></figure>
+<p>4.COUNT与子句相结合<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">SELECT</div><div class="line">	COUNT(*)</div><div class="line">FROM</div><div class="line">	(</div><div class="line">		SELECT</div><div class="line">			Student_UserInfo.ID</div><div class="line">		FROM</div><div class="line">			Student_UserInfo</div><div class="line">		WHERE</div><div class="line">			Student_UserInfo<span class="selector-class">.Age</span> = <span class="number">10</span></div><div class="line">	) AS a</div><div class="line">LEFT JOIN Designer_UserInfo ON Designer_UserInfo<span class="selector-class">.ID</span> = <span class="selector-tag">a</span>.ID</div><div class="line">运行结果为：</div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure></p>
+<p>5.TOP与子句以及ORDER BY结合使用<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">排序与子句结合</div><div class="line"><span class="keyword">SELECT</span></div><div class="line">	*</div><div class="line"><span class="keyword">FROM</span></div><div class="line">	(</div><div class="line">		<span class="keyword">SELECT</span></div><div class="line">			*</div><div class="line">		<span class="keyword">FROM</span></div><div class="line">			Student_UserInfo</div><div class="line">		<span class="keyword">WHERE</span></div><div class="line">			Student_UserInfo.Age &gt;<span class="number">5</span></div><div class="line">	) <span class="keyword">AS</span> a</div><div class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Designer_UserInfo <span class="keyword">ON</span> Designer_UserInfo.ID = a.ID</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> a.Age <span class="keyword">DESC</span></div><div class="line">结果为：</div><div class="line"><span class="keyword">ID</span>   Age  <span class="keyword">ID</span>(<span class="number">1</span>) TrueName</div><div class="line"><span class="number">3</span>	<span class="number">15</span>	<span class="number">3</span>	大猴子	<span class="number">2017</span><span class="number">-06</span><span class="number">-19</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00.0000000</span></div><div class="line"><span class="number">2</span>	<span class="number">11</span>	<span class="number">2</span>	小土豆	<span class="number">2017</span><span class="number">-06</span><span class="number">-21</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00.0000000</span></div><div class="line"><span class="number">1</span>	<span class="number">10</span>	<span class="number">1</span>	小糖豆	<span class="number">2017</span><span class="number">-06</span><span class="number">-20</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00.0000000</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">排序与TOP结合</div><div class="line"><span class="keyword">SELECT</span></div><div class="line">	TOP <span class="number">2</span> *</div><div class="line"><span class="keyword">FROM</span></div><div class="line">	(</div><div class="line">		<span class="keyword">SELECT</span></div><div class="line">			*</div><div class="line">		<span class="keyword">FROM</span></div><div class="line">			Student_UserInfo</div><div class="line">		<span class="keyword">WHERE</span></div><div class="line">			Student_UserInfo.Age &gt;<span class="number">5</span></div><div class="line">	) <span class="keyword">AS</span> a</div><div class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Designer_UserInfo <span class="keyword">ON</span> Designer_UserInfo.ID = a.ID</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> a.Age <span class="keyword">DESC</span></div><div class="line">结果为：</div><div class="line"><span class="keyword">ID</span>   Age  <span class="keyword">ID</span>(<span class="number">1</span>) TrueName</div><div class="line"><span class="number">3</span>	<span class="number">15</span>	<span class="number">3</span>	大猴子	<span class="number">2017</span><span class="number">-06</span><span class="number">-19</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00.0000000</span></div><div class="line"><span class="number">2</span>	<span class="number">11</span>	<span class="number">2</span>	小土豆	<span class="number">2017</span><span class="number">-06</span><span class="number">-21</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00.0000000</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>注意在子句中如果没有 TOP、OFFSET 或 FOR XML的情况下调用 ORDER BY是会报错的，但在外面就无所谓</p>
 </blockquote>
@@ -205,34 +190,13 @@
 <blockquote>
 <p>sqlserver中分页响度来说比sql中的分页要麻烦一点，平时我主要用的是BETWEEN关键字来分，当然还有很多小伙伴使用TOP来分，这边主要记录一下BETWEEN下分页。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">SELECT</div><div class="line">	*</div><div class="line">FROM</div><div class="line">	(</div><div class="line">		SELECT</div><div class="line">			ROW_NUMBER () OVER (</div><div class="line"></div><div class="line">				ORDER BY</div><div class="line">					Designer_UserInfo.CreatTime DESC</div><div class="line">			) AS ROWID,</div><div class="line">			Designer_UserInfo.ID,</div><div class="line">			Designer_UserInfo.CreatTime,</div><div class="line">			Designer_UserInfo.TrueName,</div><div class="line">			Student_UserInfo.Age</div><div class="line">		FROM</div><div class="line">			Designer_UserInfo</div><div class="line">		LEFT JOIN Student_UserInfo ON Designer_UserInfo.ID = Student_UserInfo.ID</div><div class="line">	) AS a</div><div class="line">WHERE</div><div class="line">	ROWID BETWEEN 1 AND 3</div><div class="line">结果为：第一列为列标识，后面均和上面返回的字段对应</div><div class="line">ROWID (列标识)</div><div class="line">1	4	2017-06-23 00:00:00.0000000	小萝卜	</div><div class="line">2	2	2017-06-21 00:00:00.0000000	小土豆	11</div><div class="line">3	1	2017-06-20 00:00:00.0000000	小糖豆	10</div><div class="line"></div><div class="line">若只运行（）内的子语句也就是不加分页的结果为</div><div class="line">1	4	2017-06-23 00:00:00.0000000	小萝卜	</div><div class="line">2	2	2017-06-21 00:00:00.0000000	小土豆	11</div><div class="line">3	1	2017-06-20 00:00:00.0000000	小糖豆	10</div><div class="line">4	3	2017-06-19 00:00:00.0000000	大猴子	15</div><div class="line"></div><div class="line">若把ROWID BETWEEN 1 AND 3改为 ROWID BETWEEN 3 AND 4则会返回最后两条，实际开发中变为 ROWID BETWEEN (pageindex-1)*pagesize+ 1 AND pageindex*pagesize即可</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span></div><div class="line">	*</div><div class="line"><span class="keyword">FROM</span></div><div class="line">	(</div><div class="line">		<span class="keyword">SELECT</span></div><div class="line">			ROW_NUMBER () <span class="keyword">OVER</span> (</div><div class="line"></div><div class="line">				<span class="keyword">ORDER</span> <span class="keyword">BY</span></div><div class="line">					Designer_UserInfo.CreatTime <span class="keyword">DESC</span></div><div class="line">			) <span class="keyword">AS</span> <span class="keyword">ROWID</span>,</div><div class="line">			Designer_UserInfo.ID,</div><div class="line">			Designer_UserInfo.CreatTime,</div><div class="line">			Designer_UserInfo.TrueName,</div><div class="line">			Student_UserInfo.Age</div><div class="line">		<span class="keyword">FROM</span></div><div class="line">			Designer_UserInfo</div><div class="line">		<span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Student_UserInfo <span class="keyword">ON</span> Designer_UserInfo.ID = Student_UserInfo.ID</div><div class="line">	) <span class="keyword">AS</span> a</div><div class="line"><span class="keyword">WHERE</span></div><div class="line">	<span class="keyword">ROWID</span> <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">3</span></div><div class="line">结果为：第一列为列标识，后面均和上面返回的字段对应</div><div class="line"><span class="keyword">ROWID</span> (列标识)</div><div class="line"><span class="number">1</span>	<span class="number">4</span>	<span class="number">2017</span><span class="number">-06</span><span class="number">-23</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00.0000000</span>	小萝卜	</div><div class="line"><span class="number">2</span>	<span class="number">2</span>	<span class="number">2017</span><span class="number">-06</span><span class="number">-21</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00.0000000</span>	小土豆	<span class="number">11</span></div><div class="line"><span class="number">3</span>	<span class="number">1</span>	<span class="number">2017</span><span class="number">-06</span><span class="number">-20</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00.0000000</span>	小糖豆	<span class="number">10</span></div><div class="line"></div><div class="line">若只运行（）内的子语句也就是不加分页的结果为</div><div class="line"><span class="number">1</span>	<span class="number">4</span>	<span class="number">2017</span><span class="number">-06</span><span class="number">-23</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00.0000000</span>	小萝卜	</div><div class="line"><span class="number">2</span>	<span class="number">2</span>	<span class="number">2017</span><span class="number">-06</span><span class="number">-21</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00.0000000</span>	小土豆	<span class="number">11</span></div><div class="line"><span class="number">3</span>	<span class="number">1</span>	<span class="number">2017</span><span class="number">-06</span><span class="number">-20</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00.0000000</span>	小糖豆	<span class="number">10</span></div><div class="line"><span class="number">4</span>	<span class="number">3</span>	<span class="number">2017</span><span class="number">-06</span><span class="number">-19</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00.0000000</span>	大猴子	<span class="number">15</span></div><div class="line"></div><div class="line">若把<span class="keyword">ROWID</span> <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">3</span>改为 <span class="keyword">ROWID</span> <span class="keyword">BETWEEN</span> <span class="number">3</span> <span class="keyword">AND</span> <span class="number">4</span>则会返回最后两条，实际开发中变为 <span class="keyword">ROWID</span> <span class="keyword">BETWEEN</span> (pageindex<span class="number">-1</span>)*pagesize+ <span class="number">1</span> <span class="keyword">AND</span> pageindex*pagesize即可</div></pre></td></tr></table></figure>
 <blockquote>
 <p>接下来就解释一下上面的分页语句<br>先来看子句中的ROW_NUMBER () OVER (ORDER BY  Designer_UserInfo.CreatTime DESC) AS ROWID, 这句话其实就是为将要返回的数据增加一个列标识叫做ROWID，上面咱们已经说过 SELECT后面跟的字段都是作为返回字段的，这个也是，因此大家可以在返回的结果中看到第一列就是ROWID。<br>ROW_NUMBER ()这个函数是为了根据OVER后的排序子句生成一个递增的连续序号，也就是ROWID的值。<br>OVER后面跟的是排序语句。<br>这样的话就出现了上面中的第二个结果，单纯的经过排序的数据，只不过增加了一列，子句外的才起到了真正分页的功能只不过一句子句中生成的ROWID来分页。</p>
 </blockquote>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -288,7 +252,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/23/SQL-Server之-排序和分页/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2017/06/23/SQL-Server之-排序和分页/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -354,7 +318,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 My Little TT
+    		&copy; 2017 Little TT
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -371,7 +335,7 @@
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
@@ -395,8 +359,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
-      
-      
     
       
       
@@ -408,15 +370,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -480,43 +440,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
 
     
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
-    
 
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">好人一生平安。</div>
   	  	
     	</section>
     

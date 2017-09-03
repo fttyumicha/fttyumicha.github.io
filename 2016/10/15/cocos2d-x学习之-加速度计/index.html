@@ -5,24 +5,23 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>cocos2d-x学习之--加速度计 | Hexo</title>
+  <link rel="dns-prefetch" href="//litten.me">
+  <title>cocos2d-x学习之--加速度计 | Little TT&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在上一篇中记录了事件处理机制,这篇主要记录一下加速度计事件.EventListenerAcceleration对象表示加速度计监听器,响应函数只有一个void Layer::onAcceleration(Acceleration* acc, Event* unused_event)第一个参数是Acceleration对象,表示加速度计的操作信息,包含了加速度计的三个轴(X,Y,Z)的信息,以重力加">
+<meta name="keywords" content="����">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cocos2d-x学习之--加速度计">
-<meta property="og:url" content="http://yoursite.com/2016/10/15/cocos2d-x学习之-加速度计/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="//litten.me/2016/10/15/cocos2d-x学习之-加速度计/index.html">
+<meta property="og:site_name" content="Little TT&#39;s Blog">
 <meta property="og:description" content="在上一篇中记录了事件处理机制,这篇主要记录一下加速度计事件.EventListenerAcceleration对象表示加速度计监听器,响应函数只有一个void Layer::onAcceleration(Acceleration* acc, Event* unused_event)第一个参数是Acceleration对象,表示加速度计的操作信息,包含了加速度计的三个轴(X,Y,Z)的信息,以重力加">
 <meta property="og:updated_time" content="2017-09-02T16:27:13.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cocos2d-x学习之--加速度计">
 <meta name="twitter:description" content="在上一篇中记录了事件处理机制,这篇主要记录一下加速度计事件.EventListenerAcceleration对象表示加速度计监听器,响应函数只有一个void Layer::onAcceleration(Acceleration* acc, Event* unused_event)第一个参数是Acceleration对象,表示加速度计的操作信息,包含了加速度计的三个轴(X,Y,Z)的信息,以重力加">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/assets/img/favicon.ico">
   
   <link rel="stylesheet" type="text/css" href="/./main.266c1c.css">
   <style type="text/css">
@@ -34,6 +33,16 @@
   
 
   
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?a30844fa2bcbce0a9e001fe06cefeddf";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 
 </head>
 
@@ -46,21 +55,19 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/richtt.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">My Little TT</a></h1>
+		  <h1 class="header-author"><a href="/">Little TT</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">武功盖世 寸草不生</p>
+		<p class="header-subtitle">Be Better</p>
 		
 
 		<nav class="header-menu">
 			<ul>
 			
 				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags/随笔/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -71,8 +78,6 @@
     			
             
     			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
-    			
             
     			
     			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
@@ -82,14 +87,6 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 			</div>
 		</nav>
 	</header>		
@@ -106,17 +103,15 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/richtt.png" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">My Little TT</h1>
+			  <h1 class="header-author js-header-author">Little TT</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>武功盖世 寸草不生<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Be Better<i class="icon icon-quo-right"></i></p>
 			
 			
-			
-				
 			
 				
 			
@@ -125,14 +120,6 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-			        
 				</div>
 			</nav>
 
@@ -140,9 +127,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -177,33 +162,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在上一篇中记录了事件处理机制,这篇主要记录一下加速度计事件.<code>EventListenerAcceleration</code>对象表示加速度计监听器,响应函数只有一个<code>void Layer::onAcceleration(Acceleration* acc, Event* unused_event)</code>第一个参数是<code>Acceleration</code>对象,表示加速度计的操作信息,包含了加速度计的三个轴<code>(X,Y,Z)</code>的信息,以重力加速度为单位,数值范围为<code>(-1,1)</code>,第二个参数是该特定事件的Event对象.<br>在赛车类和冒险类游戏中经常会使用到加速度计,通过一个例子来了解.首先在<code>HelloWorldScene.h</code>文件中定义一个精灵球,并定义一个监测回调的函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">protected:</div><div class="line"> //定义目标精灵</div><div class="line">    cocos2d::Sprite* _ball;</div><div class="line">//定义加速度计事件的响应函数</div><div class="line">    void onAcceleration(cocos2d::Acceleration* acc,cocos2d::Event* event);</div></pre></td></tr></table></figure></p>
-<p>然后在<code>HelloWorldScene.cpp</code>文件中具体实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> //创建精灵球</div><div class="line">   _ball = Sprite::create(&quot;basketball.png&quot;);</div><div class="line">   _ball -&gt;setPosition(Vec2(visibleSize.width/2, visibleSize.height/2));</div><div class="line">   this-&gt;addChild(_ball);</div><div class="line">//启动设备的加速度计(此处一定要注意必须开启,只有开启设备的加速度计之后,当手机随着我们的动作而动时,才可以记录下各个方向的加速度,然后由分发器分发给监听器)</div><div class="line">   Device ::setAccelerometerEnabled(true);</div><div class="line">//创建加速度监听器</div><div class="line">   auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(HelloWorld::onAcceleration, this));</div><div class="line">//添加加速度计事件监听器</div><div class="line">   _eventDispatcher-&gt;addEventListenerWithSceneGraphPriority(listener, this);</div></pre></td></tr></table></figure></p>
-<p>接下来在此文件中实现回调函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">//宏定义</div><div class="line">#define FIX_POS(_pos,_min,_max)\</div><div class="line">if(_pos &lt; _min)\</div><div class="line">_pos = _min;\</div><div class="line">else if(_pos &gt; _max)\</div><div class="line">_pos = _max;\</div><div class="line"></div><div class="line">void HelloWorld::onAcceleration(cocos2d::Acceleration *acc, cocos2d::Event *event)&#123;</div><div class="line">    Size visibleSize = Director::getInstance()-&gt;getVisibleSize();</div><div class="line">    //获取导演对象</div><div class="line">    auto pDir = Director::getInstance();</div><div class="line">    //如果精灵球 == NULL则返回</div><div class="line">    if (_ball == NULL) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    //获得精灵球的大小</div><div class="line">    auto ballSize = _ball-&gt;getContentSize();</div><div class="line">    //获取精灵球的位置</div><div class="line">    auto positionNow = _ball-&gt;getPosition();</div><div class="line">    //将精灵球的位置转化为坐标系</div><div class="line">    auto positionUI = pDir-&gt;convertToUI(positionNow);</div><div class="line">    //获取加速度</div><div class="line">    positionUI.x += acc-&gt;x * 9.81f;// positionUI.x = positionUI.x + acc-&gt;x * 9.81f;</div><div class="line">    positionUI.y += acc-&gt;y * 9.81f;</div><div class="line">    //将屏幕坐标换为openGL坐标</div><div class="line">    auto positionGL = pDir-&gt;convertToGL(positionUI);</div><div class="line">    //边界检测,防止精灵球在屏幕之外</div><div class="line">    FIX_POS(positionGL.x, ballSize.width/2.0, (visibleSize.width-ballSize.width/2.0));</div><div class="line">    FIX_POS(positionGL.y, ballSize.height/2.0, (visibleSize.height-ballSize.height/2.0));</div><div class="line">    _ball -&gt; setPosition(positionGL);   </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <p>在上一篇中记录了事件处理机制,这篇主要记录一下加速度计事件.<code>EventListenerAcceleration</code>对象表示加速度计监听器,响应函数只有一个<code>void Layer::onAcceleration(Acceleration* acc, Event* unused_event)</code>第一个参数是<code>Acceleration</code>对象,表示加速度计的操作信息,包含了加速度计的三个轴<code>(X,Y,Z)</code>的信息,以重力加速度为单位,数值范围为<code>(-1,1)</code>,第二个参数是该特定事件的Event对象.<br>在赛车类和冒险类游戏中经常会使用到加速度计,通过一个例子来了解.首先在<code>HelloWorldScene.h</code>文件中定义一个精灵球,并定义一个监测回调的函数<br><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">protected</span>:</div><div class="line"> <span class="comment">//定义目标精灵</span></div><div class="line">    cocos2d<span class="type">::Sprite</span>* _ball;</div><div class="line"><span class="comment">//定义加速度计事件的响应函数</span></div><div class="line">    <span class="literal">void</span> onAcceleration(cocos2d<span class="type">::Acceleration</span>* acc,cocos2d<span class="type">::Event</span>* event);</div></pre></td></tr></table></figure></p>
+<p>然后在<code>HelloWorldScene.cpp</code>文件中具体实现<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//创建精灵球</span></div><div class="line">   _ball = <span class="string">Sprite:</span>:create(<span class="string">"basketball.png"</span>);</div><div class="line">   _ball -&gt;setPosition(Vec2(visibleSize.width<span class="regexp">/2, visibleSize.height/</span><span class="number">2</span>));</div><div class="line">   <span class="keyword">this</span>-&gt;addChild(_ball);</div><div class="line"><span class="comment">//启动设备的加速度计(此处一定要注意必须开启,只有开启设备的加速度计之后,当手机随着我们的动作而动时,才可以记录下各个方向的加速度,然后由分发器分发给监听器)</span></div><div class="line">   <span class="string">Device :</span>:setAccelerometerEnabled(<span class="literal">true</span>);</div><div class="line"><span class="comment">//创建加速度监听器</span></div><div class="line">   auto listener = <span class="string">EventListenerAcceleration:</span>:create(CC_CALLBACK_2(<span class="string">HelloWorld:</span>:onAcceleration, <span class="keyword">this</span>));</div><div class="line"><span class="comment">//添加加速度计事件监听器</span></div><div class="line">   _eventDispatcher-&gt;addEventListenerWithSceneGraphPriority(listener, <span class="keyword">this</span>);</div></pre></td></tr></table></figure></p>
+<p>接下来在此文件中实现回调函数<br><figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//宏定义</span></div><div class="line">#define FIX_POS(_pos,_min,_max)\</div><div class="line"><span class="keyword">if</span>(_pos &lt; _min)\</div><div class="line">_pos = _min;\</div><div class="line"><span class="keyword">else</span> <span class="keyword">if</span>(_pos &gt; _max)\</div><div class="line">_pos = _max;\</div><div class="line"></div><div class="line">void HelloWorld::onAcceleration(cocos2d::Acceleration *acc, cocos2d::Event *event)&#123;</div><div class="line">    S<span class="function"><span class="title">ize</span> visibleSize = Director::getInstance()-&gt;</span>getVisibleSize();</div><div class="line">    <span class="comment">//获取导演对象</span></div><div class="line">    auto pDir = Director::getInstance();</div><div class="line">    <span class="comment">//如果精灵球 == NULL则返回</span></div><div class="line">    <span class="keyword">if</span> (_ball == NULL) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//获得精灵球的大小</span></div><div class="line">    <span class="function"><span class="title">auto</span> ballSize = _ball-&gt;</span>getContentSize();</div><div class="line">    <span class="comment">//获取精灵球的位置</span></div><div class="line">    <span class="function"><span class="title">auto</span> positionNow = _ball-&gt;</span>getPosition();</div><div class="line">    <span class="comment">//将精灵球的位置转化为坐标系</span></div><div class="line">    <span class="function"><span class="title">auto</span> positionUI = pDir-&gt;</span>convertToUI(positionNow);</div><div class="line">    <span class="comment">//获取加速度</span></div><div class="line">    <span class="function"><span class="title">positionUI</span>.x += acc-&gt;</span><span class="function"><span class="title">x</span> * 9.81f;// positionUI.x = positionUI.x + acc-&gt;</span>x * <span class="number">9.81</span>f;</div><div class="line">    <span class="function"><span class="title">positionUI</span>.y += acc-&gt;</span>y * <span class="number">9.81</span>f;</div><div class="line">    <span class="comment">//将屏幕坐标换为openGL坐标</span></div><div class="line">    <span class="function"><span class="title">auto</span> positionGL = pDir-&gt;</span>convertToGL(positionUI);</div><div class="line">    <span class="comment">//边界检测,防止精灵球在屏幕之外</span></div><div class="line">    FIX_POS(positionGL.x, ballSize.width/<span class="number">2.0</span>, (visibleSize.width-ballSize.width/<span class="number">2.0</span>));</div><div class="line">    FIX_POS(positionGL.y, ballSize.height/<span class="number">2.0</span>, (visibleSize.height-ballSize.height/<span class="number">2.0</span>));</div><div class="line">    _<span class="function"><span class="title">ball</span> -&gt;</span> setPosition(positionGL);   </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -259,7 +223,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/10/15/cocos2d-x学习之-加速度计/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2016/10/15/cocos2d-x学习之-加速度计/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -325,7 +289,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 My Little TT
+    		&copy; 2017 Little TT
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -342,7 +306,7 @@
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
@@ -366,8 +330,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
-      
-      
     
       
       
@@ -379,15 +341,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -451,43 +411,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
 
     
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
-    
 
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">好人一生平安。</div>
   	  	
     	</section>
     

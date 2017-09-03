@@ -5,24 +5,23 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>cocos2d-x学习之--事件处理机制 | Hexo</title>
+  <link rel="dns-prefetch" href="//litten.me">
+  <title>cocos2d-x学习之--事件处理机制 | Little TT&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="cocos2d-x的内部运行机制:由事件驱动的处理机制,所谓事件驱动,就是指只有当事件发生了,才会执行的对应的操作;例如,屏幕上有一个按钮,只有当玩家点击按钮时,才会调用对应的函数,否则,该处理机制的响应函数只处于等待调用的状态.在cocos2d-x当中,用户操作经过接收数据,分发事件和处理响应3个步骤.1.数据接收(Touch)cocos2d-x所接收的数据都要作为统一的数据格式备操作和传递,c">
+<meta name="keywords" content="����">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cocos2d-x学习之--事件处理机制">
-<meta property="og:url" content="http://yoursite.com/2016/09/29/cocos2d-x学习之-事件处理机制/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="//litten.me/2016/09/29/cocos2d-x学习之-事件处理机制/index.html">
+<meta property="og:site_name" content="Little TT&#39;s Blog">
 <meta property="og:description" content="cocos2d-x的内部运行机制:由事件驱动的处理机制,所谓事件驱动,就是指只有当事件发生了,才会执行的对应的操作;例如,屏幕上有一个按钮,只有当玩家点击按钮时,才会调用对应的函数,否则,该处理机制的响应函数只处于等待调用的状态.在cocos2d-x当中,用户操作经过接收数据,分发事件和处理响应3个步骤.1.数据接收(Touch)cocos2d-x所接收的数据都要作为统一的数据格式备操作和传递,c">
 <meta property="og:updated_time" content="2017-09-02T16:22:41.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cocos2d-x学习之--事件处理机制">
 <meta name="twitter:description" content="cocos2d-x的内部运行机制:由事件驱动的处理机制,所谓事件驱动,就是指只有当事件发生了,才会执行的对应的操作;例如,屏幕上有一个按钮,只有当玩家点击按钮时,才会调用对应的函数,否则,该处理机制的响应函数只处于等待调用的状态.在cocos2d-x当中,用户操作经过接收数据,分发事件和处理响应3个步骤.1.数据接收(Touch)cocos2d-x所接收的数据都要作为统一的数据格式备操作和传递,c">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/assets/img/favicon.ico">
   
   <link rel="stylesheet" type="text/css" href="/./main.266c1c.css">
   <style type="text/css">
@@ -34,6 +33,16 @@
   
 
   
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?a30844fa2bcbce0a9e001fe06cefeddf";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 
 </head>
 
@@ -46,21 +55,19 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/richtt.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">My Little TT</a></h1>
+		  <h1 class="header-author"><a href="/">Little TT</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">武功盖世 寸草不生</p>
+		<p class="header-subtitle">Be Better</p>
 		
 
 		<nav class="header-menu">
 			<ul>
 			
 				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags/随笔/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -71,8 +78,6 @@
     			
             
     			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
-    			
             
     			
     			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
@@ -82,14 +87,6 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 			</div>
 		</nav>
 	</header>		
@@ -106,17 +103,15 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/richtt.png" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">My Little TT</h1>
+			  <h1 class="header-author js-header-author">Little TT</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>武功盖世 寸草不生<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Be Better<i class="icon icon-quo-right"></i></p>
 			
 			
-			
-				
 			
 				
 			
@@ -125,14 +120,6 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-			        
 				</div>
 			</nav>
 
@@ -140,9 +127,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -177,34 +162,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>cocos2d-x的内部运行机制:由事件驱动的处理机制,所谓事件驱动,就是指只有当事件发生了,才会执行的对应的操作;例如,屏幕上有一个按钮,只有当玩家点击按钮时,才会调用对应的函数,否则,该处理机制的响应函数只处于等待调用的状态.在cocos2d-x当中,用户操作经过<code>接收数据</code>,<code>分发事件</code>和<code>处理响应</code>3个步骤.<br>1.数据接收(<code>Touch</code>)<br>cocos2d-x所接收的数据都要作为统一的数据格式备操作和传递,cocos2d-x中的触摸类<code>Touch</code>就用来专门存储用户操作.每个<code>Touch</code>类的对象都包含了一个用户操作数据信息,保存了<code>id</code>标示,<code>x</code>坐标和<code>y</code>坐标.<br>重点代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">//返回当前在openGL触摸位置坐标</div><div class="line">Vec2 getLocation() const;</div><div class="line">//返回之前在openGL触摸位置坐标</div><div class="line">Vec2 getPreviousLocation() const;</div><div class="line">//返回在openGL开始触摸位置坐标</div><div class="line">Vec2 getStartLocation() const;</div><div class="line">//返回当前触摸在屏幕坐标位置</div><div class="line">Vec2 getLocationInView() const;</div><div class="line">//返回之前触摸在屏幕坐标位置</div><div class="line">Vec2 getPreviousLocationInView() const;</div><div class="line">//返回开始触摸在屏幕坐标位置</div><div class="line">Vec2 getStartLocationInView() const;</div><div class="line">//设置用户操作数据(id标示,x坐标,y坐标)</div><div class="line">void setTouchInfo(int id, float x, float y)</div><div class="line">    &#123;</div><div class="line">        _id = id;</div><div class="line">        _prevPoint = _point;</div><div class="line">        _point.x   = x;</div><div class="line">        _point.y   = y;</div><div class="line">        _curForce = 0.0f;</div><div class="line">        _maxForce = 0.0f;</div><div class="line">        if (!_startPointCaptured)</div><div class="line">        &#123;</div><div class="line">            _startPoint = _point;</div><div class="line">            _startPointCaptured = true;</div><div class="line">            _prevPoint = _point;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>2.分发事件(<code>EventDispatcher</code>)<br>来自设备平台的的信息数据经过转化成为了<code>Touch</code>对象,cocos2d获得有效的用户操作数据之后,进入到分发事件步骤.<code>EventDispatcher</code>类表示一个事件分发器,作用是管理事件监听器以及事件分发,当一个事件触发时,它会向所有需要响应的对象发送用户操作信息.<br>常用函数如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//添加场景优先事件监听器,第一个参数是事件监听器对象,第二个参数是监听的节点对象</div><div class="line">void addEventListenerWithSceneGraphPriority(EventListener* listener, Node* node);</div><div class="line">//添加固定优先值的事件监听器</div><div class="line">void addEventListenerWithFixedPriority(EventListener* listener, int fixedPriority);</div><div class="line">//删除一个指定的事件监听器</div><div class="line">void removeEventListener(EventListener* listener);</div><div class="line">//删除某一类事件监听器</div><div class="line">void removeEventListenersForType(EventListener::Type listenerType);</div><div class="line">//删除所有监听器</div><div class="line">void removeAllEventListeners();</div><div class="line">//设置指定的事件监听器的优先级值</div><div class="line">void setPriority(EventListener* listener, int fixedPriority);</div><div class="line">//设置事件分发器是否可用</div><div class="line">void setEnabled(bool isEnabled);</div><div class="line">//检查是否启用了事件分发器</div><div class="line">bool isEnabled() const;</div></pre></td></tr></table></figure></p>
-<p>3.处理响应(<code>EventListener</code>)<br>在明白分发信息机制后,我们肯定会想这些用户信息要分发到哪里去呢,分发器是怎么知道谁是需要响应的对象呢?接下来就来了解一下监听器类<code>EventListener</code>,从这个类的名字就可以看出,它就是一个需要接收用户操作信息的事件监听对象.那么事件分发器是如何将用户的操作信息分发到具体的监听器类的呢?咱们现在载回过头来看一下事件分发器的函数<code>void addEventListenerWithSceneGraphPriority(EventListener* listener, Node* node)</code>第一个参数就是<code>EventListener</code>的一个实例对象,开发者通过调用事件分发器<code>EventDispatcher</code>的这个函数将监听的器添加到事件分发器的集合列表中,而第二个参数<code>Node</code>就是具体的监听对象了.<br><em>需要注意的是</em>:所有需要用户操作的监听对象必须在被添加到分发器结合列表之后,才可以接收到响应事件,简单点说就是必须通过函数<code>addEventListenerWithSceneGraphPriority</code>把监听事件添加到事件分发器的队列中才可以.<br><code>EventListener</code>类是事件监听器的基类,主要使用的是他的6个子类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//单点触摸事件监听器</div><div class="line">EventListenerTouchOneByOne</div><div class="line">//多点触摸监听器</div><div class="line">EventListenerTouchAllAtOnce</div><div class="line">//加速度级事件监听器</div><div class="line">EventListenerAcceleration</div><div class="line">//按键事件监听器</div><div class="line">EventListenerKeyboard</div><div class="line">//鼠标事件监听器</div><div class="line">EventListenerMouse</div><div class="line">//自定义事件监听器</div><div class="line">EventListenerCustom</div></pre></td></tr></table></figure></p>
+        <p>cocos2d-x的内部运行机制:由事件驱动的处理机制,所谓事件驱动,就是指只有当事件发生了,才会执行的对应的操作;例如,屏幕上有一个按钮,只有当玩家点击按钮时,才会调用对应的函数,否则,该处理机制的响应函数只处于等待调用的状态.在cocos2d-x当中,用户操作经过<code>接收数据</code>,<code>分发事件</code>和<code>处理响应</code>3个步骤.<br>1.数据接收(<code>Touch</code>)<br>cocos2d-x所接收的数据都要作为统一的数据格式备操作和传递,cocos2d-x中的触摸类<code>Touch</code>就用来专门存储用户操作.每个<code>Touch</code>类的对象都包含了一个用户操作数据信息,保存了<code>id</code>标示,<code>x</code>坐标和<code>y</code>坐标.<br>重点代码如下:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//返回当前在openGL触摸位置坐标</span></div><div class="line"><span class="function">Vec2 <span class="title">getLocation</span><span class="params">()</span> <span class="keyword">const</span></span>;</div><div class="line"><span class="comment">//返回之前在openGL触摸位置坐标</span></div><div class="line"><span class="function">Vec2 <span class="title">getPreviousLocation</span><span class="params">()</span> <span class="keyword">const</span></span>;</div><div class="line"><span class="comment">//返回在openGL开始触摸位置坐标</span></div><div class="line"><span class="function">Vec2 <span class="title">getStartLocation</span><span class="params">()</span> <span class="keyword">const</span></span>;</div><div class="line"><span class="comment">//返回当前触摸在屏幕坐标位置</span></div><div class="line"><span class="function">Vec2 <span class="title">getLocationInView</span><span class="params">()</span> <span class="keyword">const</span></span>;</div><div class="line"><span class="comment">//返回之前触摸在屏幕坐标位置</span></div><div class="line"><span class="function">Vec2 <span class="title">getPreviousLocationInView</span><span class="params">()</span> <span class="keyword">const</span></span>;</div><div class="line"><span class="comment">//返回开始触摸在屏幕坐标位置</span></div><div class="line"><span class="function">Vec2 <span class="title">getStartLocationInView</span><span class="params">()</span> <span class="keyword">const</span></span>;</div><div class="line"><span class="comment">//设置用户操作数据(id标示,x坐标,y坐标)</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setTouchInfo</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">float</span> x, <span class="keyword">float</span> y)</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        _id = id;</div><div class="line">        _prevPoint = _point;</div><div class="line">        _point.x   = x;</div><div class="line">        _point.y   = y;</div><div class="line">        _curForce = <span class="number">0.0f</span>;</div><div class="line">        _maxForce = <span class="number">0.0f</span>;</div><div class="line">        <span class="keyword">if</span> (!_startPointCaptured)</div><div class="line">        &#123;</div><div class="line">            _startPoint = _point;</div><div class="line">            _startPointCaptured = <span class="literal">true</span>;</div><div class="line">            _prevPoint = _point;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>2.分发事件(<code>EventDispatcher</code>)<br>来自设备平台的的信息数据经过转化成为了<code>Touch</code>对象,cocos2d获得有效的用户操作数据之后,进入到分发事件步骤.<code>EventDispatcher</code>类表示一个事件分发器,作用是管理事件监听器以及事件分发,当一个事件触发时,它会向所有需要响应的对象发送用户操作信息.<br>常用函数如下:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//添加场景优先事件监听器,第一个参数是事件监听器对象,第二个参数是监听的节点对象</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEventListenerWithSceneGraphPriority</span><span class="params">(EventListener* listener, Node* node)</span></span>;</div><div class="line"><span class="comment">//添加固定优先值的事件监听器</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEventListenerWithFixedPriority</span><span class="params">(EventListener* listener, <span class="keyword">int</span> fixedPriority)</span></span>;</div><div class="line"><span class="comment">//删除一个指定的事件监听器</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">removeEventListener</span><span class="params">(EventListener* listener)</span></span>;</div><div class="line"><span class="comment">//删除某一类事件监听器</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">removeEventListenersForType</span><span class="params">(EventListener::Type listenerType)</span></span>;</div><div class="line"><span class="comment">//删除所有监听器</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">removeAllEventListeners</span><span class="params">()</span></span>;</div><div class="line"><span class="comment">//设置指定的事件监听器的优先级值</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setPriority</span><span class="params">(EventListener* listener, <span class="keyword">int</span> fixedPriority)</span></span>;</div><div class="line"><span class="comment">//设置事件分发器是否可用</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setEnabled</span><span class="params">(<span class="keyword">bool</span> isEnabled)</span></span>;</div><div class="line"><span class="comment">//检查是否启用了事件分发器</span></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isEnabled</span><span class="params">()</span> <span class="keyword">const</span></span>;</div></pre></td></tr></table></figure></p>
+<p>3.处理响应(<code>EventListener</code>)<br>在明白分发信息机制后,我们肯定会想这些用户信息要分发到哪里去呢,分发器是怎么知道谁是需要响应的对象呢?接下来就来了解一下监听器类<code>EventListener</code>,从这个类的名字就可以看出,它就是一个需要接收用户操作信息的事件监听对象.那么事件分发器是如何将用户的操作信息分发到具体的监听器类的呢?咱们现在载回过头来看一下事件分发器的函数<code>void addEventListenerWithSceneGraphPriority(EventListener* listener, Node* node)</code>第一个参数就是<code>EventListener</code>的一个实例对象,开发者通过调用事件分发器<code>EventDispatcher</code>的这个函数将监听的器添加到事件分发器的集合列表中,而第二个参数<code>Node</code>就是具体的监听对象了.<br><em>需要注意的是</em>:所有需要用户操作的监听对象必须在被添加到分发器结合列表之后,才可以接收到响应事件,简单点说就是必须通过函数<code>addEventListenerWithSceneGraphPriority</code>把监听事件添加到事件分发器的队列中才可以.<br><code>EventListener</code>类是事件监听器的基类,主要使用的是他的6个子类<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//单点触摸事件监听器</span></div><div class="line">EventListenerTouchOneByOne</div><div class="line"><span class="comment">//多点触摸监听器</span></div><div class="line">EventListenerTouchAllAtOnce</div><div class="line"><span class="comment">//加速度级事件监听器</span></div><div class="line">EventListenerAcceleration</div><div class="line"><span class="comment">//按键事件监听器</span></div><div class="line">EventListenerKeyboard</div><div class="line"><span class="comment">//鼠标事件监听器</span></div><div class="line">EventListenerMouse</div><div class="line"><span class="comment">//自定义事件监听器</span></div><div class="line">EventListenerCustom</div></pre></td></tr></table></figure></p>
 <p>接下来的文章将会着重介绍一下加速度计监听事件和触摸监听事件.</p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -260,7 +224,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/09/29/cocos2d-x学习之-事件处理机制/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2016/09/29/cocos2d-x学习之-事件处理机制/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -326,7 +290,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 My Little TT
+    		&copy; 2017 Little TT
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -343,7 +307,7 @@
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
@@ -367,8 +331,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
-      
-      
     
       
       
@@ -380,15 +342,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -452,43 +412,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
 
     
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
-    
 
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">好人一生平安。</div>
   	  	
     	</section>
     

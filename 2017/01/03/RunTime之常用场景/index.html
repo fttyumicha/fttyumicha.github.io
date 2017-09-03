@@ -5,24 +5,23 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>RunTime之常用场景 | Hexo</title>
+  <link rel="dns-prefetch" href="//litten.me">
+  <title>RunTime之常用场景 | Little TT&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在上篇中记录了几个常用的api的介绍,这篇主要系统的整理一下在平常项目开发中经常用到RunTime的场景,分别为“发送消息”,“消息转发”,“交换方法”,“动态添加方法”,“给分类添加属性”几种场景,通常第一种和第二种大多是共同作用的,接下来就分别介绍.1.发送消息(void objc_msgSend) 在面向对象编程中，对象调用方法叫做”发送消息”。在编译时，程序的源代码就会从对象发送消息转换成">
+<meta name="keywords" content="����">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RunTime之常用场景">
-<meta property="og:url" content="http://yoursite.com/2017/01/03/RunTime之常用场景/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="//litten.me/2017/01/03/RunTime之常用场景/index.html">
+<meta property="og:site_name" content="Little TT&#39;s Blog">
 <meta property="og:description" content="在上篇中记录了几个常用的api的介绍,这篇主要系统的整理一下在平常项目开发中经常用到RunTime的场景,分别为“发送消息”,“消息转发”,“交换方法”,“动态添加方法”,“给分类添加属性”几种场景,通常第一种和第二种大多是共同作用的,接下来就分别介绍.1.发送消息(void objc_msgSend) 在面向对象编程中，对象调用方法叫做”发送消息”。在编译时，程序的源代码就会从对象发送消息转换成">
 <meta property="og:updated_time" content="2017-09-02T16:45:21.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RunTime之常用场景">
 <meta name="twitter:description" content="在上篇中记录了几个常用的api的介绍,这篇主要系统的整理一下在平常项目开发中经常用到RunTime的场景,分别为“发送消息”,“消息转发”,“交换方法”,“动态添加方法”,“给分类添加属性”几种场景,通常第一种和第二种大多是共同作用的,接下来就分别介绍.1.发送消息(void objc_msgSend) 在面向对象编程中，对象调用方法叫做”发送消息”。在编译时，程序的源代码就会从对象发送消息转换成">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/assets/img/favicon.ico">
   
   <link rel="stylesheet" type="text/css" href="/./main.266c1c.css">
   <style type="text/css">
@@ -34,6 +33,16 @@
   
 
   
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?a30844fa2bcbce0a9e001fe06cefeddf";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 
 </head>
 
@@ -46,21 +55,19 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/richtt.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">My Little TT</a></h1>
+		  <h1 class="header-author"><a href="/">Little TT</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">武功盖世 寸草不生</p>
+		<p class="header-subtitle">Be Better</p>
 		
 
 		<nav class="header-menu">
 			<ul>
 			
 				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags/随笔/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -71,8 +78,6 @@
     			
             
     			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
-    			
             
     			
     			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
@@ -82,14 +87,6 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 			</div>
 		</nav>
 	</header>		
@@ -106,17 +103,15 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/richtt.png" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">My Little TT</h1>
+			  <h1 class="header-author js-header-author">Little TT</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>武功盖世 寸草不生<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Be Better<i class="icon icon-quo-right"></i></p>
 			
 			
-			
-				
 			
 				
 			
@@ -125,14 +120,6 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-			        
 				</div>
 			</nav>
 
@@ -140,9 +127,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -177,47 +162,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在上篇中记录了几个常用的api的介绍,这篇主要系统的整理一下在平常项目开发中经常用到RunTime的场景,分别为<em>“发送消息”</em>,<em>“消息转发”</em>,<em>“交换方法”</em>,<em>“动态添加方法”</em>,<em>“给分类添加属性”</em>几种场景,通常第一种和第二种大多是共同作用的,接下来就分别介绍.<br>1.发送消息(<code>void objc_msgSend</code>)<br> 在面向对象编程中，对象调用方法叫做”发送消息”。在编译时，程序的源代码就会从对象发送消息转换成Runtime的<code>objc_msgSend</code>函数调用。如我们平时写的源码<code>[person say]</code>其实就会转换成<code>objc_msgSend(person, selector)</code>其中<code>selector</code>可以理解成方法的唯一标示,是根据函数名以及参数生成的,这也就是为什么在同一个文件中不能有同名的函数的原因,但是在不同的文件中可以,因为每个文件中的实例方法都是分开的,就算是生成的<code>selectoer</code>相同但是存在两个不同的地方,找起来也不会出问题;<br><code>objc_msgSend</code>函数的调用过程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">第一步：检测这个selector是不是要忽略的。</div><div class="line">第二步：检测这个target是不是nil对象。nil对象发送任何一个消息都会被忽略掉。</div><div class="line">第三步：调用实例方法时，它会首先在自身isa指针指向的类（class）methodLists中查找法,如果找不到则会通过class的</div><div class="line">super_class指针找到父类的类对象结构体，然后从methodLists中查找该方法，如果仍然找不到，则继续通过super</div><div class="line">_class向上一级父类结构体中查找，直至根class；当我们调用某个某个类方法时，它会首先通过自己的isa指针找到</div><div class="line">metaclass(也就是元类)，并从其中methodLists中查找该类方法，如果找不到则会通过metaclass的super_class指针找到父类的</div><div class="line">metaclass对象结构体，然后从methodLists中查找该方法，如果仍然找不到，则继续通过super_class向上一级父类</div><div class="line">结构体中查找，直至根metaclass；</div><div class="line">如果以上散步都找不到的话如果不进行其他的处理就会crash,报出找不到此方法的错误;但是如果我们在消息转发的过程中做处理的话就不同了,下面咱们就来看一下在消息转发的过程中怎么来做处理.</div></pre></td></tr></table></figure></p>
+        <p>在上篇中记录了几个常用的api的介绍,这篇主要系统的整理一下在平常项目开发中经常用到RunTime的场景,分别为<em>“发送消息”</em>,<em>“消息转发”</em>,<em>“交换方法”</em>,<em>“动态添加方法”</em>,<em>“给分类添加属性”</em>几种场景,通常第一种和第二种大多是共同作用的,接下来就分别介绍.<br>1.发送消息(<code>void objc_msgSend</code>)<br> 在面向对象编程中，对象调用方法叫做”发送消息”。在编译时，程序的源代码就会从对象发送消息转换成Runtime的<code>objc_msgSend</code>函数调用。如我们平时写的源码<code>[person say]</code>其实就会转换成<code>objc_msgSend(person, selector)</code>其中<code>selector</code>可以理解成方法的唯一标示,是根据函数名以及参数生成的,这也就是为什么在同一个文件中不能有同名的函数的原因,但是在不同的文件中可以,因为每个文件中的实例方法都是分开的,就算是生成的<code>selectoer</code>相同但是存在两个不同的地方,找起来也不会出问题;<br><code>objc_msgSend</code>函数的调用过程<br><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">第一步：检测这个selector是不是要忽略的。</div><div class="line">第二步：检测这个target是不是nil对象。nil对象发送任何一个消息都会被忽略掉。</div><div class="line">第三步：调用实例方法时，它会首先在自身isa指针指向的类（<span class="keyword">class</span>）methodLists中查找法,如果找不到则会通过<span class="keyword">class</span>的</div><div class="line"><span class="keyword">super</span><span class="number">_</span><span class="keyword">class</span>指针找到父类的类对象结构体，然后从methodLists中查找该方法，如果仍然找不到，则继续通过<span class="keyword">super</span></div><div class="line"><span class="number">_</span><span class="keyword">class</span>向上一级父类结构体中查找，直至根<span class="keyword">class</span>；当我们调用某个某个类方法时，它会首先通过自己的isa指针找到</div><div class="line">metaclass(也就是元类)，并从其中methodLists中查找该类方法，如果找不到则会通过metaclass的<span class="keyword">super</span><span class="number">_</span><span class="keyword">class</span>指针找到父类的</div><div class="line">metaclass对象结构体，然后从methodLists中查找该方法，如果仍然找不到，则继续通过<span class="keyword">super</span><span class="number">_</span><span class="keyword">class</span>向上一级父类</div><div class="line">结构体中查找，直至根metaclass；</div><div class="line">如果以上散步都找不到的话如果不进行其他的处理就会crash,报出找不到此方法的错误;但是如果我们在消息转发的过程中做处理的话就不同了,下面咱们就来看一下在消息转发的过程中怎么来做处理.</div></pre></td></tr></table></figure></p>
 <p>2.消息转发</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">第一步：</div><div class="line">+(BOOL)resolveInstanceMethod:(SEL)sel;+(BOOL)resolveClassMethod:(SEL)sel;</div><div class="line">当我们调用一个没有实现的方法的时候会通过上面两个方法来判断是否可以找到该方法的实现,如果返回NO,则会进入下一步(说明在解析方法的这一</div><div class="line">步不做处理,在转发的其他过程处理,则处理进入第二个步骤),如果返回YES,说明要在此方法中处理,则可以通过class_addMethod来动态添加方法</div><div class="line">的实现,消息得到处理,结束</div><div class="line"></div><div class="line">第二步：</div><div class="line">- (id)forwardingTargetForSelector:(SEL)aSelector</div><div class="line">从字面上来理解这个方法就是转发这个方法到一个其他的target,也就是说如果在这个方法中返回一个可以执行这个方法的对象,也使这个消息得到处</div><div class="line">理.比如你在Person类和Animal类中同时声明了-(void)eat方法,但是只实现了Person类中的方法,没实现Animal类中方法,但是你在控制器中又</div><div class="line">调用了Animal中-(void)eat方法,如果不做处理肯定会crash,但是如果在消息转发的第二部也就是本方法中返回一个Person的对象,你会发现它执</div><div class="line">行的是Person类中eat方法.</div><div class="line">当然你在这一步中也可以不作处理也就是返回nil(没有指定可以实现这个方法的对象),则会进入消息转发的下一步.</div><div class="line"></div><div class="line">第三步：</div><div class="line">- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector</div><div class="line">如果在上一步返回nil则会进入此方法生成方法签名,如果此步骤方法中返回nil的话,直接调用doesNotRecognizeSelector:返回异常</div><div class="line">如果正常生成方法签名，则进行最后一步。</div><div class="line"></div><div class="line">第四步：</div><div class="line">- (void)forwardInvocation:(NSInvocation *)anInvocation</div><div class="line">我们可以通过anInvocation对象做很多处理，</div><div class="line">比如修改实现方法，修改响应对象等，如果方法调用成功，则结束。</div><div class="line">如果失败，则进入`doesNotRecognizeSelector`方法，</div><div class="line">若我们没有实现这个方法，那么就会crash</div></pre></td></tr></table></figure>
-<p>实例如下:<br>尝试在方法转发第一步中规避crash<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">首先在`Person`类中 在.h中声明两个方法，但不去实现：</div><div class="line"> -(void)unKnowSel_obj; </div><div class="line">+(void)unKonwSel_class;</div><div class="line"> 在.m中实现这两个方法：</div><div class="line"> -(void)noObjMethod&#123; </div><div class="line">NSLog(@&quot;未实现这个实例方法&quot;);</div><div class="line"> &#125; </div><div class="line">+(void)noClassMethod&#123; </div><div class="line">NSLog(@&quot;未实现这个类方法&quot;); </div><div class="line">&#125; </div><div class="line">并且重写消息转发的方法： </div><div class="line">// 当一个对象调用未实现的方法，会调用这个方法处理,并且会把对应的方法列表传过来.</div><div class="line"> //注意:实例方法是存在于当前对象对应的类的方法列表中</div><div class="line"> +(BOOL)resolveInstanceMethod:(SEL)sel&#123; </div><div class="line">SEL aSel = NSSelectorFromString(@&quot;noObjMethod&quot;); </div><div class="line">Method aMethod = class_getInstanceMethod(self, aSel);</div><div class="line"> class_addMethod(self, sel, method_getImplementation(aMethod), &quot;v@:&quot;); </div><div class="line">return YES; </div><div class="line">&#125; </div><div class="line">// 当一个类调用未实现的方法，会调用这个方法处理,并且会把对应的方法列表传过来. </div><div class="line">//注意:类方法是存在于类的元类的方法列表中 </div><div class="line">+(BOOL)resolveClassMethod:(SEL)sel&#123; </div><div class="line">SEL aSel = NSSelectorFromString(@&quot;noClassMethod&quot;); </div><div class="line">Method aMethod = class_getClassMethod(self, aSel); </div><div class="line">class_addMethod(object_getClass(self), sel, method_getImplementation(aMethod), &quot;v@:&quot;); return YES; </div><div class="line">&#125; </div><div class="line">在VC中调用未实现的两个方法：</div><div class="line">Person* person = [[Person alloc] init]; </div><div class="line">[person unKnowSel_obj];</div><div class="line">[Person unKonwSel_class];</div></pre></td></tr></table></figure></p>
-<p>打印结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">RuntimeTest[4503:948902] 未实现这个实例方法</div><div class="line">RuntimeTest[4503:948902] 未实现这个类方法</div></pre></td></tr></table></figure></p>
-<p>接下来我们尝试在消息转发第二部中去处理(注意把消息转发中的第一步方法注释掉或返回NO)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">声明一个`Boss`类，并在.m中实现方法：</div><div class="line"> @implementation Boss </div><div class="line">-(void)unKnowSel_obj&#123; </div><div class="line">NSLog(@&quot;unKnowSel_obj_Boss&quot;); </div><div class="line">&#125; </div><div class="line">@end </div><div class="line">在`Person`类中重写方法：</div><div class="line"> -(id)forwardingTargetForSelector:(SEL)aSelector&#123;</div><div class="line"> return [[Boss alloc] init]; </div><div class="line">&#125; </div><div class="line">在VC中调用未实现的两个方法： </div><div class="line">Person* person = [[Person alloc] init]; </div><div class="line">[person unKnowSel_obj];</div></pre></td></tr></table></figure></p>
-<p>打印结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">RuntimeTest[4540:956249] unKnowSel_obj_Boss</div></pre></td></tr></table></figure></p>
-<p>接下来接着测试消息转发第三四步<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">在`Person`类中重写方法：</div><div class="line"> - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector &#123; </div><div class="line">if ([NSStringFromSelector(aSelector) isEqualToString:@&quot;unKnowSel_obj&quot;]) &#123; </div><div class="line">return [NSMethodSignature signatureWithObjCTypes:&quot;v@:&quot;];</div><div class="line"> &#125; </div><div class="line">return [super methodSignatureForSelector:aSelector];</div><div class="line"> &#125;</div><div class="line"> -(void)forwardInvocation:(NSInvocation *)anInvocation&#123;</div><div class="line"> [anInvocation invokeWithTarget:[[Boss alloc] init]]; </div><div class="line">&#125;</div><div class="line"> 在VC中调用未实现的两个方法： Person* person = [[Person alloc] init];</div><div class="line"> [person unKnowSel_obj];</div></pre></td></tr></table></figure></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">第一步：</div><div class="line">+(<span class="built_in">BOOL</span>)resolveInstanceMethod:(SEL)sel;+(<span class="built_in">BOOL</span>)resolveClassMethod:(SEL)sel;</div><div class="line">当我们调用一个没有实现的方法的时候会通过上面两个方法来判断是否可以找到该方法的实现,如果返回<span class="literal">NO</span>,则会进入下一步(说明在解析方法的这一</div><div class="line">步不做处理,在转发的其他过程处理,则处理进入第二个步骤),如果返回<span class="literal">YES</span>,说明要在此方法中处理,则可以通过class_addMethod来动态添加方法</div><div class="line">的实现,消息得到处理,结束</div><div class="line"></div><div class="line">第二步：</div><div class="line">- (<span class="keyword">id</span>)forwardingTargetForSelector:(SEL)aSelector</div><div class="line">从字面上来理解这个方法就是转发这个方法到一个其他的target,也就是说如果在这个方法中返回一个可以执行这个方法的对象,也使这个消息得到处</div><div class="line">理.比如你在Person类和Animal类中同时声明了-(<span class="keyword">void</span>)eat方法,但是只实现了Person类中的方法,没实现Animal类中方法,但是你在控制器中又</div><div class="line">调用了Animal中-(<span class="keyword">void</span>)eat方法,如果不做处理肯定会crash,但是如果在消息转发的第二部也就是本方法中返回一个Person的对象,你会发现它执</div><div class="line">行的是Person类中eat方法.</div><div class="line">当然你在这一步中也可以不作处理也就是返回<span class="literal">nil</span>(没有指定可以实现这个方法的对象),则会进入消息转发的下一步.</div><div class="line"></div><div class="line">第三步：</div><div class="line">- (<span class="built_in">NSMethodSignature</span> *)methodSignatureForSelector:(SEL)aSelector</div><div class="line">如果在上一步返回<span class="literal">nil</span>则会进入此方法生成方法签名,如果此步骤方法中返回<span class="literal">nil</span>的话,直接调用doesNotRecognizeSelector:返回异常</div><div class="line">如果正常生成方法签名，则进行最后一步。</div><div class="line"></div><div class="line">第四步：</div><div class="line">- (<span class="keyword">void</span>)forwardInvocation:(<span class="built_in">NSInvocation</span> *)anInvocation</div><div class="line">我们可以通过anInvocation对象做很多处理，</div><div class="line">比如修改实现方法，修改响应对象等，如果方法调用成功，则结束。</div><div class="line">如果失败，则进入`doesNotRecognizeSelector`方法，</div><div class="line">若我们没有实现这个方法，那么就会crash</div></pre></td></tr></table></figure>
+<p>实例如下:<br>尝试在方法转发第一步中规避crash<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">首先在`Person`类中 在.h中声明两个方法，但不去实现：</div><div class="line"> -(<span class="keyword">void</span>)unKnowSel_obj; </div><div class="line">+(<span class="keyword">void</span>)unKonwSel_class;</div><div class="line"> 在.m中实现这两个方法：</div><div class="line"> -(<span class="keyword">void</span>)noObjMethod&#123; </div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"未实现这个实例方法"</span>);</div><div class="line"> &#125; </div><div class="line">+(<span class="keyword">void</span>)noClassMethod&#123; </div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"未实现这个类方法"</span>); </div><div class="line">&#125; </div><div class="line">并且重写消息转发的方法： </div><div class="line"><span class="comment">// 当一个对象调用未实现的方法，会调用这个方法处理,并且会把对应的方法列表传过来.</span></div><div class="line"> <span class="comment">//注意:实例方法是存在于当前对象对应的类的方法列表中</span></div><div class="line"> +(<span class="built_in">BOOL</span>)resolveInstanceMethod:(SEL)sel&#123; </div><div class="line">SEL aSel = <span class="built_in">NSSelectorFromString</span>(<span class="string">@"noObjMethod"</span>); </div><div class="line">Method aMethod = class_getInstanceMethod(<span class="keyword">self</span>, aSel);</div><div class="line"> class_addMethod(<span class="keyword">self</span>, sel, method_getImplementation(aMethod), <span class="string">"v@:"</span>); </div><div class="line"><span class="keyword">return</span> <span class="literal">YES</span>; </div><div class="line">&#125; </div><div class="line"><span class="comment">// 当一个类调用未实现的方法，会调用这个方法处理,并且会把对应的方法列表传过来. </span></div><div class="line"><span class="comment">//注意:类方法是存在于类的元类的方法列表中 </span></div><div class="line">+(<span class="built_in">BOOL</span>)resolveClassMethod:(SEL)sel&#123; </div><div class="line">SEL aSel = <span class="built_in">NSSelectorFromString</span>(<span class="string">@"noClassMethod"</span>); </div><div class="line">Method aMethod = class_getClassMethod(<span class="keyword">self</span>, aSel); </div><div class="line">class_addMethod(object_getClass(<span class="keyword">self</span>), sel, method_getImplementation(aMethod), <span class="string">"v@:"</span>); <span class="keyword">return</span> <span class="literal">YES</span>; </div><div class="line">&#125; </div><div class="line">在VC中调用未实现的两个方法：</div><div class="line">Person* person = [[Person alloc] init]; </div><div class="line">[person unKnowSel_obj];</div><div class="line">[Person unKonwSel_class];</div></pre></td></tr></table></figure></p>
+<p>打印结果<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">RuntimeTest<span class="string">[4503:948902]</span> 未实现这个实例方法</div><div class="line">RuntimeTest<span class="string">[4503:948902]</span> 未实现这个类方法</div></pre></td></tr></table></figure></p>
+<p>接下来我们尝试在消息转发第二部中去处理(注意把消息转发中的第一步方法注释掉或返回NO)<br><figure class="highlight inform7"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">声明一个`Boss`类，并在.m中实现方法：</div><div class="line"> @implementation Boss </div><div class="line">-(void)unKnowSel_obj&#123; </div><div class="line">NSLog(@<span class="string">"unKnowSel_obj_Boss"</span>); </div><div class="line">&#125; </div><div class="line">@end </div><div class="line">在`<span class="keyword">Person</span>`类中重写方法：</div><div class="line"> -(id)forwardingTargetForSelector:(SEL)aSelector&#123;</div><div class="line"> return <span class="comment">[<span class="comment">[Boss alloc]</span> init]</span>; </div><div class="line">&#125; </div><div class="line">在VC中调用未实现的两个方法： </div><div class="line"><span class="keyword">Person</span>* <span class="keyword">person</span> = <span class="comment">[<span class="comment">[Person alloc]</span> init]</span>; </div><div class="line"><span class="comment">[person unKnowSel_obj]</span>;</div></pre></td></tr></table></figure></p>
+<p>打印结果<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">RuntimeTest<span class="string">[4540:956249]</span> unKnowSel_obj_Boss</div></pre></td></tr></table></figure></p>
+<p>接下来接着测试消息转发第三四步<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">在`Person`类中重写方法：</div><div class="line"> - (NSMethodSignature *)<span class="string">methodSignatureForSelector:</span>(SEL)aSelector &#123; </div><div class="line"><span class="keyword">if</span> ([NSStringFromSelector(aSelector) <span class="string">isEqualToString:</span>@<span class="string">"unKnowSel_obj"</span>]) &#123; </div><div class="line"><span class="keyword">return</span> [NSMethodSignature <span class="string">signatureWithObjCTypes:</span><span class="string">"v@:"</span>];</div><div class="line"> &#125; </div><div class="line"><span class="keyword">return</span> [<span class="keyword">super</span> <span class="string">methodSignatureForSelector:</span>aSelector];</div><div class="line"> &#125;</div><div class="line"> -(<span class="keyword">void</span>)<span class="string">forwardInvocation:</span>(NSInvocation *)anInvocation&#123;</div><div class="line"> [anInvocation <span class="string">invokeWithTarget:</span>[[Boss alloc] init]]; </div><div class="line">&#125;</div><div class="line"> 在VC中调用未实现的两个方法： Person* person = [[Person alloc] init];</div><div class="line"> [person unKnowSel_obj];</div></pre></td></tr></table></figure></p>
 <p>大家可以自行测试一下结果</p>
-<p>3.交换方法(<code>method_exchangeImplementations</code>)<br>首先来理一理<code>SEL</code>,<code>Method</code>,<code>IMP</code>之间的关系<br><code>SEL</code>是<code>selector</code>在Objective-C中的表示类型,而<code>selector</code>可以理解为区别方法的ID。<br><code>IMP</code>是“implementation”的缩写，它是由编译器生成的一个函数指针。当你发起一个消息后，这个函数指针决定了最终执行哪段代码.<br><code>Method</code>是这样<code>typedef struct objc_method *Method;</code>声明的;是一个<code>objc_method</code>类型的结构体,在看<code>objc_method</code>是如下这样的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">struct objc_method &#123;</div><div class="line">    SEL method_name                                          OBJC2_UNAVAILABLE;//方法名</div><div class="line">    char *method_types                                       OBJC2_UNAVAILABLE;//方法类型,是一个char指针，存储着方法的参数类型和返回值类型</div><div class="line">    IMP method_imp                                           OBJC2_UNAVAILABLE;//方法实现</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>也就是说当我们调用一个函数时,编译过程中会根据函数名以及参数等信息生成一个可以表示这个函数的一个唯一标示,就是<code>selector</code>,并且会根据函数的实现以及函数的地址生成一个<code>IMP</code>(函数指针)来指向函数的真正内容,一般来说SEL和IMP是一一对应的,当运行时,就会根据唯一的标示来找到函数的实现来打到目的,因此动态交换方法其实就是在运行时,把SEL和IMP的关系进行重新整理,让原来的SEL指向另外一个IMP函数地址来打到交换的目的.实例如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">+(void)load&#123;</div><div class="line">    [super load];</div><div class="line">//    交换实例方法</div><div class="line">//    Method fromMethod = class_getInstanceMethod([self class], @selector(btAction:));</div><div class="line">//    Method toMethod = class_getInstanceMethod([self class], @selector(swizzlingbtAction:));</div><div class="line">//    //添加判断</div><div class="line">//    if (!class_addMethod([self class], @selector(btAction:), method_getImplementation(toMethod), method_getTypeEncoding(toMethod))) &#123;</div><div class="line">//        method_exchangeImplementations(fromMethod, toMethod);</div><div class="line">//    &#125;</div><div class="line">    //使用封装的方法进行测试</div><div class="line">    [self swizzleSelectorOriginalSel:@selector(btAction:) withSwizzledSelector:@selector(swizzlingbtAction:)];</div><div class="line">&#125;</div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    // Do any additional setup after loading the view, typically from a nib.</div><div class="line">    self.view.backgroundColor = [UIColor lightGrayColor];</div><div class="line">    self.bt = [UIButton buttonWithType:UIButtonTypeSystem];</div><div class="line">    _bt.frame = CGRectMake(100, 100, 100, 100);</div><div class="line">    [_bt setTitle:@&quot;RunTime&quot; forState:UIControlStateNormal];</div><div class="line">    [self.view addSubview:_bt];</div><div class="line">    _bt.backgroundColor = [UIColor redColor];</div><div class="line">    [_bt addTarget:self action:@selector(btAction:) forControlEvents:UIControlEventTouchUpInside];</div><div class="line"></div><div class="line">&#125;</div><div class="line">-(void)btAction:(UIButton *)bt&#123;</div><div class="line">    NSLog(@&quot;原方法&quot;);</div><div class="line">&#125;</div><div class="line">-(void)swizzlingbtAction:(UIButton *)bt&#123;</div><div class="line">    NSLog(@&quot;替换方法&quot;);</div><div class="line">    UIViewController *vc = [Mediar remotViewControllerWithClaStr:@&quot;OneViewController&quot;];</div><div class="line">    [self presentViewController:vc animated:YES completion:nil];</div><div class="line">&#125;</div><div class="line">#pragma mark - 封装替换方法</div><div class="line">+(void)swizzleSelectorOriginalSel:(SEL)originalSelector withSwizzledSelector:(SEL)swizzledSelector &#123;</div><div class="line">    Class class = [self class];</div><div class="line">    </div><div class="line">    Method originalMethod = class_getInstanceMethod(class, originalSelector);</div><div class="line">    Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);</div><div class="line">    </div><div class="line">    BOOL didAddMethodInit=class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));</div><div class="line">    </div><div class="line">    if (didAddMethodInit) &#123;</div><div class="line">        class_addMethod(class, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));</div><div class="line">    &#125;else&#123;</div><div class="line">        method_exchangeImplementations(originalMethod, swizzledMethod);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3.交换方法(<code>method_exchangeImplementations</code>)<br>首先来理一理<code>SEL</code>,<code>Method</code>,<code>IMP</code>之间的关系<br><code>SEL</code>是<code>selector</code>在Objective-C中的表示类型,而<code>selector</code>可以理解为区别方法的ID。<br><code>IMP</code>是“implementation”的缩写，它是由编译器生成的一个函数指针。当你发起一个消息后，这个函数指针决定了最终执行哪段代码.<br><code>Method</code>是这样<code>typedef struct objc_method *Method;</code>声明的;是一个<code>objc_method</code>类型的结构体,在看<code>objc_method</code>是如下这样的<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">objc_method</span> &#123;</span></div><div class="line">    SEL method_name                                          OBJC2_UNAVAILABLE;<span class="comment">//方法名</span></div><div class="line">    <span class="keyword">char</span> *method_types                                       OBJC2_UNAVAILABLE;<span class="comment">//方法类型,是一个char指针，存储着方法的参数类型和返回值类型</span></div><div class="line">    IMP method_imp                                           OBJC2_UNAVAILABLE;<span class="comment">//方法实现</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>也就是说当我们调用一个函数时,编译过程中会根据函数名以及参数等信息生成一个可以表示这个函数的一个唯一标示,就是<code>selector</code>,并且会根据函数的实现以及函数的地址生成一个<code>IMP</code>(函数指针)来指向函数的真正内容,一般来说SEL和IMP是一一对应的,当运行时,就会根据唯一的标示来找到函数的实现来打到目的,因此动态交换方法其实就是在运行时,把SEL和IMP的关系进行重新整理,让原来的SEL指向另外一个IMP函数地址来打到交换的目的.实例如下<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">+(<span class="keyword">void</span>)load&#123;</div><div class="line">    [<span class="keyword">super</span> load];</div><div class="line"><span class="comment">//    交换实例方法</span></div><div class="line"><span class="comment">//    Method fromMethod = class_getInstanceMethod([self class], @selector(btAction:));</span></div><div class="line"><span class="comment">//    Method toMethod = class_getInstanceMethod([self class], @selector(swizzlingbtAction:));</span></div><div class="line"><span class="comment">//    //添加判断</span></div><div class="line"><span class="comment">//    if (!class_addMethod([self class], @selector(btAction:), method_getImplementation(toMethod), method_getTypeEncoding(toMethod))) &#123;</span></div><div class="line"><span class="comment">//        method_exchangeImplementations(fromMethod, toMethod);</span></div><div class="line"><span class="comment">//    &#125;</span></div><div class="line">    <span class="comment">//使用封装的方法进行测试</span></div><div class="line">    [<span class="keyword">self</span> swizzleSelectorOriginalSel:<span class="keyword">@selector</span>(btAction:) withSwizzledSelector:<span class="keyword">@selector</span>(swizzlingbtAction:)];</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></div><div class="line">    <span class="keyword">self</span>.view.backgroundColor = [<span class="built_in">UIColor</span> lightGrayColor];</div><div class="line">    <span class="keyword">self</span>.bt = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeSystem</span>];</div><div class="line">    _bt.frame = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line">    [_bt setTitle:<span class="string">@"RunTime"</span> forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    [<span class="keyword">self</span>.view addSubview:_bt];</div><div class="line">    _bt.backgroundColor = [<span class="built_in">UIColor</span> redColor];</div><div class="line">    [_bt addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(btAction:) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</div><div class="line"></div><div class="line">&#125;</div><div class="line">-(<span class="keyword">void</span>)btAction:(<span class="built_in">UIButton</span> *)bt&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"原方法"</span>);</div><div class="line">&#125;</div><div class="line">-(<span class="keyword">void</span>)swizzlingbtAction:(<span class="built_in">UIButton</span> *)bt&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"替换方法"</span>);</div><div class="line">    <span class="built_in">UIViewController</span> *vc = [Mediar remotViewControllerWithClaStr:<span class="string">@"OneViewController"</span>];</div><div class="line">    [<span class="keyword">self</span> presentViewController:vc animated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</div><div class="line">&#125;</div><div class="line"><span class="meta">#pragma mark - 封装替换方法</span></div><div class="line">+(<span class="keyword">void</span>)swizzleSelectorOriginalSel:(SEL)originalSelector withSwizzledSelector:(SEL)swizzledSelector &#123;</div><div class="line">    Class <span class="keyword">class</span> = [<span class="keyword">self</span> <span class="keyword">class</span>];</div><div class="line">    </div><div class="line">    Method originalMethod = class_getInstanceMethod(<span class="keyword">class</span>, originalSelector);</div><div class="line">    Method swizzledMethod = class_getInstanceMethod(<span class="keyword">class</span>, swizzledSelector);</div><div class="line">    </div><div class="line">    <span class="built_in">BOOL</span> didAddMethodInit=class_addMethod(<span class="keyword">class</span>, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (didAddMethodInit) &#123;</div><div class="line">        class_addMethod(<span class="keyword">class</span>, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        method_exchangeImplementations(originalMethod, swizzledMethod);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>在项目中有时会处理数组越界问题,你在NSArray的分类中添加安全取值方法,注意新添加的安全方法在分类中最后还是添加在了NSArray的methodlist中,但是由于数组是类簇的原因,因此平时调用的取值方法实际上如果数组是空的则会生成一个<code>__NSArray0</code>的对象,如果只有<code>一</code>个元素则生成<code>__NSSingleObjectArrayI</code>,如果多与1个则是中<code>__NSArrayI</code>;但是对于可变数组来说都是<code>__NSArrayM</code>,不管是空数组还是只有一个元素的数组还是多个元素的数组;下面来看一个例子:</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">首先在分类中添加一个安全取值的方法</div><div class="line">@implementation NSArray (safe)</div><div class="line">-(id)objectAtIndexSafe:(NSUInteger)index&#123;</div><div class="line">    if (index&gt;=self.count) &#123;</div><div class="line">        return nil;</div><div class="line">    &#125;</div><div class="line">    else&#123;</div><div class="line">        return [self objectAtIndexSafe:index];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">@end</div><div class="line">然后在+(void)load方法中交换方法</div><div class="line">+(void)load&#123;</div><div class="line">    Method originalMethod_id = class_getInstanceMethod([NSArray class], NSSelectorFromString(@&quot;objectAtIndexSafe:&quot;));</div><div class="line">    Method swizzledMethod_id = class_getInstanceMethod(NSClassFromString(@&quot;__NSArrayM&quot;), NSSelectorFromString(@&quot;objectAtIndex:&quot;));</div><div class="line">    method_exchangeImplementations(originalMethod_id, swizzledMethod_id);</div><div class="line">//当然你也可以不用exchange直接用setImplementaion来换掉IMP,但是这样的话分类中添加的方法中注意不能用自身调用自身</div><div class="line">   // method_setImplementation(swizzledMethod_id, method_getImplementation(originalMethod_id));</div><div class="line"></div><div class="line">    Method originalMethod_id1 = class_getInstanceMethod([NSArray class], NSSelectorFromString(@&quot;objectAtIndexSafe:&quot;));</div><div class="line">    Method swizzledMethod_id1 = class_getInstanceMethod(NSClassFromString(@&quot;__NSArray0&quot;), NSSelectorFromString(@&quot;objectAtIndex:&quot;));</div><div class="line">    method_exchangeImplementations(originalMethod_id1, swizzledMethod_id1);</div><div class="line"></div><div class="line">    Method originalMethod_id2 = class_getInstanceMethod([NSArray class], NSSelectorFromString(@&quot;objectAtIndexSafe:&quot;));</div><div class="line">    Method swizzledMethod_id2 = class_getInstanceMethod(NSClassFromString(@&quot;__NSArray0&quot;), NSSelectorFromString(@&quot;objectAtIndex:&quot;));</div><div class="line">    method_exchangeImplementations(originalMethod_id2, swizzledMethod_id2);</div><div class="line">&#125;</div><div class="line">接下来在-(void)viewdidload中测试</div><div class="line">    NSArray *arr2 = [[NSArray alloc]init];</div><div class="line">    NSString *str2 = [arr2 objectAtIndex:1];</div><div class="line">    NSLog(@&quot;%@&quot;,str2);</div></pre></td></tr></table></figure>
-<p>打印结果为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">RuntimeTest3[43662:8248532] (null)</div></pre></td></tr></table></figure></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">首先在分类中添加一个安全取值的方法</div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">NSArray</span> (<span class="title">safe</span>)</span></div><div class="line">-(<span class="keyword">id</span>)objectAtIndexSafe:(<span class="built_in">NSUInteger</span>)index&#123;</div><div class="line">    <span class="keyword">if</span> (index&gt;=<span class="keyword">self</span>.count) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> [<span class="keyword">self</span> objectAtIndexSafe:index];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div><div class="line">然后在+(<span class="keyword">void</span>)load方法中交换方法</div><div class="line">+(<span class="keyword">void</span>)load&#123;</div><div class="line">    Method originalMethod_id = class_getInstanceMethod([<span class="built_in">NSArray</span> <span class="keyword">class</span>], <span class="built_in">NSSelectorFromString</span>(<span class="string">@"objectAtIndexSafe:"</span>));</div><div class="line">    Method swizzledMethod_id = class_getInstanceMethod(<span class="built_in">NSClassFromString</span>(<span class="string">@"__NSArrayM"</span>), <span class="built_in">NSSelectorFromString</span>(<span class="string">@"objectAtIndex:"</span>));</div><div class="line">    method_exchangeImplementations(originalMethod_id, swizzledMethod_id);</div><div class="line"><span class="comment">//当然你也可以不用exchange直接用setImplementaion来换掉IMP,但是这样的话分类中添加的方法中注意不能用自身调用自身</span></div><div class="line">   <span class="comment">// method_setImplementation(swizzledMethod_id, method_getImplementation(originalMethod_id));</span></div><div class="line"></div><div class="line">    Method originalMethod_id1 = class_getInstanceMethod([<span class="built_in">NSArray</span> <span class="keyword">class</span>], <span class="built_in">NSSelectorFromString</span>(<span class="string">@"objectAtIndexSafe:"</span>));</div><div class="line">    Method swizzledMethod_id1 = class_getInstanceMethod(<span class="built_in">NSClassFromString</span>(<span class="string">@"__NSArray0"</span>), <span class="built_in">NSSelectorFromString</span>(<span class="string">@"objectAtIndex:"</span>));</div><div class="line">    method_exchangeImplementations(originalMethod_id1, swizzledMethod_id1);</div><div class="line"></div><div class="line">    Method originalMethod_id2 = class_getInstanceMethod([<span class="built_in">NSArray</span> <span class="keyword">class</span>], <span class="built_in">NSSelectorFromString</span>(<span class="string">@"objectAtIndexSafe:"</span>));</div><div class="line">    Method swizzledMethod_id2 = class_getInstanceMethod(<span class="built_in">NSClassFromString</span>(<span class="string">@"__NSArray0"</span>), <span class="built_in">NSSelectorFromString</span>(<span class="string">@"objectAtIndex:"</span>));</div><div class="line">    method_exchangeImplementations(originalMethod_id2, swizzledMethod_id2);</div><div class="line">&#125;</div><div class="line">接下来在-(<span class="keyword">void</span>)viewdidload中测试</div><div class="line">    <span class="built_in">NSArray</span> *arr2 = [[<span class="built_in">NSArray</span> alloc]init];</div><div class="line">    <span class="built_in">NSString</span> *str2 = [arr2 objectAtIndex:<span class="number">1</span>];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,str2);</div></pre></td></tr></table></figure>
+<p>打印结果为:<br><figure class="highlight dns"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">RuntimeTest<span class="number">3[43662</span>:<span class="number">8248532</span>] (null)</div></pre></td></tr></table></figure></p>
 <p>4.<em>给分类添加属性</em><br>可以参考之前写的”UIButton扩大响应范围”的那篇文章.</p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -273,7 +237,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/01/03/RunTime之常用场景/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2017/01/03/RunTime之常用场景/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -339,7 +303,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 My Little TT
+    		&copy; 2017 Little TT
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -356,7 +320,7 @@
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
@@ -380,8 +344,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
-      
-      
     
       
       
@@ -393,15 +355,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -465,43 +425,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
 
     
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
-    
 
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">好人一生平安。</div>
   	  	
     	</section>
     
