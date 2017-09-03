@@ -6,19 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>基于CAShapLayer和UIBezierPath的下拉刷新动画 | Little TT&#39;s Blog</title>
+  <title>Archives: 2017/4 | Little TT&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在demo的记录之前,先来记录一下几个需要的知识点.1.  CAShapLayer他是CALayer的一个子类,有的小伙伴就说了都是layer,那CAShapLayer和CALayer有什么不同呢?最主要的是,单独和创建一个CALayer,设置大小颜色等属性添加到父layer上就可以显现出来,但是对于CAShapLayer来说必须制定一个path路径才可以显现出来,也就是单独声明出来的CAShap">
+  <meta name="description" content="Good��">
 <meta name="keywords" content="����">
-<meta property="og:type" content="article">
-<meta property="og:title" content="基于CAShapLayer和UIBezierPath的下拉刷新动画">
-<meta property="og:url" content="//litten.me/2017/05/06/基于CAShapLayer和UIBezierPath的下拉刷新动画/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Little TT&#39;s Blog">
+<meta property="og:url" content="//litten.me/archives/2017/04/index.html">
 <meta property="og:site_name" content="Little TT&#39;s Blog">
-<meta property="og:description" content="在demo的记录之前,先来记录一下几个需要的知识点.1.  CAShapLayer他是CALayer的一个子类,有的小伙伴就说了都是layer,那CAShapLayer和CALayer有什么不同呢?最主要的是,单独和创建一个CALayer,设置大小颜色等属性添加到父layer上就可以显现出来,但是对于CAShapLayer来说必须制定一个path路径才可以显现出来,也就是单独声明出来的CAShap">
-<meta property="og:updated_time" content="2017-09-03T01:56:20.277Z">
+<meta property="og:description" content="Good��">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于CAShapLayer和UIBezierPath的下拉刷新动画">
-<meta name="twitter:description" content="在demo的记录之前,先来记录一下几个需要的知识点.1.  CAShapLayer他是CALayer的一个子类,有的小伙伴就说了都是layer,那CAShapLayer和CALayer有什么不同呢?最主要的是,单独和创建一个CALayer,设置大小颜色等属性添加到父layer上就可以显现出来,但是对于CAShapLayer来说必须制定一个path路径才可以显现出来,也就是单独声明出来的CAShap">
+<meta name="twitter:title" content="Little TT&#39;s Blog">
+<meta name="twitter:description" content="Good��">
   
   
     <link rel="icon" href="/assets/img/favicon.ico">
@@ -142,175 +141,49 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-基于CAShapLayer和UIBezierPath的下拉刷新动画" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      基于CAShapLayer和UIBezierPath的下拉刷新动画
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/04/10/RunTime之常用场景/" class="archive-article-date">
+  	<time datetime="2017-04-09T16:38:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/04/10/RunTime之常用场景/">RunTime之常用场景</a>
     </h1>
   
 
-        
-        <a href="/2017/05/06/基于CAShapLayer和UIBezierPath的下拉刷新动画/" class="archive-article-date">
-  	<time datetime="2017-05-06T01:55:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在demo的记录之前,先来记录一下几个需要的知识点.<br>1.</p>
-<blockquote>
-<p>CAShapLayer<br>他是CALayer的一个子类,有的小伙伴就说了都是layer,那CAShapLayer和CALayer有什么不同呢?最主要的是,单独和创建一个CALayer,设置大小颜色等属性添加到父layer上就可以显现出来,但是对于CAShapLayer来说必须制定一个path路径才可以显现出来,也就是单独声明出来的CAShapLayer是没有形状的,必须把他的path属性和一个贝塞尔曲线相关联(贝塞尔曲线的形状决定了CAShapLayer的形状)才可以看到.<br>fillColor填充色<br>strokeColor轮廓的颜色</p>
-</blockquote>
-<p>2.</p>
-<blockquote>
-<p>UIBezierPath</p>
-<ul>
-<li>该方法将会从 currentPoint 到 指定的 endPoint 追加一条二次贝塞尔曲线.</li>
-<li>currentPoint、endPoint、controlPoint 三者的关系最终定义了二次贝塞尔曲线的形状.</li>
-<li>二次贝塞尔曲线的弯曲由一个控制点来控制. 如下图所示</li>
-<li>Note: 调用该方法前, 你必须先设置 currentPoint, 如果路径为空, </li>
-<li>并且尚未设置 currentPoint, 调用该方法则不会产生任何效果. </li>
-<li>当添加完贝塞尔曲线后, 该方法将会自动更新 currentPoint 为</li>
-<li>指定的结束点</li>
-<li>@param endPoint: 终点</li>
-<li>@param controlPoint: 控制点<ul>
-<li>(void)addQuadCurveToPoint:(CGPoint)endPoint controlPoint:(CGPoint)controlPoint;</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<p>3.</p>
-<blockquote>
-<p>CADisPlayLink<br>CADisplayLink是一个能让我们以和屏幕刷新率相同的频率将内容画到屏幕上的定时器。我们在应用中创建一个新的 CADisplayLink 对象，把它添加到一个runloop中，并给它提供一个 target 和selector 在屏幕刷新的时候调用。<br>CADisplayLink使用场合相对专一，适合做UI的不停重绘，比如自定义动画引擎或者视频播放的渲染。NSTimer的使用范围要广泛的多，各种需要单次或者循环定时处理的任务都可以使用。在UI相关的动画或者显示内容使用 CADisplayLink比起用NSTimer的好处就是我们不需要在格外关心屏幕的刷新频率了，因为它本身就是跟屏幕刷新同步的。</p>
-</blockquote>
-<p>4.进入正题<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">.m</div><div class="line">首先自定义一个下拉刷新的view</div><div class="line">define WIDTH ([[<span class="built_in">UIScreen</span> mainScreen] bounds].size.width)</div><div class="line">define HEIGHT ([[<span class="built_in">UIScreen</span> mainScreen] bounds].size.height)</div><div class="line">define MIN_HEIGHT  <span class="number">100</span>  <span class="comment">// 图形最小高度</span></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">RefreshView</span>()</span></div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">assign</span>)<span class="built_in">CGFloat</span> mHeight;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">assign</span>)<span class="built_in">CGFloat</span> X;<span class="comment">// 红点x坐标</span></div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">assign</span>)<span class="built_in">CGFloat</span> Y;<span class="comment">// 红点y坐标</span></div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">CAShapeLayer</span> *shapLayer;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">CADisplayLink</span> *displayLink;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">UIView</span> *redPointView;<span class="comment">//红点</span></div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>,<span class="keyword">assign</span>)<span class="built_in">BOOL</span> isAnimating;</div><div class="line"><span class="keyword">@end</span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">RefreshView</span></span></div><div class="line"><span class="keyword">static</span> <span class="built_in">NSString</span> *kX = <span class="string">@"X"</span>;</div><div class="line"><span class="keyword">static</span> <span class="built_in">NSString</span> *kY = <span class="string">@"Y"</span>;</div><div class="line">-(<span class="keyword">instancetype</span>)initWithFrame:(<span class="built_in">CGRect</span>)frame&#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> initWithFrame:frame];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</div><div class="line">        [<span class="keyword">self</span> addObserver:<span class="keyword">self</span> forKeyPath:kX options:<span class="built_in">NSKeyValueObservingOptionNew</span> context:<span class="literal">nil</span>];</div><div class="line">        [<span class="keyword">self</span> addObserver:<span class="keyword">self</span> forKeyPath:kY options:<span class="built_in">NSKeyValueObservingOptionNew</span> context:<span class="literal">nil</span>];</div><div class="line">        [<span class="keyword">self</span> makeLayer];</div><div class="line">        [<span class="keyword">self</span> addGesture];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(void)dealloc&#123;</div><div class="line">    [<span class="literal">self</span> removeObserver:<span class="literal">self</span> <span class="keyword">for</span>KeyPath:kX];</div><div class="line">    [<span class="literal">self</span> removeObserver:<span class="literal">self</span> <span class="keyword">for</span>KeyPath:kY];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)makeLayer&#123;</div><div class="line">    <span class="comment">//添加layer层</span></div><div class="line">    <span class="keyword">self</span>.shapLayer = [<span class="built_in">CAShapeLayer</span> layer];</div><div class="line">    _shapLayer.fillColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">57</span>/<span class="number">255.0</span> green:<span class="number">67</span>/<span class="number">255.0</span> blue:<span class="number">89</span>/<span class="number">255.0</span> alpha:<span class="number">1.0</span>].CGColor;</div><div class="line">    [<span class="keyword">self</span>.layer addSublayer:_shapLayer];</div><div class="line">    </div><div class="line">    <span class="comment">//初始化红点</span></div><div class="line">    <span class="keyword">self</span>.X = WIDTH/<span class="number">2.0</span>;</div><div class="line">    <span class="keyword">self</span>.Y = MIN_HEIGHT;</div><div class="line">    <span class="keyword">self</span>.redPointView = [[<span class="built_in">UIView</span> alloc]initWithFrame:<span class="built_in">CGRectMake</span>(_X, _Y, <span class="number">3</span>, <span class="number">3</span>)];</div><div class="line">    _redPointView.backgroundColor = [<span class="built_in">UIColor</span> redColor];</div><div class="line">    [<span class="keyword">self</span> addSubview:_redPointView];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)addGesture&#123;</div><div class="line">    <span class="comment">//手势移动时相对高度</span></div><div class="line">    _mHeight = <span class="number">100</span>;</div><div class="line">    <span class="comment">//是否处于动效状态</span></div><div class="line">    _isAnimating = <span class="literal">NO</span>;</div><div class="line">    </div><div class="line">    <span class="comment">//手势</span></div><div class="line">    <span class="built_in">UIPanGestureRecognizer</span> *pan = [[<span class="built_in">UIPanGestureRecognizer</span> alloc] initWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(handlePanAction:)];</div><div class="line">    <span class="keyword">self</span>.userInteractionEnabled = <span class="literal">YES</span>;</div><div class="line">    [<span class="keyword">self</span> addGestureRecognizer:pan];</div><div class="line">    </div><div class="line">    <span class="comment">// CADisplayLink默认每秒运行60次calculatePath是算出在运行期间_curveView的坐标，从而确定_shapeLayer的形状</span></div><div class="line">    <span class="keyword">self</span>.displayLink = [<span class="built_in">CADisplayLink</span> displayLinkWithTarget:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(calculatePath)];</div><div class="line">    [_displayLink addToRunLoop:[<span class="built_in">NSRunLoop</span> currentRunLoop] forMode:<span class="built_in">NSDefaultRunLoopMode</span>];</div><div class="line">    _displayLink.paused = <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - Action</span></div><div class="line">-(<span class="keyword">void</span>)handlePanAction:(<span class="built_in">UIPanGestureRecognizer</span> *)pan&#123;</div><div class="line">    <span class="keyword">if</span> (!_isAnimating) &#123;</div><div class="line">        <span class="keyword">if</span> (pan.state == <span class="built_in">UIGestureRecognizerStateChanged</span>) &#123;</div><div class="line">            <span class="comment">//设置红点跟随手势而移动</span></div><div class="line">            <span class="built_in">CGPoint</span> point = [pan translationInView:<span class="keyword">self</span>];</div><div class="line">            _mHeight = point.y*<span class="number">0.7</span> +MIN_HEIGHT;</div><div class="line">            <span class="comment">/***注意因为使用的是kvo因此只有调用setter方法或使用kvc才可以触发监听事件***/</span></div><div class="line">            <span class="keyword">self</span>.X = WIDTH/<span class="number">2.0</span> + point.x;</div><div class="line">            <span class="comment">//防止手势向上拖拽时红点向上跑</span></div><div class="line">            <span class="keyword">self</span>.Y = _mHeight &gt; MIN_HEIGHT ? _mHeight : MIN_HEIGHT;</div><div class="line">            _redPointView.frame = <span class="built_in">CGRectMake</span>(_X, _Y, _redPointView.frame.size.width, _redPointView.frame.size.height);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (pan.state == <span class="built_in">UIGestureRecognizerStateCancelled</span> || pan.state == <span class="built_in">UIGestureRecognizerStateEnded</span> || pan.state == <span class="built_in">UIGestureRecognizerStateFailed</span>)&#123;</div><div class="line">            <span class="comment">//拖拽手势结束,设置回弹效果</span></div><div class="line">            _isAnimating = <span class="literal">YES</span>;</div><div class="line">            <span class="comment">//开启displaylink,会执行方法calculatePath.</span></div><div class="line">            _displayLink.paused = <span class="literal">NO</span>;</div><div class="line">            <span class="comment">//弹簧回弹</span></div><div class="line">            [<span class="built_in">UIView</span> animateWithDuration:<span class="number">1.0</span> delay:<span class="number">0.0</span> usingSpringWithDamping:<span class="number">0.5</span> initialSpringVelocity:<span class="number">0</span> options:<span class="built_in">UIViewAnimationOptionCurveEaseInOut</span> animations:^&#123;</div><div class="line">                <span class="comment">//红点是一个view.所以在block中有弹簧效果.然后根据他的动效路径,在calculatePath中计算弹性图形的形状</span></div><div class="line">                _redPointView.frame = <span class="built_in">CGRectMake</span>(WIDTH/<span class="number">2</span>, MIN_HEIGHT, <span class="number">3</span>, <span class="number">3</span>);</div><div class="line">            &#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</div><div class="line">                <span class="keyword">if</span>(finished)&#123;</div><div class="line">                    <span class="comment">//停止计算</span></div><div class="line">                    _displayLink.paused = <span class="literal">YES</span>;</div><div class="line">                    _isAnimating = <span class="literal">NO</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">-(<span class="keyword">void</span>)calculatePath&#123;</div><div class="line">    <span class="comment">// 由于手势结束时,r5执行了一个UIView的弹簧动画,把这个过程的坐标记录下来,并相应的画出_shapeLayer形状</span></div><div class="line">    <span class="built_in">CALayer</span> *layer = _redPointView.layer.presentationLayer;</div><div class="line">    <span class="keyword">self</span>.X = layer.position.x;</div><div class="line">    <span class="keyword">self</span>.Y = layer.position.y;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - 监听_X和_Y变化情况</span></div><div class="line">-(<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath ofObject:(<span class="keyword">id</span>)object change:(<span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSKeyValueChangeKey</span>,<span class="keyword">id</span>&gt; *)change context:(<span class="keyword">void</span> *)context&#123;</div><div class="line">    <span class="keyword">if</span> ([keyPath isEqualToString:kX] || [keyPath isEqualToString:kY]) &#123;</div><div class="line">        [<span class="keyword">self</span> updateShapeLayerPath];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#pragma mark - 更新shaplayer</span></div><div class="line">- (<span class="keyword">void</span>)updateShapeLayerPath&#123;</div><div class="line">    <span class="comment">// 更新_shapeLayer形状</span></div><div class="line">    <span class="built_in">UIBezierPath</span> *tPath = [<span class="built_in">UIBezierPath</span> bezierPath];</div><div class="line">    [tPath moveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, <span class="number">0</span>)];                   <span class="comment">// r1点</span></div><div class="line">    [tPath addLineToPoint:<span class="built_in">CGPointMake</span>(WIDTH, <span class="number">0</span>)];            <span class="comment">// r2点</span></div><div class="line">    [tPath addLineToPoint:<span class="built_in">CGPointMake</span>(WIDTH,  MIN_HEIGHT)];  <span class="comment">// r4点</span></div><div class="line">    [tPath addQuadCurveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, MIN_HEIGHT) controlPoint:<span class="built_in">CGPointMake</span>(_X, _Y)];</div><div class="line">    <span class="comment">// r3,r4,r5确定的一个弧线</span></div><div class="line">    [tPath closePath];</div><div class="line">    _shapLayer.path = tPath.CGPath;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight inform7"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">使用时</div><div class="line">RefreshView *cuteView = <span class="comment">[<span class="comment">[RefreshView alloc]</span> initWithFrame:CGRectMake(0, 0, 320, 568)]</span>;</div><div class="line">cuteView.backgroundColor = <span class="comment">[UIColor whiteColor]</span>;</div><div class="line"><span class="comment">[self.view addSubview:cuteView]</span>;</div></pre></td></tr></table></figure>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2017/05/06/基于CAShapLayer和UIBezierPath的下拉刷新动画/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/06/20/SQL-Server之-基本关键字/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          SQL-Server之--基本关键字
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/04/10/RunTime之常用场景/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">RunTime之常用场景</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -333,8 +206,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
