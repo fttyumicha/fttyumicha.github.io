@@ -143,6 +143,75 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Runtime之组件的构建思路" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/03/Runtime之组件的构建思路/">Runtime之组件的构建思路</a>
+    </h1>
+  
+
+        
+        <a href="/2017/01/03/Runtime之组件的构建思路/" class="archive-article-date">
+  	<time datetime="2017-01-03T14:28:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在重构一个很老的项目,项目很庞大,之前也没有看过这个项目,那叫一个头疼,永远都是牵一发而动全身,代码之间的耦合除了大还是大,#import基本每个文件都是一大堆,就连封装的控件也是有很强的耦合性,因此在重构过程中最主要的问题就是解耦和重构业务代码,去除很老旧的东西.今天就来记录一下ios组件(模块)的构建思路.<br>一般在项目中模块和模块之间的通信大多都是从一个页面跳到另外一个页面,大多是这样<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#import "FZXAddRenovationDiaryViewController.h" </span></div><div class="line"><span class="comment">#pragma mark  跳转到 写日记</span></div><div class="line">- (void)gotoAddRenovationDiary &#123;</div><div class="line">    self.editDiaryBtn.userInteractionEnabled = NO<span class="comment">;</span></div><div class="line">    FZXAddRenovationDiaryViewController *<span class="keyword">addDiaryVC </span>= [[FZXAddRenovationDiaryViewController alloc] init]<span class="comment">;</span></div><div class="line">    <span class="keyword">addDiaryVC.orderId </span>= self.<span class="keyword">orderID;</span></div><div class="line"><span class="keyword"> </span>   [self.navigationController pushViewController:<span class="keyword">addDiaryVC </span>animated:YES]<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>但是这样出现的结果就是一旦工程很庞大,<code>#import</code>便会变成一堆一堆,要想解决这个问题可以采用rntime动态的调用类方法,不再用<code>#import</code>某个文件<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)gotoAddRenovationDiary:(NSString *)orderID &#123;</div><div class="line"> Class cls = NSClassFromString(@<span class="string">"FZXAddRenovationDiaryViewController"</span>);</div><div class="line"><span class="comment">//在FZXAddRenovationDiaryViewController控制器中声明addRenovationDiaryViewController: orderID:类方法;</span></div><div class="line"> UIViewController *diarviewVC = [cls performSelector:NSSelectorFromString(@<span class="string">"addRenovationDiaryViewController"</span>:<span class="string">") withObject:@&#123;@"</span>orderID<span class="string">":orderID&#125;];</span></div><div class="line"> [self.navigationController pushViewController:diarviewVC];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样虽然不用再导入文件,但是每处调用都得写这么多,而且地方分散,因此创建一个联系的中间层,把这些东西统一写到这个文件中<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建Mediator类,并在.h中声明一个类方法;</span></div><div class="line"><span class="variable">@interface</span> <span class="attribute">Mediator </span>: NSObject</div><div class="line">+(UIViewController *)<span class="attribute">OneViewController_viewController</span>:(NSString *)viewStr <span class="attribute">andColor</span>:(UIColor *)color;</div><div class="line"><span class="variable">@end</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//.m中的实现</span></div><div class="line"><span class="meta">#import <span class="meta-string">"Mediator.h"</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">&lt;objc/runtime.h&gt;</span></span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Mediator</span></span></div><div class="line">+(<span class="built_in">UIViewController</span> *)OneViewController_viewController:(<span class="built_in">NSString</span> *)viewStr andColor:(<span class="built_in">UIColor</span> *)color&#123;</div><div class="line">    Class cls = <span class="built_in">NSClassFromString</span>(viewStr);</div><div class="line">    <span class="comment">//添加安全判断,判断传过来的字符串所对应的类是否存在</span></div><div class="line">    <span class="keyword">if</span> (object_isClass(cls)) &#123;</div><div class="line">       <span class="comment">//经测试runtime动态生成类并调用方法只能掉类方法不能调用实例方法</span></div><div class="line">       <span class="keyword">return</span> [cls performSelector:<span class="built_in">NSSelectorFromString</span>(<span class="string">@"initoneViewConrllerWithcolor:"</span>) withObject:@&#123;<span class="string">@"color"</span>:color&#125;];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>OneViewController中的代码实现为.h<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//.h</span></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">OneViewController</span> : <span class="title">UIViewController</span></span></div><div class="line">+(<span class="built_in">UIViewController</span> *)initoneViewConrllerWithcolor:(<span class="built_in">UIColor</span> *)color;</div><div class="line">-(<span class="built_in">UIViewController</span> *)initWithcolor:(<span class="built_in">UIColor</span> *)color;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//.m</span></div><div class="line">+(<span class="built_in">UIViewController</span> *)initoneViewConrllerWithcolor:(<span class="built_in">UIColor</span> *)color&#123;</div><div class="line">    <span class="keyword">return</span> [[<span class="keyword">self</span> alloc]initWithcolor:color];</div><div class="line">&#125;</div><div class="line">-(<span class="built_in">UIViewController</span> *)initWithcolor:(<span class="built_in">UIColor</span> *)color&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> = [<span class="keyword">super</span> init]) &#123;</div><div class="line">        <span class="keyword">self</span>.color = color;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>模拟模块之间的调用,无论此页面和多少个页面有关系,都交给Meditor来处理即可<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"Mediator.h"</span></span></div><div class="line">-(<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches withEvent:(<span class="built_in">UIEvent</span> *)event&#123;</div><div class="line">    <span class="built_in">UIViewController</span> *vc = [Mediator OneViewController_viewController:<span class="string">@"OneViewController"</span> andColor:[<span class="built_in">UIColor</span> redColor]];</div><div class="line">    <span class="keyword">if</span> (vc != <span class="literal">nil</span>) &#123;</div><div class="line">        [<span class="keyword">self</span> presentViewController:vc animated:<span class="literal">YES</span> completion:^&#123;</div><div class="line">            </div><div class="line">        &#125;];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/03/Runtime之组件的构建思路/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Controller瘦身" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -595,74 +664,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/09/29/cocos2d-x学习之-事件处理机制/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-cocos2d-x学习之-搭建环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/28/cocos2d-x学习之-搭建环境/">cocos2d-x学习之--搭建环境</a>
-    </h1>
-  
-
-        
-        <a href="/2016/09/28/cocos2d-x学习之-搭建环境/" class="archive-article-date">
-  	<time datetime="2016-09-28T04:30:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.去cocos2d-x的官网上下载最新的cocos2d-x的包,我下载的是coco2d-x-3.13.1版本的;</p>
-<p>2.然后打开终端(mac环境下)输入cd+空格+刚才你自己下载的文件的路径,如果感觉看路径麻烦的话,直接cd+空格,然后把你下载的文件夹拖进终端会自动变成路径,按return就进入到cocos2d-x的文件夹中了;</p>
-<p>3.然后执行安装的命令,python setup.py 按return键会提示你有没有配置成功;</p>
-<p>4.如果配置成功后咱们就可以新建一个工程 cocos new HeolloWorld -p org.cocos2dx -l cpp -d codes,这就话的意思在在codes文件夹下创建一个名为HeolloWorld的工程,按return就可以了,这是打开你的cocos2d-x文件夹,可以看到一个codes文件夹下有个HeolloWorld工程,进入此工程,mac环境下打开proj.ios_mac文件夹,再使用xcode打开工程文件就可以了.</p>
-<p>5.但是如果你的xcode是xcode8的话,可能会编译错误,原因是因为从xcode8,ios10开始,xcode不再可以使用各种插件,这是打开终端,输入sudo /usr/libexec/xpccachectl回车,把xcode关闭再重新打开,再编译你之前的项目工程就可以了;</p>
-<p>之后再继续记录之后的学习.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/28/cocos2d-x学习之-搭建环境/">展开全文 >></a>
         </p>
       
 
